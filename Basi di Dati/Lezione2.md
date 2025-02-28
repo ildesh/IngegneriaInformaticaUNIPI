@@ -478,3 +478,96 @@ corrette le sue istanze che soddisfano tutti i vincoli
 > [!NOTE]
 > Simili a un "puntatore logico"
 
+#### Esempio _Infrazione - Vigili_:
+
+Infrazioni:
+| Codice | Data  | Vigile                              | Prov | Numero |
+|--------|-------|-----------------------------------|------|--------|
+| 34321  | 1/2/15 | <span style="background-color: red">3987</span> | MI | 39548K |
+| 53524  | 4/3/15 | <span style="background-color: red">3295</span> | TO | E39548 |
+| 64521  | 5/4/16 | <span style="background-color: red">3295</span> | PR | 839548 |
+| 73321  | 5/2/18 | <span style="background-color: red">9345</span> | PR | 839548 |
+
+
+Vigili:
+|Matricola|Cognome|Nome|
+|---------|--------|----|
+| <span style="background-color: red">3987</span>    | Rossi  | Mario |
+| <span style="background-color: red">3295</span>    | Bianchi| Mario |
+| <span style="background-color: red">9345</span>    | Verdi  | Mario |
+| 1234    | Neri   | Mario |
+
+
+> [!NOTE]
+> La chiave esterna **Vigile** della relazione **Infrazioni** è correlata alla chiave primaria **Matricola** della relazione **Vigili**
+
+### Vincolo di Integrità Referenziale
+
+> [!IMPORTANT]
+> Un **vincolo di integrità referenziale** è un vincolo che stabilisce che i valori di una chiave esterna devono essere uguali a valori di una chiave primaria di un'altra relazione o essere nulli.
+
+> [!NOTE]
+> In questo caso l’ordine degli attributi tra le due relazioni non è significativo, ma l’attributo su cui è stabilito il vincolo è significativo.
+
+
+### Integrità referenziale e valori nulli
+
+In presenza di valori nulli i vincoli possono essere resi
+meno restrittivi.
+
+> [!IMPORTANT]
+> Il vincolo non è fra ogni valore degli attributi di una relazione R<sub>1</sub> e la chiave primaria della relazione R<sub>2</sub>, ma tra i valori di X diversi da NULL e la chiave primaria di R<sub>2</sub>.
+
+#### Esempio:
+
+<div align="center">
+
+Impiegati:
+| Matricola | Cognome | Progetto |
+|-----------|---------|----------|
+| 34321     | Rossi   | IDEA     |
+| 53524     | Neri    | XYZ      |
+| 64521     | Verdi   | NULL     |
+| 73032     | Bianchi | IDEA     |
+
+Progetti:
+| Codice | Inizio | Durata | Costo |
+|--------|--------|--------|-------|
+| IDEA   | 2000   | 36     | 200   |
+| XYZ    | 2001   | 24     | 120   |
+| BOH    | 2001   | 24     | 150   |
+
+</div>
+
+> [!NOTE]
+> 1. La chiave esterna **Progetto** della relazione **Impiegati** è correlata alla chiave primaria **Codice** della relazione **Progetti**
+> 2. **Non è necessario** che tutti i valori di Progetto siano presenti nella relazione Progetti
+> 3. I valori **NULL sono ammessi**
+> 4. Se un valore di Progetto è NULL, non è necessario che esista un valore di Codice uguale a NULL nella relazione Progetti
+> 5. Se un valore di Progetto è diverso da NULL, deve esistere un valore di Codice uguale a Progetto nella relazione Progetti
+
+### Operazioni di aggiornamento
+1. Operazione di **inseriento**:
+   - Violazione dei vincoli intra-relazionali 
+   - Violazione dell'integrità referenziale
+2. Operazione di **cancellazione**:
+   - Violazione dell'integrità referenziale
+3. Operazione di **modifica**:
+   - modifica = cancellazione + inserimento
+
+
+### Reazione alla Violazione di Vincoli:
+> [!TIP] Cosa succede quando si tenta di compiere un’operazione che viola un vincolo, ad esempio si cerca di inserire nella base di dati un valore non consentito per quell'attributo?
+>Sono possibili meccanismi per il supporto alla gestione delle violazioni ("**_azioni compensative_**“)
+
+#### Azioni compensative:
+1. Esempio:
+   - Viene eliminata una -upla, causando una violazione
+2. Comportamento “standard”:
+   - Rifiuto dell’operazione: il sistema rifiuta l’operazione che ha causato la violazione
+3. Azioni compensative:
+   - Eliminazione in cascata: Quando si elimina una tupla dalla relazione R<sub>1</sub> che contiene una chiave esterna, tutte le tuple della relazione R<sub>2</sub> che contengono il valore della chiave primaria eliminata vengono eliminate.
+   - Introduzione di valori nulli: Quando si elimina una tupla dalla relazione R<sub>1</sub> che contiene una chiave esterna, tutte le tuple della relazione R<sub>2</sub> che contengono il valore della chiave primaria eliminata vengono aggiornate impostando la chiave esterna a NULL.
+
+> [!IMPORTANT]
+> > [Qui sono presenti gli esercizi riguardante questa lezione](./Esercizi/Lezione2.md) 
