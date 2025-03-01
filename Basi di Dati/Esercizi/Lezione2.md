@@ -4,7 +4,7 @@
 
 > [!IMPORTANT] Rappresentare per mezzo di una o più relazioni le informazioni contenute nell'orario delle partenze di una stazione ferroviaria: numero, orario, destinazione finale, categoria, fermate intermedie, di tutti i treni in partenza.
 
->[!NOTE] Sostantivi: numero,orario,destinazione,categoria
+>[!NOTE] Sostantivi: `numero`,`orario`,`destinazione`,`categoria`
 
 >[!WARNING]
 >Ci possono essere dei treni in cui non esistono fermate intermedie. 
@@ -68,3 +68,38 @@
 > 
 > **Relazione Stazione**  
 > - **Attributi**: `Nome`, `Frequenza`, `Sede`
+
+### Esercizio 4:
+
+> [!IMPORTANT] Progettare uno schema di base di dati per gestire le informazioni di una biblioteca. La biblioteca possiede libri, ciascuno identificato da un codice univoco, un titolo e un autore. Ogni libro può essere preso in prestito da un utente, che è identificato da un codice univoco, un nome e un cognome. Ogni prestito è caratterizzato dalla data di inizio e dalla data di scadenza.
+
+> [!NOTE] Schema della base di dati:
+> 
+> Relazione Libro:
+> - Attributi: CodiceLibro, Titolo, Autore
+> 
+> Relazione Utente:
+> - Attributi: CodiceUtente, Nome, Cognome
+> 
+> Relazione Prestito:
+> - Attributi: CodiceLibro, CodiceUtente, DataInizio, DataScadenza
+> 
+
+>[!NOTE] Chiavi primarie:
+> 
+> **Libro**: CodiceLibro
+> **Utente**: CodiceUtente
+> **Prestito**: CodiceLibro, CodiceUtente (combinata)
+
+> [!NOTE] Chiavi esterne:
+> 
+> **Prestito.CodiceLibro** → **Libro.CodiceLibro**
+>
+> **Prestito.CodiceUtente** → **Utente.CodiceUtente**
+ 
+> [!NOTE] Vincoli di integrità referenziale:
+> Un libro in prestito deve esistere nella biblioteca.
+>
+> Un prestito deve essere associato a un utente registrato.
+>
+> Un libro può essere in prestito a un solo utente alla volta.
