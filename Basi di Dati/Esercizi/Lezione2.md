@@ -4,7 +4,7 @@
 
 > [!IMPORTANT] Rappresentare per mezzo di una o più relazioni le informazioni contenute nell'orario delle partenze di una stazione ferroviaria: numero, orario, destinazione finale, categoria, fermate intermedie, di tutti i treni in partenza.
 
->[!NOTE] sostantivi: numero,orario,destinazione,categoria
+>[!NOTE] Sostantivi: numero,orario,destinazione,categoria
 
 >[!WARNING]
 >Ci possono essere dei treni in cui non esistono fermate intermedie. 
