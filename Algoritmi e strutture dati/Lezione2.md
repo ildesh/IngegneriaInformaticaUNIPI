@@ -251,8 +251,34 @@ int div2(int n) {
     return i; // O(1)
 }
 ```
-Per concludere...
+## | Ricerca binaria
 
-> La ricerca lineare è un algoritmo semplice ma inefficiente per array non ordinati, con una complessità lineare.
+La ricerca binaria è un algoritmo di ricerca che funziona su array ordinati. 
 
-> La divisione per 2 è un algoritmo efficiente con una complessità logaritmica, utile per problemi che coinvolgono la divisione ripetuta di un valore.
+>[!IMPORTANT]
+>Ha una complessità logaritmica, rendendola molto efficiente per grandi quantità di dati.
+
+#### Versione iterativa della ricerca binaria:
+
+```cpp
+
+int binarySearch(int A [], int l, int x, int r) {
+    int m = (l + r) / 2; // O(1)
+    while(A[m] != x){ // O(log n) 
+        if(x < A[m]) r = m - 1; // O(1)
+        else l = m + 1; // O(1)
+        m = (l + r) / 2; // O(1)
+        if(l > r) return -1; // O(1)
+    }
+    return m; // O(1)
+}
+```
+
+>[!NOTE]Nel caso peggiore questo algoritmo va sempre maggiore della ricerca lineare perché la ricerca lineare è O(n) e la ricerca binaria è O(log n).
+
+>[!IMPORTANT] L'algoritmo "order & search" è un algoritmo che combina la ricerca binaria e la ricerca lineare.
+>>[!TIP]
+>> Questo algoritmo è molto utile quando si ha un array ordinato e si vuole cercare un elemento.
+>> Ad esempio, in un array molto grande ordinato, la ricerca binaria può essere usata per restringere rapidamente l’intervallo, dopodiché una ricerca lineare (o un’altra tecnica, come l’interpolazione) viene eseguita su una piccola sotto-sezione dove il costo addizionale è trascurabile. In certi casi, quando i dati sono distribuiti uniformemente, la ricerca per interpolazione può persino superare la ricerca binaria, offrendo performance di O(log log n) nel caso ideale.
+
+[Qui sono presenti gli esercizi riguardante questa lezione](./Esercizi/Lezione2.md) 
