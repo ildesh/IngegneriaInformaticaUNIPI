@@ -45,7 +45,7 @@
 
 ### Metodo relazionale:
 
-* Questo metodo venne proposto da Edgar F. Codd nel 1970 e si basa sull'idea di rappresentare i dati in forma tabulare, dove ogni riga rappresenta un record e ogni colonna rappresenta un attributo del record. Il suo scopo era quello che i dati fossero indipendenti dal modo in cui venivano memorizzati e gestiti.
+* Questo metodo venne proposto da Edgar F. Codd nel 1970 e si basa sull'idea di rappresentare i dati in form  a tabulare, dove ogni riga rappresenta un record e ogni colonna rappresenta un attributo del record. Il suo scopo era quello che i dati fossero indipendenti dal modo in cui venivano memorizzati e gestiti.
 * Disponibile in DBMS reali nel 1981 con Oracle.
 * Si basa sul **concetto matematico** di **relazione** _(attraverso una variante_).
 * Le relazioni hanno naturale rappresentazione per mezzo di tabelle.
@@ -54,10 +54,10 @@
 * L'A.M. Turing Award è il più alto riconoscimento nel campo dell'informatica. E' un premio, assegnato annualmente dalla Association for Computing Machinery (ACM), per contributi significativi alla scienza dell'informatica.
 * Il premio viene spesso anche chiamato "premio Nobel dell'informatica" ed è intitolato al matematico inglese Alan Mathison Turing, che ha fatto fondamentali contributi alla teoria dei calcolatori e alla scienza dell'informatica.
 >[!NOTE]
-> Association for Computing Machinery (ACM) [(website)](acm.org)  
+> Association for Computing Machinery (ACM) [(website)](www.acm.org)  
 > 
+> ![Esempio Relazione Matematica](./images/ACM.png)
 > 
-> <img src="/Basi di Dati/images/image.png" width="100px" alt="logoACM">
 > 
 > <br> Alcuni Vincitori: <br>
 > | Anno | Vincitore | Nazione | Note |
@@ -338,7 +338,7 @@ Corsi
 
 ### Basi di dati "scorrette"
 
-- Esistono istanze di basi di dait che, pur **sintatticamente corrette, non rappresentano possibili** per l'applicazione di interesse.
+- Esistono istanze di basi di dait che, pur **sintatticamente corrette, non rappresentano informazioni possibili** per l'applicazione di interesse.
   
 Degli esempi potrebbero essere:
 Esami
@@ -390,7 +390,7 @@ corrette le sue istanze che soddisfano tutti i vincoli
 * Esistono due tipi di vincoli di integrità: **vincoli intra-relazionali** e **vincoli inter-relazionali**.
 1. **Vincoli intra-relazionali**: riguardano una sola relazione della base di dati.
     - **Vincolo di n-upla**: può essere valutato su ciascuna n-upla della relazione indipendentemente dalle altre. Esempio: _(Voto = 30) OR NOT (Lode = “e lode”)_
-    - **Vincolo di dominio**: vincolo di n-upla che riguarda un solo attributo della n-upla. Esempio: _(Voto 18) AND (Voto 30)_
+    - **Vincolo di dominio**: vincolo di n-upla che riguarda un solo attributo della n-upla. Esempio: _(Voto >= 18) AND (Voto <= 30)_
 2. **Vincoli inter-relazionali**: riguardano più relazioni della base di dati.
     - _“Un numero di matricola può comparire nella relazione Esami solo se compare nella relazione Studenti”_
 
