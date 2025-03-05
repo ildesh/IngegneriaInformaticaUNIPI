@@ -195,5 +195,66 @@ void insertionSort(int arr[], int len) {
   - Esempio: `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]`
 
 ---
+## Ordinamento: Insertion Sort
 
-Would you like me to continue with more detailed notes on the remaining sections of the document?
+* **Idea:** Simula l'ordinamento delle carte da gioco.
+* **Algoritmo:**
+    1. Prendi un elemento dalla parte non ordinata dell'array.
+    2. Inseriscilo nella posizione corretta nella parte ordinata.
+    3. Ripeti finché l'array non è ordinato.
+* **Codice:**
+    ```cpp
+    void insertionSort(int arr[], int len) {
+        for (int i = 1; i < len; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                --j;
+            }
+            arr[j + 1] = key;
+        }
+    }
+    ```
+* **Analisi:**
+    * Complessità: O(n^2) nel caso peggiore (array ordinato al contrario).
+    * Esempio di caso peggiore: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.
+
+---
+
+## Fusione di Array Ordinati (Combina)
+
+* **Idea:** Prendi due array ordinati e produci un array ordinato che li contiene entrambi.
+* **Algoritmo:**
+    1. Crea un array temporaneo per il risultato.
+    2. Confronta gli elementi dei due array di input e inserisci il più piccolo nel risultato.
+    3. Ripeti finché entrambi gli array di input non sono vuoti.
+    4. Copia il risultato nell'array originale.
+* **Codice:**
+    ```cpp
+    void combina(int arr[], int start, int mid, int end) {
+        int i = start, j = mid + 1, k = 0;
+        int temp[end - start + 1];
+        while (i <= mid && j <= end) {
+            if (arr[i] <= arr[j]) {
+                temp[k] = arr[i];
+                ++i;
+            } else {
+                temp[k] = arr[j];
+                ++j;
+            }
+            ++k;
+        }
+        while (i <= mid) {
+            temp[k] = arr[i];
+            ++i; ++k;
+        }
+        while (j <= end) {
+            temp[k] = arr[j];
+            ++j; ++k;
+        }
+        for (i = start; i <= end; ++i) {
+            arr[i] = temp[i - start];
+        }
+    }
+    ```
