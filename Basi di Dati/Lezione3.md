@@ -175,7 +175,7 @@ Esistono due tipologie di opeartori:
 
 - Se provi a fare un'unione tra queste due tabelle, non sarebbe possibile perché hanno lo stesso attributo (Figlio), ma l'altro attributo è diverso: Padre nella prima tabella e Madre nella seconda. Quindi, l'unione tra queste due tabelle non è valida senza una trasformazione, come rinominare gli attributi o aggiungere un attributo che rappresenti la relazione in modo uniforme.
 
-Per risolvere questa unione entra in gioco la  **_Ridenominazione_**:
+Per risolvere questa unione entra in gioco la  [**_Ridenominazione_**](#operatori-dellalgebra-relazionale):
   - Operatore con un solo opearando ("monadico");
   - Modifica lo schema dell' operando, lasciandone inalterata l'istanza
   - Data una relazione R, in genereale, questo operatore si scrive come:
