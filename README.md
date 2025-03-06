@@ -74,15 +74,15 @@ Le tue contribuzioni sono sempre benvenute! Se desideri contribuire con nuovi ap
 2. Crea un branch per le tue modifiche
 3. Invia una pull request
 
-    >[!WARNING] ATTENZIONE:
-    >**Le fork saranno ovviamente controllate e valutate una per una per verificare che non contengano materiale inappropriato o non consono al contesto didattico!**
+> [!WARNING]  
+> **ATTENZIONE: Le fork saranno ovviamente controllate e valutate una per una per verificare che non contengano materiale inappropriato o non consono al contesto didattico!**
 
-    >[!IMPORTANT] Perché ho creato questa repository?
-    ><div align="center">
-    > <i>Questa repository è stata creata inizialmente per cercare un metodo simpatico e che mi invogliasse a studiare, utilizzando la documentazione come uno strumento interattivo e imparando anche il linguaggio markdown che mi ha aiutato parecchio. Successivamente volevo che diventasse un aiuto per i compagni che avessero bisogno di supporto su questi argomenti o per coloro che vogliono approfondire e comprendere meglio le nozioni trattate.</i>
-    >
-    ><b><p style="font-size: 24px">L'obiettivo è condividere e migliorare continuamente i contenuti per rendere lo studio più interessante e accessibile a tutti!</p>
-    </div>
+> [!IMPORTANT]  
+> **Perché ho creato questa repository?**
+>
+> *Questa repository è stata creata inizialmente per cercare un metodo simpatico e che mi invogliasse a studiare, utilizzando la documentazione come uno strumento interattivo e imparando anche il linguaggio markdown che mi ha aiutato parecchio. Successivamente volevo che diventasse un aiuto per i compagni che avessero bisogno di supporto su questi argomenti o per coloro che vogliono approfondire e comprendere meglio le nozioni trattate.*
+>
+> **L'obiettivo è condividere e migliorare continuamente i contenuti per rendere lo studio più interessante e accessibile a tutti!**
 ## 📝 Licenza
 
 Questo progetto è distribuito con licenza open source - vedi il file LICENSE per i dettagli.
