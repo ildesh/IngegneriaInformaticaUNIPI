@@ -16,12 +16,12 @@ Esistono due tipi di categorie di operazioni:
       2. Aggironamento (update)
 
 ### Linguaggi di interrogazione per le basi di dati
-1. >[!TIP] Cosa si intende per interrogazione?
-    > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
-2. >[!TIP] Cosa è necessario fare per specificare il significato di una interrogazione?
-    > Due formalismi
-    > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
-    > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
+>[!TIP] Cosa si intende per interrogazione?
+ > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
+>[!TIP] Cosa è necessario fare per specificare il significato di una interrogazione?
+ > Due formalismi
+ > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
+ > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
 
 Si definisce il **comportamento** delle interrogazioni in **modo preocedurale** utilizzando le espressioni dell'algebra relazionale.
 
@@ -175,7 +175,7 @@ Esistono due tipologie di opeartori:
 
 - Se provi a fare un'unione tra queste due tabelle, non sarebbe possibile perché hanno lo stesso attributo (Figlio), ma l'altro attributo è diverso: Padre nella prima tabella e Madre nella seconda. Quindi, l'unione tra queste due tabelle non è valida senza una trasformazione, come rinominare gli attributi o aggiungere un attributo che rappresenti la relazione in modo uniforme.
 
-Per risolvere questa unione entra in gioco la  [**_Ridenominazione_**](#operatori-dellalgebra-relazionale):
+Per risolvere questa unione entra in gioco la  **_Ridenominazione_**:
   - Operatore con un solo opearando ("monadico");
   - Modifica lo schema dell' operando, lasciandone inalterata l'istanza
   - Data una relazione R, in genereale, questo operatore si scrive come:
