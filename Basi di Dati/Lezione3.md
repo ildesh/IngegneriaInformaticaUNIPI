@@ -220,9 +220,8 @@ Tabella Unione (Paternità ∪ Maternità)
 | Maria    | Sara   |
 
 ### Operatori su UN SOLO insieme:
-- Operatore di Selezione:
-  - 
-    - L'operatore di selezione è un operatore monadico che permette di estrarre un sottoinsieme di tuple che soddisfano una determinata condizione (predicato).
+- **_Operatore di Selezione_**: 
+    - L'_operatore di selezione_ è un operatore monadico che permette di estrarre un sottoinsieme di tuple che soddisfano una determinata condizione (predicato).
     
         L'operatore di selezione viene scritto come:
 
@@ -260,9 +259,8 @@ Tabella Unione (Paternità ∪ Maternità)
         L'operatore di selezione estrae solo le tuple che soddisfano la condizione specificata.
 
 
-- Operatore di Proiezione
-  - 
-  - L'operatore di proiezione è un operatore monadico che seleziona un sottoinsieme di attributi (colonne) da una relazione, eliminando gli altri attributi. La proiezione restituisce una nuova relazione che contiene solo gli attributi specificati.
+- **_Operatore di Proiezione_**
+  - L'_operatore di proiezione_ è un operatore monadico che seleziona un sottoinsieme di attributi (colonne) da una relazione, eliminando gli altri attributi. La proiezione restituisce una nuova relazione che contiene solo gli attributi specificati.
 
     L'operatore di proiezione viene scritto come:
 
@@ -306,7 +304,6 @@ Tabella Unione (Paternità ∪ Maternità)
     >[!IMPORTANT] RICORDA!
     >I valori degli altributi di quella tupla la identificano univocamente!
     
-    >COSA CAZZO VUOL DIRE cit. prof
 
 ### Proiezione e Selezione:
 
@@ -371,3 +368,589 @@ Il risultato della proiezione sarà:
 > - **NON** possiamo **combinare informazioni** presenti in **relazioni diverse**
 > - **NON** possiamo combinare informazioni presenti in **n-uple diverse della stessa relazione**
 
+- #### Esempio:
+  - Prove scritte in un concorso pubblico:
+    -  I compiti sono anonimi e a ognuno è associata una
+busta chiusa con il nome del candidato 
+    - Ogni compito e la relativa busta è contrassegnato con uno stesso numero
+
+---
+
+## | Join Naturale
+
+>[!TIP] Definizione
+>Il **join naturale** è un'operazione dell'algebra relazionale utilizzata nei database relazionali per combinare due tabelle in base agli attributi con lo stesso nome e dominio. È un tipo di **join equi-join** (_join basato sull'uguaglianza_), ma con la differenza che non richiede di specificare esplicitamente la condizione di join: il database riconosce automaticamente gli attributi comuni tra le due tabelle e li usa per eseguire l'unione.
+
+>[!WARNING] Formalmente...
+>Date due relazioni R<sub>1</sub>(X<sub>1</sub>) e R<sub>2</sub>(X<sub>2</sub>) , in generale questo operatore si scrive come:
+>
+>$$
+>R_1⋈R_2
+>$$
+>Il risultato è una relazione R(X<sub>1</sub> ∪ X<sub>2</sub>) definita come:
+>$$
+>R(X_1 ∪ X_2) = R_1(X_1)⋈R_2(X_2)
+>$$
+
+  - #### Esempio 1:
+    Relazione 1:
+
+    |Impiegato| Reparto|
+    |-|-|
+    |Rossi| A|
+    |Neri |B|
+    |Bianchi| B|
+
+    Relazione 2:
+
+    |Reparto| Capo|
+    |-|-|
+    |A |Mori|
+    |B |Bruni|
+
+    Facendo R<sub>1</sub>⋈R<sub>2</sub>:
+
+    |Impiegato| Reparto| Capo|
+    |-|-|-|
+    |Rossi| A| Mori|
+    |Neri| B| Bruni|
+    |Bianchi| B| Bruni|
+
+    >[!IMPORTANT] Ogni n-upla contribuisce al risultato: join completo
+
+  - #### Esempio 2:
+    ##### Impiegato Reparto
+    | Impiegato | Reparto |
+    |-----------|---------|
+    | Rossi     | A       |
+    | Neri      | B       |
+    | Bianchi   | B       |
+
+    ##### Reparto Capo
+    | Reparto | Capo  |
+    |---------|-------|
+    | B       | Mori  |
+    | C       | Bruni |
+
+    ##### Impiegato Reparto Capo
+    | Impiegato | Reparto | Capo  |
+    |-----------|---------|-------|
+    | Neri      | B       | Mori  |
+    | Bianchi   | B       | Mori  |
+
+  - #### Esempio 3:
+
+    ##### Impiegato Reparto
+    | Impiegato | Reparto |
+    |-----------|---------|
+    | Rossi     | A       |
+    | Neri      | B       |
+    | Bianchi   | B       |
+
+    ##### Reparto Capo
+    | Reparto | Capo  |
+    |---------|-------|
+    | D       | Mori  |
+    | C       | Bruni |
+
+    ##### Impiegato Reparto Capo
+
+    |Impiegato| Reparto| Capo|
+    |-|-|-|
+    | | | |
+
+
+    _(Nessun dato disponibile)_
+
+### **Regole per il JOIN**
+Il numero di tuple nel risultato di un **JOIN** tra due relazioni \( R1 \) e \( R2 \) dipende dalla presenza di chiavi e vincoli di integrità referenziale.
+
+#### **1. Caso Generale**  
+Il numero di tuple nel join \( R1 \bowtie R2 \) è compreso tra:  
+\[
+0 \leq |R1 \bowtie R2| \leq |R1| \times |R2|
+\]
+- **Caso minimo (0 tuple)**: se non ci sono corrispondenze tra le due tabelle, il risultato è vuoto.
+- **Caso massimo (\(|R1| \times |R2|\))**: se ogni tupla di \( R1 \) si abbina con tutte le tuple di \( R2 \), otteniamo il prodotto cartesiano.
+
+---
+
+#### **2. Caso in cui l’attributo di Join è una chiave in \( R2 \)**  
+Se il join coinvolge un attributo che è **chiave primaria in \( R2 \)**, allora il numero di tuple sarà:  
+\[
+0 \leq |R1 \bowtie R2| \leq |R1|
+\]
+- Questo accade perché ogni tupla di \( R1 \) può al massimo avere **una corrispondenza unica** in \( R2 \) (poiché \( B \) è chiave in \( R2 \)).
+- Se una tupla di \( R1 \) non trova corrispondenza in \( R2 \), il risultato avrà meno di \( |R1| \) tuple.
+
+##### **Esempio**  
+Immaginiamo due tabelle:  
+
+**Tabella `Studenti`** (R1)  
+
+| ID_Studente | Nome  | Cognome  |  
+|------------|------|---------|  
+| 1          | Luca | Rossi   |  
+| 2          | Marco | Bianchi |  
+| 3          | Anna | Verdi   |  
+
+**Tabella `Esami`** (R2)  
+
+| ID_Studente | Corso      | Voto |  
+|------------|-----------|------|  
+| 1          | Matematica | 28   |  
+| 2          | Fisica     | 25   |  
+
+Eseguendo il join, il risultato sarà:  
+
+| ID_Studente | Nome  | Cognome  | Corso      | Voto |  
+|------------|------|---------|-----------|------|  
+| 1          | Luca | Rossi   | Matematica | 28   |  
+| 2          | Marco | Bianchi | Fisica     | 25   |  
+
+Qui \( |R1 \bowtie R2| = 2 \), perché la tupla con `ID_Studente = 3` non ha un corrispondente in `Esami`.
+
+---
+
+#### **3. Caso in cui l’attributo di Join è una chiave in \( R1 \) e c’è un vincolo di integrità referenziale**  
+Se \( B \) è **chiave primaria in \( R1 \)** e c'è un vincolo di integrità referenziale che garantisce che ogni valore di \( B \) in \( R2 \) esista in \( R1 \), allora:
+\[
+|R1 \bowtie R2| = |R2|
+\]
+- Ogni tupla in \( R2 \) ha esattamente una corrispondenza in \( R1 \), quindi il numero di tuple nel join è esattamente uguale a \( |R2| \).
+
+##### **Esempio**  
+Immaginiamo due tabelle:
+
+**Tabella `Professori` (R1, con `ID_Prof` come chiave primaria)**  
+
+| ID_Prof | Nome    | Cognome  |  
+|--------|--------|---------|  
+| 10     | Mario  | Bianchi |  
+| 20     | Laura  | Verdi   |  
+| 30     | Paolo  | Neri    |  
+
+**Tabella `Corsi` (R2, con `ID_Prof` che fa riferimento a `Professori.ID_Prof`)**  
+
+| ID_Corso | Nome_Corso   | ID_Prof |  
+|---------|------------|--------|  
+| 101     | Matematica | 10     |  
+| 102     | Fisica     | 20     |  
+| 103     | Informatica | 30    |  
+
+Se facciamo il join, il risultato è:
+
+| ID_Prof | Nome  | Cognome  | ID_Corso | Nome_Corso   |  
+|--------|------|---------|---------|------------|  
+| 10     | Mario | Bianchi | 101     | Matematica |  
+| 20     | Laura | Verdi   | 102     | Fisica     |  
+| 30     | Paolo | Neri    | 103     | Informatica |  
+
+Qui il numero di tuple nel join è **esattamente** \( |R2| = 3 \), perché ogni riga di `Corsi` ha un valore di `ID_Prof` che esiste sicuramente in `Professori`.
+
+---
+
+>[!TIP] Riassumendo...
+>| Caso | Formula per il numero di tuple ( \|R1 ⋈ R2\| ) |
+>|------|--------------------------------------------|
+>| Caso Generale (nessuna chiave specifica) | 0 ≤ \|R1 ⋈ R2\| ≤ \|R1\| × \|R2\| |
+>| Se l'attributo di join è una chiave in ( R2 ) | 0 ≤ \|R1 ⋈ R2\| ≤ \|R1\| |
+>| Se l'attributo di join è chiave in ( R1 ) e c'è un vincolo di integrità >referenziale | \|R1 ⋈ R2\| = \|R2\| |
+
+>[!WARNING] Attenzione...
+> Alcune n-uple non contribuiscono al risultato: vengono “tagliate fuori”
+
+---
+
+## | Join Esterno
+>[!TIP]Definizione
+>Il join esterno è una variante del join che include tutte le tuple di una o entrambe le relazioni coinvolte, anche se non trovano corrispondenza nell’altra tabella. Quando non c’è un match, i valori nelle colonne della tabella senza corrispondenza vengono riempiti con NULL.
+
+Esistono 3 tipi di Join Esterno:
+1. **_Sinistro_**: mantiene tutte le -uple del primo
+operando, estendendole con valori nulli se necessario
+2. **_Destro_**: mantiene tutte le -uple del secondo
+operando, estendendole con valori nulli se necessario
+3. **_Completo_**: mantiene tutte le -uple di entrambi gli
+operandi, estendendole con valori nulli se necessario
+
+- #### Esempio Join Sinistro
+  Clienti R1:
+  | ID_Cliente | Nome  |
+  |------------|-------|
+  | 1          | Anna  |
+  | 2          | Marco |
+  | 3          | Luca  |
+
+  Ordini R2:
+  | ID_Cliente | Prodotto  |
+  |------------|-----------|
+  | 1          | Laptop    |
+  | 2          | Smartphone|
+
+  Risultato del **Join Sinistro**:
+  | ID_Cliente | Nome  | Prodotto  |
+  |------------|-------|-----------|
+  | 1          | Anna  | Laptop    |
+  | 2          | Marco | Smartphone|
+  | 3          | Luca  | NULL      |
+
+- #### Esempio Join Destro
+  Clienti R1:
+  | ID_Cliente | Nome  |
+  |------------|-------|
+  | 1          | Anna  |
+  | 2          | Marco |
+
+  Ordini R2:
+  | ID_Cliente | Prodotto  |
+  |------------|-----------|
+  | 1          | Laptop    |
+  | 2          | Smartphone|
+  | 3          | Tablet    |
+
+  Risultato del **Join Destro**:
+  | ID_Cliente | Nome  | Prodotto  |
+  |------------|-------|-----------|
+  | 1          | Anna  | Laptop    |
+  | 2          | Marco | Smartphone|
+  | NULL       | NULL  | Tablet    |
+
+
+- #### Esempio Join Completo
+  Clienti R1:
+  | ID_Cliente | Nome  |
+  |------------|-------|
+  | 1          | Anna  |
+  | 2          | Marco |
+  | 3          | Luca  |
+
+  Ordini R2:
+  | ID_Cliente | Prodotto  |
+  |------------|-----------|
+  | 1          | Laptop    |
+  | 2          | Smartphone|
+  | 4          | Tablet    |
+
+
+  Risultato del **Join Completo**:
+  | ID_Cliente | Nome  | Prodotto  |
+  |------------|-------|-----------|
+  | 1          | Anna  | Laptop    |
+  | 2          | Marco | Smartphone|
+  | 3          | Luca  | NULL      |
+  | 4          | NULL  | Tablet    |
+
+
+### Join e Proiezioni
+
+Dobbiamo sapere 3 concetti:
+1. Date due relazioni R e 1(X<sub>1</sub>) R2(X<sub>2</sub>):
+$$
+πX_1 (R_1 ⋈ R_2) ⊆ R_1
+$$
+2. Date due relazioni R<sub>1</sub>(X<sub>1</sub>) e R<sub>2</sub>(X<sub>2</sub>)
+$$
+πX_1 (R_1 ⋈ R_2) ⊆ R_1
+$$
+3. Data una relazione R(X) con X = X<sub>1</sub> ∪ X<sub>2</sub>
+$$
+(πX1(R) ⋈ πX2(R)) ⊇ R
+$$
+---
+
+## | Prodotto Cartesiano
+
+Il prodotto cartesiano (o join cartesiano) di due relazioni, chiamate R1 e R2, è una nuova relazione che contiene tutte le possibili combinazioni di tuple di R1 e R2. Ogni coppia di tuple (una proveniente da R1 e l'altra da R2) viene unita per formare una nuova tupla, che contiene tutte le colonne di entrambe le relazioni.
+
+### Formula
+Se:
+
+- R1 ha m colonne e n1 tuple
+- R2 ha p colonne e n2 tuple
+
+Il risultato del prodotto cartesiano R1 × R2 avrà:
+
+- m + p colonne
+- n1 × n2 tuple
+
+#### ( 1 ) Esempio - immaginiamo 2 tabelle...
+
+Clienti R1:
+| ID_Cliente | Nome  |
+|------------|-------|
+| 1          | Anna  |
+| 2          | Marco |
+| 3          | Luca  |
+
+>[!NOTE] R1 ha m = 2 colonne (ID_Cliente e Nome) e n1 = 3 tuple.
+
+Ordini R2:
+| ID_Ordine | Prodotto  |
+|-----------|-----------|
+| A1        | Laptop    |
+| A2        | Smartphone|
+
+>[!NOTE] R2 ha p = 2 colonne (ID_Ordine e Prodotto) e n2 = 2 tuple.
+
+>[!TIP] Utilizziamo la formula del Prodotto Cartesiano:
+>Numero di colonne nel risultato: **m + p = 2 + 2 = 4**
+>
+>Numero di tuple nel risultato: **n1 × n2 = 3 × 2 = 6**
+>
+>Quindi, il prodotto cartesiano avrà **4 colonne** e **6 tuple**.
+
+Riscrivendo il prodotto cartesiano (R<sub>1</sub> X R<sub>2</sub>):
+
+| ID_Cliente | Nome  | ID_Ordine | Prodotto  |
+|------------|-------|-----------|-----------|
+| 1          | Anna  | A1        | Laptop    |
+| 1          | Anna  | A2        | Smartphone|
+| 2          | Marco | A1        | Laptop    |
+| 2          | Marco | A2        | Smartphone|
+| 3          | Luca  | A1        | Laptop    |
+| 3          | Luca  | A2        | Smartphone|
+
+---
+
+## | Theta-Join
+>[!TIP] Definizione
+>Il theta-join è un'operazione di join tra due tabelle (relazioni) che combina le tuple delle tabelle in base a una condizione arbitraria che coinvolge uno o più attributi. A differenza di un equi-join (dove la condizione è una semplice uguaglianza), il theta-join permette di utilizzare qualsiasi tipo di relazione (come =, <, >, <=, >=, ≠, etc.).
+
+>[!WARNING] Formula logica:
+>$$
+>R1 ⋈θ R2
+> $$
+> Dove θ è il predicato (condizione) che può essere qualsiasi operatore logico tra i valori delle colonne nelle due tabelle.
+
+>[!IMPORTANT] In poche parole...
+> Il theta-join è una forma generale di join che consente di specificare condizioni personalizzate tra le colonne di due tabelle. È utile quando vogliamo combinare tabelle basandoci su relazioni diverse dall'uguaglianza, come le disuguaglianze o altre condizioni logiche. 
+
+- #### ( 1 ) Esempio:
+  Clienti R1:
+  | ID_Cliente | Nome  | Età |
+  |------------|-------|-----|
+  | 1          | Anna  | 25  |
+  | 2          | Marco | 30  |
+  | 3          | Luca  | 35  |
+
+  Ordini R2:
+  | ID_Ordine | ID_Cliente | Prodotto  | Prezzo |
+  |-----------|------------|-----------|--------|
+  | A1        | 1          | Laptop    | 1000   |
+  | A2        | 2          | Smartphone| 500    |
+  | A3        | 1          | Tablet    | 400    |
+  | A4        | 3          | Laptop    | 1200   |
+
+  La domanda che ci facciamo è:
+
+  >[!WARNING]Supponiamo di voler fare un theta-join sulle tabelle Clienti e Ordini in cui l'ID_Cliente sia uguale a 1 e il Prezzo degli ordini sia maggiore di 500.
+  >
+  >Sottoforma logica:
+  >$$
+  >R_1 ⋈ (ID_{\text Cliente} = ID {\text Cliente} \space AND \space Prezzo > 500) R_2
+  >$$
+
+
+  Il risultato del theta-join sarà il seguente, poiché solo le tuple che soddisfano entrambe le condizioni (ID_Cliente uguale a 1 e Prezzo maggiore di 500) vengono combinate:
+  | ID_Cliente | Nome  | Età | ID_Ordine | ID_Cliente | Prodotto | Prezzo |
+  |------------|-------|-----|-----------|------------|----------|--------|
+  | 1          | Anna  | 25  | A1        | 1          | Laptop   | 1000   |
+  | 1          | Anna  | 25  | A3        | 1          | Tablet   | 400    |
+
+  - Numero di colonne: Le colonne di R<sub>1</sub> (ID_Cliente, Nome, Età) e R<sub>2</sub> (ID_Ordine, ID_Cliente, Prodotto, Prezzo) sono combinate, risultando in 7 colonne.
+  - Numero di tuple: Solo le tuple che soddisfano la condizione (ID_Cliente = 1 e Prezzo > 500) sono incluse nel risultato. Pertanto, otteniamo solo 2 tuple (una per Laptop e una per Tablet, anche se quest'ultima sarebbe stata esclusa in un caso pratico).
+
+>[!IMPORTANT]
+>[Lista esempi delle theta-join](./images/Theta-join(esercizi).pdf)
+
+---
+
+## Operatori Relazionali Fondamentali
+Sorprendentemente, **cinque operatori relazionali** sono sufficienti per qualsiasi interrogazione:
+
+1. **Selezione** (σC(R))
+2. **Proiezione** (πX(R))
+3. **Prodotto cartesiano** (R1 × R2)
+4. **Unione** (R1 ∪ R2)
+5. **Differenza** (R1 − R2)
+
+Tutti gli altri sono **operatori derivati/di convenienza**.
+
+### Opeatore Divisione:
+
+>[!TIP] Definizione
+>La divisione tra due relazioni R1 e R2 (dove R2 è un sottoinsieme di R1) restituisce tutte le tuple di R1 che sono associate a tutte le tuple di R2.
+
+>[!WARNING] Formalmente...
+>Dati due insiemi di attributi disgiunti X₁ e X₂, una relazione r su X₁ ∪ X₂ e una relazione r₂ su X₂, la divisione è una relazione su X₁ che contiene le tuple ottenute come “proiezione” di tuple di r che si combinano con tutte le tuple di r₂ per formare tuple di X₁.
+>
+>In altre parole, 
+>$$
+> r \div r₂ = \{ t₁ \text{ su } X₁ \mid \forall t₂ \in r₂, \exists t \in r \text{ con } t[X₁] = t₁ \text{ e } t[X₂] = t₂ \} 
+>$$
+>
+>Questa definizione implica che una tupla di r₁ viene inclusa nel risultato della divisione solo se essa è associata a tutte le tuple di r₂ attraverso l'attributo comune X₂.
+
+La divisione è solitamente utilizzata quando:
+
+- Vogliamo trovare tutte le entità in R1 che sono collegate a tutte le entità di R2.
+- La relazione R1 deve contenere una parte che può essere associata con tutte le tuple di R2.
+
+#### Esempio:
+
+Immagina due tabelle:
+
+**Studenti (R1)**:
+
+| ID_Studente | Corso     |
+|-------------|-----------|
+| 1           | Matematica|
+| 1           | Informatica|
+| 2           | Matematica|
+| 3           | Informatica|
+| 4           | Matematica|
+
+**Corsi (R2)**:
+
+| Corso     |
+|-----------|
+| Matematica|
+| Informatica|
+
+**Domanda**: Troviamo gli **studenti** che sono iscritti **a tutti i corsi** (quindi sia a **Matematica** che a **Informatica**)?
+
+#### Procedura:
+
+1. **Relazione R1** contiene gli studenti e i corsi a cui sono iscritti.
+2. **Relazione R2** contiene l'elenco dei corsi da considerare.
+   
+Per trovare gli **studenti** che sono iscritti a **tutti** i corsi presenti in **R2**, dobbiamo fare la **divisione** tra le due tabelle.
+
+#### Divisione tra R1 e R2:
+
+1. Prendiamo le **tuple** di **R1** che hanno una **proiezione** sugli **attributi comuni** (**Corso**).
+2. Una **tupla** di **R1** viene inclusa nel risultato della divisione se è associata a **tutte** le **tuple** di **R2**.
+
+#### Risultato:
+
+| ID_Studente |
+|-------------|
+| 1           |
+
+**Spiegazione**:
+
+- **ID_Studente = 1** è iscritto sia a **Matematica** che a **Informatica**, quindi è incluso nel risultato della divisione.
+- **ID_Studente = 2** è iscritto solo a **Matematica**, quindi non appare nel risultato.
+- **ID_Studente = 3** è iscritto solo a **Informatica**, quindi non appare nel risultato.
+- **ID_Studente = 4** è iscritto solo a **Matematica**, quindi non appare nel risultato.
+
+### Conclusione:
+
+La divisione restituisce solo gli **studenti** che sono iscritti **a tutti** i corsi presenti nella tabella **Corsi (R2)**. In questo caso, solo lo **Studente 1** soddisfa il criterio di essere iscritto a **entrambi** i corsi, quindi è incluso nel risultato.
+
+---
+
+## | Chiusura Transitiva
+
+Non esiste la possibilità di esprimere l'interrogazione che
+calcoli la chiusura transitiva di una relazione qualunque
+• In algebra relazionale l’operazione si simulerebbe con un
+numero di join illimitato
+
+---
+
+## | Equivalenza di Espressioni
+
+- Due **espressioni** sono **equivalenti** se producono lo
+stesso risultato qualunque sia l’istanza attuale della
+base di dati
+- L’equivalenza è importante nella pratica perché i DBMS
+cercano di eseguire **espressioni equivalenti** a quelle
+date, ma **meno “costose”**
+- Il costo dell’esecuzione di un’interrogazione viene
+valutato in termini delle dimensioni dei risultati
+intermedi della valutazione dell’espressione dell’algebra
+relazionale
+
+### Equivalenze I
+
+1. **_Atomizzazione delle selezioni_**: una congiunzione di selezioni può essere sostituita da una sequenza di selezioni atomiche (con F<sub>1</sub> e F<sub>2</sub> espressioni Booleane ed E espressione qualsiasi).
+$$
+\sigma_{\text{F1} ∧ \text{F2}}(E) ≡ \sigma_{\text{F1}}(\sigma_{\text{F2}}(E))
+$$
+
+
+2. **_Idempotenza delle proiezioni_**: una proiezione può essere trasformata in una sequenza di proiezioni che eliminano i vari attributi in varie fasi (con E espressione definita su un insieme di attributi che contiene X e Y).
+$$
+\pi_{\text{X}}(E) ≡ \pi_{\text{X}}(\pi_{\text{XY}}(E))
+$$
+
+
+### Equivalenze II 
+
+1. **_Push selections down_**: se la condizione F coinvolge solo attributi della espressione E<sub>2</sub>:
+$$
+\sigma F(E1 \bowtie E2) \equiv E1 \bowtie \sigma F(E2)
+$$
+
+2. **_Push projections down_**: dove X<sub>1</sub> sono gli attributi di E<sub>1</sub>, X<sub>2</sub> sono gli attributi di E<sub>2</sub>, Y2 ⊆ X2 e gli attributi X<sub>2</sub> - X<sub>1</sub> non sono coinvolti nel join (cioè X<sub>1</sub> ∩  X<sub>2</sub> ⊆ Y<sub>2</sub>):
+$$
+\pi X1Y2 (E1 \bowtie E2) \equiv E1 \bowtie \pi Y2 (E2)
+$$
+
+---
+
+## Ottimizzazione delle interrogazioni
+
+- **_Query processor_** (od ottimizzatore): un modulo del
+DBMS
+- Più importante nei sistemi attuali che in quelli "vecchi" (gerarchici e reticolari):
+
+- Le interrogazioni sono espresse ad alto livello (ricordare il concetto di indipendenza dei dati):
+  - Insiemi di n-uple
+  - Poca proceduralità
+
+- L'ottimizzatore sceglie la strategia realizzativa (di solito fra diverse alternative), a partire dall'istruzione SQL.
+---
+
+## Profili delle Relazioni
+
+>[!TIP]Definizione
+>I profili delle relazioni sono un insieme di informazioni quantitative relative a una base di dati, che descrivono le caratteristiche e le proprietà delle relazioni (tabelle) presenti nel database.      
+
+Queste informazioni sono fondamentali per ottimizzare le operazioni di accesso ai dati e di elaborazione delle query. Vengono memorizzate nel catalogo del database, che è una struttura contenente metadati sulle tabelle, gli attributi e altre informazioni necessarie per l'ottimizzazione delle query.
+
+### Le principali informazioni quantitative nei profili delle relazioni includono:
+
+- **_Cardinalità di ciascuna relazione_**: Rappresenta il numero di tuple (righe) presenti nella relazione. Questo valore è importante per stimare la quantità di dati da processare in un'operazione, come un join o una selezione.
+
+- **_Dimensioni delle tuple_**: Indica il numero di attributi (colonne) che una tupla (riga) contiene. Ogni relazione ha una dimensione fissa per ogni tupla, che dipende dal numero di attributi e dal tipo di dati di ciascun attributo.
+
+- **_Dimensioni dei valori_**: Riferito alla quantità di spazio occupata da ciascun valore presente in una tupla. Questo include la lunghezza di stringhe, numeri, date, ecc.
+
+- **_Numero di valori distinti degli attributi_**: Fornisce la quantità di valori unici che un dato attributo può assumere in una relazione. Questa statistica è utile per capire la distribuzione dei dati e per pianificare come ottimizzare gli accessi ai dati.
+
+- **_Valore minimo e massimo di ciascun attributo_**: Indica i valori estremi (minimo e massimo) di un dato attributo. Queste informazioni sono utilizzate per determinare le condizioni di selezione più efficienti.
+
+### Memorizzazione e Utilizzo:
+
+Questi profili vengono memorizzati nel catalogo del database, che è una sorta di "libro mastro" contenente informazioni sulle strutture e i dati nel database. La gestione e l'aggiornamento di questi profili sono cruciali per l'ottimizzazione delle query.
+
+
+### Utilizzo nell'ottimizzazione delle query:
+
+Questi profili sono utilizzati dal **query optimizer** del database per stimare la dimensione dei risultati intermedi e pianificare l'esecuzione più efficiente di una query. Con informazioni precise sui dati, l'ottimizzatore può scegliere strategie di accesso ai dati più rapide, come l'ordine di esecuzione di join, l'uso di indici e la selezione dei migliori piani di esecuzione.
+
+---
+
+## | Grafo
+
+
+Un **_grafo G = (V,E)_** consiste in:
+1. un insieme V di vertici (o nodi)
+2. un insieme E di coppie di vertici, detti archi
+   1. ogni arco connette due vertici
+Esistono 2 tipi di grafi:
+1. **_Grafo orientato_** (o **_diretto_**): ogni arco è orientato e rappresenta relazioni orientate tra coppie di oggetti.
+2. **_Grafo non orientato_** (o **_non diretto_**): gli archi non hanno un orientazione e rappreentano relazioni simmetriche tra coppie di oggetti.
