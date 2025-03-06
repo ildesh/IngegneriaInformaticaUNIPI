@@ -66,7 +66,7 @@ Partecipa alle discussioni nella sezione **Discuss** suddivisa in:
 - **Q&A**: Domande e risposte sulla materia
 - **Richieste**: Suggerimenti per nuovi contenuti
 
-## 🙏 Contribuire
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=530&lines=%F0%9F%99%8F+Contribuite+tra+di+voi!)](https://git.io/typing-svg)
 
 Le tue contribuzioni sono sempre benvenute! Se desideri contribuire con nuovi appunti o migliorare quelli esistenti:
 
