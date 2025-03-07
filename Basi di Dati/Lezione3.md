@@ -3,7 +3,6 @@
 ## | Algebra Relazionale
 
 >[!TIP] Che cos'è l'algebra relazionale ?
->
 > L'algebra relazionale è un insieme di operazioni matematiche che definiscono le manipolazioni di dati in un database relazionale. Ogni operazione agisce su una o più relazioni (tabelle) e restituisce un'altra relazione come risultato. L'algebra relazionale è la base teorica dei linguaggi di query, come SQL, ed è fondamentale per la gestione delle basi di dati relazionali.
 
 ### Linguaggi per le basi di dati:
@@ -17,13 +16,12 @@ Esistono due tipi di categorie di operazioni:
       2. Aggironamento (update)
 
 ### Linguaggi di interrogazione per le basi di dati
->[!TIP] Cosa si intende per interrogazione?
->
- > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
->[!TIP] Cosa è necessario fare per specificare il significato di una interrogazione?
- > Due formalismi
- > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
- > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
+1. >[!TIP] Cosa si intende per interrogazione?
+    > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
+2. >[!TIP] Cosa è necessario fare per specificare il significato di una interrogazione?
+    > Due formalismi
+    > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
+    > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
 
 Si definisce il **comportamento** delle interrogazioni in **modo preocedurale** utilizzando le espressioni dell'algebra relazionale.
 
@@ -177,7 +175,7 @@ Esistono due tipologie di opeartori:
 
 - Se provi a fare un'unione tra queste due tabelle, non sarebbe possibile perché hanno lo stesso attributo (Figlio), ma l'altro attributo è diverso: Padre nella prima tabella e Madre nella seconda. Quindi, l'unione tra queste due tabelle non è valida senza una trasformazione, come rinominare gli attributi o aggiungere un attributo che rappresenti la relazione in modo uniforme.
 
-Per risolvere questa unione entra in gioco la  **_Ridenominazione_**:
+Per risolvere questa unione entra in gioco la  [**_Ridenominazione_**](#operatori-dellalgebra-relazionale):
   - Operatore con un solo opearando ("monadico");
   - Modifica lo schema dell' operando, lasciandone inalterata l'istanza
   - Data una relazione R, in genereale, questo operatore si scrive come:
@@ -956,3 +954,97 @@ Un **_grafo G = (V,E)_** consiste in:
 Esistono 2 tipi di grafi:
 1. **_Grafo orientato_** (o **_diretto_**): ogni arco è orientato e rappresenta relazioni orientate tra coppie di oggetti.
 2. **_Grafo non orientato_** (o **_non diretto_**): gli archi non hanno un orientazione e rappreentano relazioni simmetriche tra coppie di oggetti.
+
+### Cammino e ciclo
+
+- Un **cammino** in un grafo G = (V,E) da un vertice x ad un vertice y è dato da una sequenza di vertici (v<sub>0</sub>,v<sub>1</sub>,...,v<sub>k</sub>) di V con v<sub>0</sub> = x e v<sub>k</sub> = y tale che per ogni 1 <= i <= k, l'arco.
+
+- Un **cammino** (v<sub>0</sub>,v<sub>1</sub>,...,v<sub>k</sub>) tale che v<sub>0</sub> è detto **ciclo**.
+
+- Un **grafo diretto** è detto **aciclico** se _non contiene cicli_
+
+### Albero
+
+- Un **grafo non orientato** si dice **connesso** se esiste un
+cammino tra ogni coppia di vertici.
+
+- Un **albero** è un grafo non orientato nel quale due
+vertici qualsiasi sono connessi da uno e un solo
+cammino
+
+- Gli alberi sono strutturati nel seguente modo:
+  -  **_Foglie_** : DATI (relazioni,dati);
+  -  **_Nodi intermedi_** : operatori (operatori algebrici, poi effettivi operatori di accesso ai dati).
+
+### Procedura Euristica di Ottimizzazione
+
+1. **_Decomporre le selezioni congiuntive_** in successive selezioni atomiche.
+2. **_Anticipare_** il più possibile le **_selezioni_**.
+3. In una sequenza di selezioni, **_anticipare le più selettive_**
+4. **_Combinare prodotti cartesiani e selezioni_** per formare join
+5. **_Anticipare il più possibile le proiezioni_** (anche introducendone di nuove)
+
+
+#### Esempio:
+
+>[!TIP]
+>Avendo le seguenti relazioni: <br>
+>R1(ABC) R2(DEF) R3(GHI)
+
+Studiamo la seguente Interrogazione:
+
+```SQL
+SELECT A, E
+FROM R1, R2, R3
+WHERE
+B > 100 AND H = 7 AND I > 2 AND C = D AND F = G
+```
+
+>[!WARNING] Dove:
+> - FROM: prodotto cartesiano
+> - WHERE: selezione
+> - SELECT: proiezione
+
+>[!IMPORTANT]
+>La seguente notazione rappresenta una proiezione (π) di un'espressione algebrica relazionale con una selezione (σ) su una combinazione di relazioni (r1, r2, r3)
+>$$
+>\pi_{AE} \left( \sigma_{(\sigma_B > 100) \land (H = 7) \land (I > 2) \land (C = D) \land (F = G)} (r_1 \bowtie r_2 \bowtie r_3) \right)
+>$$
+
+Quest'utlima diventa 
+
+---
+
+## | Relazioni derivate
+- **_Relazioni di base_**: contenuto autonomo.
+-  **_Relazioni derivate:_**: contenuto funzione del contento di altre relazioni.
+     - Rappresentazioni diverse per gli stessi dati
+   - Definite per mezzo di interrogazioni
+   - Le relazioni derivate possono essere definite su altre relazioni derivate ma…
+- Due tipi di relazioni derivate:
+  - **_Viste materializzate_** e
+  - **_Viste virtuali_**, o più semplicemente viste
+
+
+### Viste Materializzate e virtuali
+>[!TIP] Definizione generale:
+>Le viste sono oggetti delle basi di dati che permettono di memorizzare query predefinite, presentando i dati in modo organizzato e semplificato senza duplicarli fisicamente.
+
+- Una **_vista virtuale_** è una query salvata nel database, che viene eseguita ogni volta che viene richiamata. Non memorizza fisicamente i dati, ma li recupera in tempo reale dalle tabelle di base. 
+  - Caratteristiche:
+    - ✅ Non occupano spazio fisico (memorizzano solo la definizione della query).
+    - ✅ Sempre aggiornate (dato che i dati vengono recuperati direttamente dalle tabelle).
+    - ❌ Possono essere lente per query complesse, perché devono essere ricalcolate ogni volta.
+- Una **_vista materializzata_** è simile a una vista virtuale, ma memorizza i risultati della query in una tabella fisica.
+  - Caratteristiche:
+    - ✅ Migliorano le prestazioni per query complesse, evitando ricalcoli continui.
+    - ✅ Occupano spazio fisico nel database.
+    - ❌ Possono essere obsolete se i dati nelle tabelle di origine cambiano (a meno che non vengano aggiornate manualmente o automaticamente).
+
+>[!WARNING]
+>Usa le viste virtuali quando i dati cambiano frequentemente e vuoi sempre vedere i valori aggiornati.
+>
+>Usa le viste materializzate quando hai query pesanti e vuoi migliorare le prestazioni, accettando un aggiornamento periodico dei dati.
+
+>[!IMPORTANT]
+>[Qui sono presenti gli esercizi riguardante questa lezione](./Esercizi/Lezione3.md)
