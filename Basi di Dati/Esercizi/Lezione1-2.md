@@ -1,4 +1,4 @@
-## Lezione 2 - Esercizi
+## Lezione 1-2 - Esercizi
 
 ### Esercizio 1:
 

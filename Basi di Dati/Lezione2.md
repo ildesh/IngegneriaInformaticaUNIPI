@@ -570,4 +570,4 @@ Progetti:
    - Introduzione di valori nulli: Quando si elimina una tupla dalla relazione R<sub>1</sub> che contiene una chiave esterna, tutte le tuple della relazione R<sub>2</sub> che contengono il valore della chiave primaria eliminata vengono aggiornate impostando la chiave esterna a NULL.
 
 > [!IMPORTANT]
-> > [Qui sono presenti gli esercizi riguardante questa lezione](./Esercizi/Lezione2.md) 
+> > [Qui sono presenti gli esercizi riguardante questa lezione](./Esercizi/Lezione1-2.md) 
