@@ -11,26 +11,24 @@
 > - Regista(<u>CodiceRegista</u>, Cognome, Nome, Sesso, DataDiNascita, Nazionalità)
 > - Noleggio(<u>CodiceFilm</u>, Incasso1annoVideo, Incasso1annoDVD)
 > 
-> Formulare in algebra relazionale la seguente interrogazione:
+> **Formulare in algebra relazionale la seguente interrogazione**:
 > - Nomi e cognomi dei registi che hanno diretto film che hanno incassato il primo anno di uscita meno nelle sale che per il noleggio di DVD
 
-1. Cosa ci serve???
-   1. nome e cognome regista --> REGISTA
-   2. registi e film diretti --> FILM
-   3. film e incassi DVD     --> NOLEGGIO
-   4. film e incasso sala    --> PROD
+1. **Cosa ci serve??** - Identifichiamo delle informazioni necessarie
+   - Registi e i film che hanno diretto → `Film` e `Regista`
+   - Incassi in sala e incassi DVD → `Produzione` e `Noleggio`
 
 2. **Approccio BOTTOM-UP** (_dal particolare al generale_)
 
-   1. Accorpare IncassoSALA e incassoDVD:
-      1. R<sub>1</sub> = NOLEGGIO ⋈ PROD = CodiceFilm,IncassoDVD, CasaProf,IncassoSALA.
-   2. Selezioniamo solo i film richiesti:
+   1. Accorpare IncassoSALA e incassoDVD: per farlo utilizziamo il Join 'Naturale' (⋈)
+      1. R<sub>1</sub> = NOLEGGIO ⋈ PROD = CodiceFilm,Incasso1annoDVD,CasaProduzione,Incasso1annoSALA.
+   2. Selezionare i film che hanno incassato più dal noleggio DVD che in sala:
       1. R<sub>2</sub> = σ<sub>IncassoDVD>IncassoSala</sub>(R<sub>1</sub>).
-   3. Accorpiamo REGISTA e FILM:
+   3. Accorpiamo REGISTA e FILM - Collegare i film selezionati con i registi:
       1. R<sub>3</sub> = REGISTA ⋈ FILM = CodiceRegista, Cognome, Nome, CodiceFilm, Titolo.
-   4. Accorpiamo R<sub>2</sub> e R<sub>3</sub>:
+   4. Accorpiamo R<sub>2</sub> e R<sub>3</sub> - Selezionare solo i registi dei film trovati:
       1. R<sub>4</sub> = R<sub>2</sub> ⋈ R<sub>3</sub> 
-   5. Proiettiamo su quanto richiesto:
+   5. Proiettare solo i dati richiesti:
       1. R = π<sub>Nome,Cognome</sub>(R<sub>4</sub>)
 
 ---
