@@ -6,7 +6,7 @@
 
 ---
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=500&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)](https://git.io/typing-svg)
 
 
 Benvenuti nel repository ufficiale degli appunti dei corsi di informatica! Questa raccolta è pensata per fornire materiale didattico completo e ben organizzato per supportare il vostro percorso di apprendimento.
