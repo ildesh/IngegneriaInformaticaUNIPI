@@ -13,7 +13,7 @@ Esistono due tipi di categorie di operazioni:
 2. Operazioni sui **dati**
    1. **_Data Manipulation Language_** (DML)
       1. Interrogazione (query)
-      2. Aggironamento (update)
+      2. Aggiornamento (update)
 
 ### Linguaggi di interrogazione per le basi di dati
 1. >[!TIP] Cosa si intende per interrogazione?
@@ -23,12 +23,12 @@ Esistono due tipi di categorie di operazioni:
     > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
     > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
 
-Si definisce il **comportamento** delle interrogazioni in **modo preocedurale** utilizzando le espressioni dell'algebra relazionale.
+- Si definisce il **comportamento** delle interrogazioni in **modo preocedurale** utilizzando le espressioni dell'algebra relazionale.
 
-Si definisce qual è il risultato di un'interrogazione in **modo dichiarativo** utilizzando le espressioni del calcolo relazionale
+- Si definisce qual è il risultato di un'interrogazione in **modo dichiarativo** utilizzando le espressioni del calcolo relazionale
 
 - Il calcolo relazionale è l'effettiva semantica del linguaggio
-    - Le interrogazioni sono esprese ad alto livello
+    - Le interrogazioni sono espresse ad alto livello
         - **_NESSUN concetto di costo_**
 
 - Con l'algebra relazionale si può invece **introdurre il concetto di costo**.
@@ -311,7 +311,7 @@ Tabella Unione (Paternità ∪ Maternità)
 - Proiezione **_𝜋_**: decompozione **verticale**
 
 #### Esempio:
->[!TIP]Calcola matricola e cognome degli iimpiegati che guadagnano più di 50000:
+>[!TIP]Calcola matricola e cognome degli impiegati che guadagnano più di 50000:
 >
 >| Matricola | Cognome | Filiale  | Stipendio |
 >|-----------|---------|----------|-----------|
@@ -466,10 +466,12 @@ busta chiusa con il nome del candidato
 Il numero di tuple nel risultato di un **JOIN** tra due relazioni \( R1 \) e \( R2 \) dipende dalla presenza di chiavi e vincoli di integrità referenziale.
 
 #### **1. Caso Generale**  
-Il numero di tuple nel join \( R1 \bowtie R2 \) è compreso tra:  
-\[
+Il numero di tuple nel join R1 ⋈ R2  è compreso tra:  
+$$
+
 0 \leq |R1 \bowtie R2| \leq |R1| \times |R2|
-\]
+
+$$
 - **Caso minimo (0 tuple)**: se non ci sono corrispondenze tra le due tabelle, il risultato è vuoto.
 - **Caso massimo (\(|R1| \times |R2|\))**: se ogni tupla di \( R1 \) si abbina con tutte le tuple di \( R2 \), otteniamo il prodotto cartesiano.
 
@@ -477,9 +479,11 @@ Il numero di tuple nel join \( R1 \bowtie R2 \) è compreso tra:
 
 #### **2. Caso in cui l’attributo di Join è una chiave in \( R2 \)**  
 Se il join coinvolge un attributo che è **chiave primaria in \( R2 \)**, allora il numero di tuple sarà:  
-\[
+$$
+
 0 \leq |R1 \bowtie R2| \leq |R1|
-\]
+
+$$
 - Questo accade perché ogni tupla di \( R1 \) può al massimo avere **una corrispondenza unica** in \( R2 \) (poiché \( B \) è chiave in \( R2 \)).
 - Se una tupla di \( R1 \) non trova corrispondenza in \( R2 \), il risultato avrà meno di \( |R1| \) tuple.
 
@@ -514,9 +518,9 @@ Qui \( |R1 \bowtie R2| = 2 \), perché la tupla con `ID_Studente = 3` non ha un 
 
 #### **3. Caso in cui l’attributo di Join è una chiave in \( R1 \) e c’è un vincolo di integrità referenziale**  
 Se \( B \) è **chiave primaria in \( R1 \)** e c'è un vincolo di integrità referenziale che garantisce che ogni valore di \( B \) in \( R2 \) esista in \( R1 \), allora:
-\[
+$$
 |R1 \bowtie R2| = |R2|
-\]
+$$
 - Ogni tupla in \( R2 \) ha esattamente una corrispondenza in \( R1 \), quindi il numero di tuple nel join è esattamente uguale a \( |R2| \).
 
 ##### **Esempio**  
