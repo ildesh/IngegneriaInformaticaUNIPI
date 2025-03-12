@@ -91,11 +91,15 @@ Le formule atomiche sono formule:
 
 - Un'espressione del calcolo sui domini:
   
-  $$\{A_1 : x_1, \ldots, A_k : x_k | f\}$$
+  $$
+  A_1 : x_1, \dots, A_k : x_k \mid f
+  $$
 
 - può essere "interpretata" come una **formula logica** del tipo
   
-  $$\{x_1, \ldots, x_k | f(x_1, \ldots, x_k)\}$$
+  $$
+  \{x_1, \ldots, x_k | f(x_1, \ldots, x_k)\}
+  $$
 
 - dove:
   - $x_1, \ldots, x_k$ sono **variabili o costanti**
@@ -105,10 +109,7 @@ Le formule atomiche sono formule:
 
 #### Esempio 1 - Selezione di studenti con voto maggiore di 27:
 
-Supponiamo di avere una relazione Studenti con il seguente schema:
-$$
-{\text{Studenti(Nome,Matricola,Voto)}}
-$$
+Supponiamo di avere una relazione Studenti con il seguente schema: $\text{Studenti(Nome, Matricola, Voto)}$
 
 >[!TIP] Cosa vogliamo trovare?
 > Vogliamo trovare i nomi e le matricole degli studenti che hanno preso un voto maggiore di 27.
@@ -137,24 +138,26 @@ L'esercizio chiede di:
 
 Scrivi un'espressione in calcolo relazionale per ottenere i nomi degli impiegati che guadagnano più di 3000 euro.
 Per risolverlo possiamo:
-1. utilizzare la relazione Impiegato:
-$$ Impiegato(Matr, Nome, Età, Stipendio) $$
+1. utilizzare la relazione Impiegato: 
+$
+Impiegato(\text{Matr}, \text{Nome}, \text{Età}, \text{Stipendio})
+$
 - Matr = Matricola dell'impiegato
 - Nome = Nome dell'impiegato
 - Età = Età dell'impiegato
 - Stipendio = Stipendio dell'impiegato
 
-2. utilizzare il vincolo sullo stipendio:
+1. utilizzare il vincolo sullo stipendio:
     - Poiché vogliamo selezionare i nomi degli impiegati con stipendio superiore a 3000, dobbiamo estrarre solo le informazioni pertinenti da questa relazione.
 
-3. Definiamo le variabili:
+2. Definiamo le variabili:
 Ogni attributo della relazione verrà associato a una variabile:
 - **_m_** → variabile per Matr
 - **_x_** → variabile per Nome
 - **_e_** → variabile per Età
 - **_s_** → variabile per Stipendio
 
-4. Scrivere la formula logica:
+1. Scrivere la formula logica:
 Ora possiamo scrivere la formula logica che descrive il problema:
 
 $$ 
