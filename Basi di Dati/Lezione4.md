@@ -1,4 +1,23 @@
-# Lezione 4 - 12-03-2025
+<h1> Lezione 4 - 12-03-2025 </h1>
+
+---
+
+<h1> 📚 Indice </h1>
+
+- [Calcolo relazionale](#calcolo-relazionale)
+  - [Che cos'è il calcolo relazionale?](#che-cosè-il-calcolo-relazionale)
+  - [Calcolo sui domini](#calcolo-sui-domini)
+  - [Formule Atomiche](#formule-atomiche)
+    - [Convenzioni:](#convenzioni)
+  - [Il valore di verità di una formula](#il-valore-di-verità-di-una-formula)
+  - [Espressioni del calcolo sui domini](#espressioni-del-calcolo-sui-domini)
+    - [Esempio 1 - Selezione di studenti con voto maggiore di 27:](#esempio-1---selezione-di-studenti-con-voto-maggiore-di-27)
+    - [Esempio 2 - Attraverso due relazioni...](#esempio-2---attraverso-due-relazioni)
+  - [Dipendenza dal dominio](#dipendenza-dal-dominio)
+  - [Indipendenza dal dominio](#indipendenza-dal-dominio)
+
+---
+
 
 ## Calcolo relazionale
 
@@ -84,7 +103,7 @@ Le formule atomiche sono formule:
 
 - **Semantica**: il risultato di un'espressione del calcolo sui domini è una relazione su $A_1, \ldots, A_k$ che contiene $n$-uple di tutti i possibili valori per $x_1, \ldots, x_k$ che rendono vero il predicato $f(x_1, \ldots, x_k)$ rispetto a un'istanza di base di dati a cui l'espressione è applicata
 
-#### Esempio - Selezione di studenti con voto maggiore di 27:
+#### Esempio 1 - Selezione di studenti con voto maggiore di 27:
 
 Supponiamo di avere una relazione Studenti con il seguente schema:
 $$
@@ -105,3 +124,82 @@ Avendo questa espressione possiamo dire che:
 2. y è la **_matricola dello studente_**
 3. v è il **_voto dello studente_**
 4. La condizione v > 27 assicura che selezioniamo gli **_studenti con voto superiore a 27._**
+
+#### Esempio 2 - Attraverso due relazioni...
+
+>[!TIP] Sapendo che abbiamo due relazioni...
+>- Impiegato(Matr, Nome, Età, Stipendio)
+>- Supervisione(Matr, Capo)
+
+
+L'esercizio chiede di:
+>[!IMPORTANT] Selezionare i nomi degli impiegati con stipendio superiore a 3000
+
+Scrivi un'espressione in calcolo relazionale per ottenere i nomi degli impiegati che guadagnano più di 3000 euro.
+Per risolverlo possiamo:
+1. utilizzare la relazione Impiegato:
+$$ Impiegato(Matr, Nome, Età, Stipendio) $$
+- Matr = Matricola dell'impiegato
+- Nome = Nome dell'impiegato
+- Età = Età dell'impiegato
+- Stipendio = Stipendio dell'impiegato
+
+2. utilizzare il vincolo sullo stipendio:
+    - Poiché vogliamo selezionare i nomi degli impiegati con stipendio superiore a 3000, dobbiamo estrarre solo le informazioni pertinenti da questa relazione.
+
+3. Definiamo le variabili:
+Ogni attributo della relazione verrà associato a una variabile:
+- **_m_** → variabile per Matr
+- **_x_** → variabile per Nome
+- **_e_** → variabile per Età
+- **_s_** → variabile per Stipendio
+
+4. Scrivere la formula logica:
+Ora possiamo scrivere la formula logica che descrive il problema:
+
+$$ 
+Nome:x ∣ ∃m,e,s(Impiegato(Matr:m,Nome:x,Etaˋ:e,Stipendio:s)∧s>3000) 
+$$
+
+5. Spiegando la formula in maniera frasale possiamo dire che:
+>[!TIP] Soluzione
+>Esistono delle variabili _(∃m, e, s)_ che rappresentano i valori di _**Matr (m)**_, _**Età (e)**_ e _**Stipendio (s)**_ per un impiegato, tale che **l'impiegato abbia Matr (m), Nome (x), Età (e) e Stipendio (s)**, ossia _Impiegato(Matr: m, Nome: x, Età: e, Stipendio: s)_, con la **_condizione che s > 3000_**.
+
+### Dipendenza dal dominio
+
+>[!IMPORTANT] Che cos'è la dipendenza del dominio, o meglio, come si verifica?
+>La dipendenza dal dominio si verifica quando il risultato di un'espressione del calcolo relazionale dipende non solo dalle tuple presenti nelle relazioni della base di dati, ma anche dall'insieme completo di valori possibili (dominio) degli attributi coinvolti nell'espressione.
+
+1. Mostriamo il primo esempio:
+
+    ${A : x, B : y \space| \space R(A : x) ∧ y = y}$
+
+   - In questa espressione, nel risultato compaiono tuple per qualsiasi valore del dominio di B
+   - Se il dominio di B è infinito, il risultato sarà infinito
+   - Se il dominio di B cambia, il risultato cambia (questo è esplicitamente indicato come "dipendenza dal dominio")
+
+2. Mostriamo il secondo esempio:
+
+    ${A : x \space|\space ¬R(A : x)}$
+    
+    - In questo caso, nel risultato **compaiono tuple per qualsiasi valore del dominio di A che non compaiono in R**
+    - Questo è in contrasto con l'algebra relazionale, dove, _"tutte le espressioni hanno un senso"_, ovvero c'è "**_indipendenza dal dominio_**". In algebra relazionale, i risultati dipendono solo dai dati effettivamente presenti nelle relazioni, non dai possibili valori dei domini.
+
+  
+<p align="center" style="font-size: 24px"><strong>La dipendenza dal dominio può essere problematica perché:</strong></p>
+
+<ul align="center">
+    <li>Rende <strong><i>i risultati delle query potenzialmente infiniti</strong></i>
+    <li>Fa sì che i risultati cambino se cambia la definizione del dominio, anche se i dati nelle relazioni rimangono gli stessi
+    Introduce verbosità e complessità nelle espressioni, come indicato nei <strong><i>"Difetti"</i></strong> menzionati nell'immagine
+</ul>
+
+### Indipendenza dal dominio
+
+- **Un’espressione** di un linguaggio di interrogazione si dice
+**_indipendente dal dominio_** se il suo risultato, su ciascuna istanza della base di dati, non varia al variare del dominio rispetto al quale l’espressione viene valutata (purché ogni dominio contenga almeno i valori presenti nell’istanza e nell’espressione);
+- **_Un linguaggio_** si dice **_indipendente dal dominio_** se tali sono tutte
+le sue espressioni;
+- Il **_calcolo sui domini_** non è indipendente dal dominio;
+- **_L’algebra relazionale_** è indipendente dal dominio:
+  - Costruisce i risultati a partire dalle relazioni presenti nella base didati, senza far mai riferimento ai domini degli attributi: i valori che compaiono nei risultati sono tutti presenti nell’istanza cui l’espressione viene applicata.
