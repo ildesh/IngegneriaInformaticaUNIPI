@@ -512,7 +512,7 @@ Eseguendo il join, il risultato sarà:
 | 1          | Luca | Rossi   | Matematica | 28   |  
 | 2          | Marco | Bianchi | Fisica     | 25   |  
 
-Qui \( |R1 \bowtie R2| = 2 \), perché la tupla con `ID_Studente = 3` non ha un corrispondente in `Esami`.
+Qui \( R1 ⋈ R2 = 2 \), perché la tupla con `ID_Studente = 3` non ha un corrispondente in `Esami`.
 
 ---
 
