@@ -38,6 +38,53 @@
 | `g++ -std=c++17 file.cpp -o output` | Compila utilizzando la versione C++17 dello standard. |
 | `chmod +x script.sh`    | Rende eseguibile uno script shell (`.sh`). |
 | `./script.sh`           | Esegue uno script shell. |
+
+- Comandi Nano
+
+| Comando | Descrizione |
+|---------|------------|
+| `nano nomefile` | Apre un file esistente o ne crea uno nuovo |
+| `nano /percorso/nomefile` | Apre un file specificando il percorso |
+| `sudo nano nomefile` | Apre un file con permessi di amministratore |
+
+| Combinazione | Azione |
+|-------------|--------|
+| **CTRL + O** | Salva il file |
+| **CTRL + X** | Esce da nano |
+| **CTRL + G** | Mostra l'aiuto di nano |
+| **CTRL + C** | Mostra il numero di riga e colonna |
+
+| Combinazione | Azione |
+|-------------|--------|
+| **CTRL + K** | Taglia una riga |
+| **CTRL + U** | Incolla una riga |
+| **CTRL + J** | Giustifica il paragrafo |
+| **CTRL + T** | Controllo ortografico (se disponibile) |
+
+| Combinazione | Azione |
+|-------------|--------|
+| **CTRL + W** | Cerca una parola nel file |
+| **CTRL + R** | Cerca e sostituisce una parola |
+| **CTRL + V** | Scorri giù una pagina |
+| **CTRL + Y** | Scorri su una pagina |
+
+| Combinazione | Azione |
+|-------------|--------|
+| **CTRL + `\`**  | Trova e sostituisci |
+| **CTRL + _** | Vai a una riga specifica |
+| **ALT + U** | Annulla l'ultima azione |
+| **ALT + E** | Ripeti un'azione annullata |
+
+#### Esempio con bash
+
+```bash
+nano esempio.txt    # Apri il file
+# Scrivi qualcosa...
+CTRL + O            # Salva il file
+CTRL + X            # Esci da nano+
+```
+
+
 #### Esempio programma cpp
 
 >[!TIP] Scrivere un programma che:
