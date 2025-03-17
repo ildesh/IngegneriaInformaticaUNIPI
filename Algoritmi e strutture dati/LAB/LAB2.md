@@ -277,7 +277,7 @@ La funzione sort della Standard Template Library (STL) di C++ è un algoritmo di
 
 Esercitiamoci con un esercizio:
 
->[!TIP] Esercizio
+>[!TIP]
 >Si consideri un sistema per la gestione delle richieste.
 >1. Si legga da tastiera N richieste e si inseriscano in un vettore.
 >2. Si stampi l’ID delle richieste ordinate per ID. A parità di ID, vince la richiesta con priorità maggiore.
