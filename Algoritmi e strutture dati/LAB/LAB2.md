@@ -84,7 +84,7 @@ La complessità di questo algoritmo è *`O(log(n))`*
 
 Partiamo con il seguente esercizio:
 
->[!TIP] Esercizio
+>[!TIP]
 >Crea due file input.txt contentente:
 >```txt
 >5
