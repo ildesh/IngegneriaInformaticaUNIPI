@@ -853,25 +853,25 @@ Gli **alberi binari di ricerca (BST)** sono una struttura dati fondamentale in i
       - Il **successore in ordine**: il nodo con il valore più piccolo nel sottoalbero destro del nodo da cancellare (il nodo più a sinistra del sottoalbero destro).
       - In alternativa, si può cercare il **precursore in ordine**: il nodo con il valore più grande nel sottoalbero sinistro del nodo da cancellare (il nodo più a destra del sottoalbero sinistro).
    
-     - Una volta trovato il successore o il precursore, si **sostituisce il nodo da cancellare** con il successore o precursore. Successivamente, si elimina ricorsivamente il successore o precursore, che avrà al massimo un figlio (sinistro o destro), permettendo così di trattarlo come un caso di nodo con un solo figlio (Caso 2).
+    - Una volta trovato il successore o il precursore, si **sostituisce il nodo da cancellare** con il successore o precursore. Successivamente, si elimina ricorsivamente il successore o precursore, che avrà al massimo un figlio (sinistro o destro), permettendo così di trattarlo come un caso di nodo con un solo figlio (Caso 2).
 
 #### Pseudocodice delle operazioni principali:
 Implementiamo il nostro nodo:
 ```cpp
 struct Nodo {
-    int label;        // Il valore del nodo
+    InfoType label;        // Il valore del nodo
     Nodo* left;       // Puntatore al figlio sinistro
     Nodo* right;      // Puntatore al figlio destro
 
     // Costruttore per creare un nodo
-    Nodo(int val) : label(val), left(nullptr), right(nullptr) {}
+    Nodo(InfoType val) : label(val), left(nullptr), right(nullptr) {}
 };
 ```
 
 
 1. **Ricerca**:
 ```cpp
-Nodo ricerca(Nodo* albero, int valore) {
+Nodo ricerca(Nodo* albero, InfoType valore) {
     if (albero == nullptr) return nullptr;
     if (valore == albero->label) return albero;
     if (valore < albero->label) return ricerca(albero->left, valore);
@@ -883,7 +883,7 @@ Nodo ricerca(Nodo* albero, int valore) {
 
 2. **Inserimento**:
 ```cpp
-Nodo inserisci(Nodo* albero, int valore) {
+Nodo inserisci(Nodo* albero, InfoType valore) {
     if (albero == nullptr) {
         return nuovoNodo(valore);
     }
@@ -900,22 +900,41 @@ Nodo inserisci(Nodo* albero, int valore) {
 
 3. **Cancellazione**:
 ```cpp
-Nodo elimina(Nodo* albero, int valore) {
-    if (albero == nullptr) return nullptr;
-    
-    if (valore < albero->label) {
-        albero->left = elimina(albero->left, valore);
-    } else if (valore > albero->label) {
-        albero->right = elimina(albero->right, valore);
+void eliminaMin(Nodo* &tree, InfoType &m) {
+    if (tree->left) { // c'è un nodo più piccolo
+        eliminaMin(tree->left, m);
     } else {
-        if (albero->left == nullptr) return albero->right;
-        if (albero->right == nullptr) return albero->left;
-        
-        Nodo succ = min(albero->right);
-        albero->label = succ->label;
-        albero->right = elimina(albero->right, succ->label);
+        m = tree->label; // restituisco l'etichetta
+        Nodo* a = tree;
+        tree = tree->right; // connetto il 
+                            // sottoalbero destro al padre di m
+        delete a; // elimino il nodo
     }
-    return albero;
+}
+```
+
+```cpp
+void elimina(InfoType valore, Node* &albero) {
+    if (albero == nullptr) return;
+    
+    if (valore < albero->label) //valore minore della radice
+
+        { deleteNode(valore, albero->left); return; }
+
+    else if (valore > albero->label) //valore maggiore della radice
+
+        { deleteNode(valore, albero->right); return; }
+
+    else if (!albero->left) //valore non ha figlio sinistro
+
+        { Node* a=albero; albero=albero->right; delete a;return;}
+
+    else if (!albero->right) //valore non ha figlio destro
+
+        { Node* a=albero; albero=albero->left; delete a; return;}
+
+    else deleteMin (albero->right, albero->label); //val. ha 
+                                                   // entrambi i figli
 }
 
     // Complessità in media : O(log(n))
