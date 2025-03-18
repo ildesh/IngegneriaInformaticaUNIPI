@@ -1,4 +1,4 @@
-<h1> Lezione 5 - 12-03-2025 </h1>
+<h1> Lezione 5 - 12-03-2025 18-03-2025 </h1>
 
 ---
 
@@ -21,6 +21,28 @@
     - [Funzione cercaEtichetta:](#funzione-cercaetichetta)
     - [Funzione cancellaAlbero:](#funzione-cancellaalbero)
     - [Funzione inserisciNodo e trovaNodo:](#funzione-inseriscinodo-e-trovanodo)
+- [Alberi generici](#alberi-generici)
+  - [Visite](#visite)
+  - [Memorizzazione](#memorizzazione)
+    - [1. **Memorizzazione a liste multiple (o Lista di figli)**](#1-memorizzazione-a-liste-multiple-o-lista-di-figli)
+    - [Come funziona:](#come-funziona)
+    - [Vantaggi:](#vantaggi)
+    - [Svantaggi:](#svantaggi)
+    - [Esempio:](#esempio)
+    - [2. **Memorizzazione figlio-fratello (o figlio-sorella)**](#2-memorizzazione-figlio-fratello-o-figlio-sorella)
+    - [Come funziona:](#come-funziona-1)
+    - [Vantaggi:](#vantaggi-1)
+    - [Svantaggi:](#svantaggi-1)
+      - [Esempio:](#esempio-1)
+    - [Confronto tra i due approcci:](#confronto-tra-i-due-approcci)
+  - [Corrispondenza fra visite](#corrispondenza-fra-visite)
+    - [Esempi di programmi su alberi genereici:](#esempi-di-programmi-su-alberi-genereici)
+- [Alberi binari di ricerca](#alberi-binari-di-ricerca)
+  - [Proprietà](#proprietà)
+  - [Operazioni](#operazioni)
+  - [Proprietà degli Alberi Binari di Ricerca (BST):](#proprietà-degli-alberi-binari-di-ricerca-bst)
+  - [Operazioni su Alberi Binari di Ricerca:](#operazioni-su-alberi-binari-di-ricerca)
+    - [Pseudocodice delle operazioni principali:](#pseudocodice-delle-operazioni-principali)
 
 
 --- 
@@ -537,3 +559,364 @@ int inserisciNodo(Node* & tree, InfoType son, InfoType father, char c){
 >}
 >```
 
+---
+
+## Alberi generici
+
+>[!IMPORTANT]
+>Un albero generico è una struttura dati che consiste in una raccolta di nodi, dove ogni nodo può avere un numero qualsiasi di figli. A differenza degli alberi binari, dove ogni nodo può avere al massimo due figli (un figlio sinistro e uno destro), in un albero generico non c'è una restrizione sul numero di figli che un nodo può avere. Ogni nodo può quindi avere zero, uno o più figli.
+
+>[!WARNING] 
+Gli alberi generici vengono utilizzati per rappresentare strutture dati gerarchiche più complesse, come file system, organizzazioni aziendali, strutture di categorie in un catalogo di prodotti, e altre situazioni dove le relazioni di tipo "genitore-figlio" sono presenti ma non limitate a due figli.
+
+esempio di albero generico:
+
+```mermaid
+graph TD
+    A[Radice] -->|Padre di| B[Figlio 1]
+    A -->|Padre di| C[Figlio 2]
+    A -->|Padre di| D[Figlio 3]
+    B -->|Padre di| E[Figlio 1.1]
+    B -->|Padre di| F[Figlio 1.2]
+    C -->|Padre di| G[Figlio 2.1]
+    D -->|Padre di| H[Figlio 3.1]
+    D -->|Padre di| I[Figlio 3.2]
+    F -->|Padre di| J[Figlio 1.2.1]
+    E -->|Padre di| K[Figlio 1.1.1]
+    
+    %% Relazioni tra fratelli
+    B ---|Fratelli di| C
+    C ---|Fratelli di| D
+    E ---|Fratelli di| F
+    H ---|Fratelli di| I
+    
+    %% Stile con colori di sfondo e testo
+    classDef root fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#FFFFFF
+    classDef generation1 fill:#4ECDC4,stroke:#333,stroke-width:1px,color:#000000
+    classDef generation2 fill:#FFD166,stroke:#333,stroke-width:1px,color:#333333
+    classDef generation3 fill:#06D6A0,stroke:#333,stroke-width:1px,color:#000080
+    
+    class A root
+    class B,C,D generation1
+    class E,F,G,H,I generation2
+    class J,K generation3
+```
+
+Le differenze che esistono tra gli alberi generici e gli alberi binari sono le seguenti:
+
+| **Caratteristica**              | **Albero Generico**                               | **Albero Binario**                                |
+|----------------------------------|---------------------------------------------------|---------------------------------------------------|
+| **Numero di figli per nodo**     | Un nodo può avere **zero o più** figli.           | Un nodo può avere al massimo **due** figli.       |
+| **Tipo di figli**                | Non c'è distinzione tra i figli (possono essere qualsiasi nodo). | I figli sono distinti in **figlio sinistro** e **figlio destro**. |
+| **Struttura**                    | Albero con una struttura gerarchica più flessibile. | Struttura rigida con al massimo due figli per nodo. |
+| **Applicazioni comuni**          | Sistemi di file, gerarchie aziendali, rappresentazione di directory. | Alberi binari di ricerca (BST), heap, alberi di espressione, decision trees. |
+| **Limiti strutturali**           | Nessun limite sul numero di figli.                | Limitato a due figli (sinistro e destro).         |
+| **Complessità di ricerca**       | Potrebbe richiedere una ricerca più complessa a causa della struttura variabile. | La ricerca è ottimizzata in strutture come BST e heap. |
+| **Utilizzo principale**          | Strutture gerarchiche più generali e flessibili.  | Ordinamento e ricerca di dati.                   |
+| Esempio | ![Albero Generico](../Algoritmi%20e%20strutture%20dati/image/alberoGenerico.png) | ![Albero Binario](../Algoritmi%20e%20strutture%20dati/image/alberoBinario.png)
+
+### Visite
+```cpp
+void preOrder ( albero ) {
+    // esamina la radice;
+    //se l'albero ha n sottoalberi 
+    {
+        preOrder ( primo sottoalbero);
+        // …
+        preOrder ( n-esimo sottoalbero);
+    }
+}
+```
+```cpp
+void postOrder ( albero ) {
+    // se l'albero ha n sottoalberi {
+    postOrder ( primo sottoalbero);
+    // …
+    postOrder ( n-esimo sottoalbero);
+    // esamina la radice;
+}
+```
+
+### Memorizzazione
+La **memorizzazione a liste multiple** e **figlio-fratello** sono due approcci distinti per rappresentare **alberi generici** in memoria. Entrambi sono metodi per organizzare e memorizzare la struttura di un albero, ma differiscono nel modo in cui gestiscono le relazioni tra i nodi (in particolare tra figli e fratelli).
+
+#### 1. **Memorizzazione a liste multiple (o Lista di figli)**
+
+In questo approccio, ogni nodo dell'albero può avere un **elenco di figli**, che viene rappresentato come una lista o un array. Ogni nodo contiene un puntatore o una lista che punta ai suoi figli diretti, ma non necessariamente ai suoi fratelli.
+
+#### Come funziona:
+- Ogni nodo ha un campo che memorizza un puntatore a una lista di figli.
+- La lista può contenere nodi figli, che a loro volta possono avere altri figli, formando un albero gerarchico.
+- Ogni nodo può avere un numero variabile di figli (poiché non c'è un limite fisso).
+
+#### Vantaggi:
+- È un modo naturale per rappresentare alberi generici in cui un nodo può avere un numero arbitrario di figli.
+- Ogni nodo può avere una lista di figli di lunghezza variabile, il che rende il modello flessibile e adatto agli alberi generici (dove non ci sono restrizioni sul numero di figli per nodo).
+
+#### Svantaggi:
+- Se l'albero è molto sbilanciato, con un nodo che ha pochi figli e altri che ne hanno molti, questo modello potrebbe comportare una gestione inefficiente della memoria.
+  
+#### Esempio:
+Immagina un albero generico in cui ogni nodo contiene una lista dei figli. Un nodo "A" potrebbe avere 3 figli, ognuno dei quali potrebbe avere un numero variabile di figli.
+
+```
+A
+├── B
+├── C
+└── D
+    ├── E
+    └── F
+```
+
+La memoria potrebbe essere rappresentata come segue:
+- Nodo **A** punta a una lista contenente **B, C, D**.
+- Nodo **D** punta a una lista contenente **E, F**.
+
+#### 2. **Memorizzazione figlio-fratello (o figlio-sorella)**
+
+In questo approccio, ogni nodo dell'albero ha due campi principali:
+1. Un campo per **il figlio** (puntatore al primo figlio).
+2. Un campo per **il fratello** (puntatore al prossimo nodo fratello).
+
+In altre parole, ogni nodo ha un puntatore al suo primo figlio e un puntatore al suo fratello successivo, il che consente di navigare l'albero.
+
+#### Come funziona:
+- Ogni nodo ha un puntatore al suo primo figlio, il quale a sua volta può avere un puntatore al suo primo figlio, e così via.
+- Ogni nodo ha anche un puntatore al suo fratello, che è il nodo successivo sullo stesso livello di profondità dell'albero.
+- Con questo approccio, puoi attraversare un intero albero seguendo i figli (scorrendo il ramo) e i fratelli (spostandoti orizzontalmente tra i nodi allo stesso livello).
+
+#### Vantaggi:
+- Il modello è compatto in termini di memoria, poiché non è necessario mantenere una lista separata per ogni nodo, ma si usano solo due puntatori per ogni nodo.
+- È molto utile per alberi generici, poiché consente di rappresentare qualsiasi numero di figli senza bisogno di una struttura separata (come una lista di figli).
+  
+#### Svantaggi:
+- La navigazione attraverso gli alberi potrebbe richiedere più passaggi, poiché bisogna gestire sia i figli che i fratelli in modo separato.
+
+##### Esempio:
+Lo stesso albero di prima potrebbe essere rappresentato come segue:
+
+```
+A → B → C → D → E → F
+```
+
+In questo caso:
+- **A** ha come primo figlio **B**, e **B** ha **C** come fratello.
+- **D** ha **E** come figlio e **E** ha **F** come fratello.
+
+La struttura di memoria potrebbe essere simile a:
+
+- Nodo **A** ha un puntatore al figlio **B** e un puntatore al prossimo fratello (**null**, poiché non ha fratelli).
+- Nodo **B** ha un puntatore al figlio **C** e un puntatore al prossimo fratello (**null**, poiché non ha fratelli).
+- Nodo **C** ha un puntatore al figlio **D** e un puntatore al prossimo fratello (**null**).
+- Nodo **D** ha un puntatore al figlio **E** e un puntatore al fratello **null**.
+- Nodo **E** ha un puntatore al figlio **F** e un puntatore al fratello **null**.
+
+#### Confronto tra i due approcci:
+| Caratteristica               | Memorizzazione a Liste Multiple                    | Memorizzazione Figlio-Fratello          |
+|------------------------------|---------------------------------------------------|----------------------------------------|
+| **Numero di Puntatori per Nodo** | 1 (puntatore alla lista dei figli)                | 2 (puntatore al figlio e al fratello) |
+| **Flessibilità**              | Molto flessibile per alberi con un numero variabile di figli per nodo | Flessibile, ma ogni nodo è più legato alla sua posizione specifica nell'albero |
+| **Efficienza nella Memoria**  | Più costoso in termini di memoria se ci sono molti figli | Più compatto in termini di memoria   |
+| **Navigazione**               | Più facile scorrere la lista dei figli             | Richiede passaggi per scorrere sia i figli che i fratelli |
+| **Applicazioni Comuni**       | Alberi generici, dove ogni nodo può avere un numero variabile di figli | Alberi generici, con una rappresentazione compatta e facilmente navigabile |
+
+### Corrispondenza fra visite
+
+La visita **_preorder_** del trasformato corrisponde alla visita
+**_preorder_** dell’albero generico e la visita **_inorder_** del trasformato corrisponde alla visita **_postorder_** dell’albero generico.
+
+- il tempo delle visite in un albero generico è **lineare** nel numero dei
+nodi.
+- Per la **_ricerca_**, **_l’inserimento_** e la **_cancellazione_** di un nodo, il tempo è comunque lineare. Infatti queste operazioni possono essere programmate mantenendo la struttura delle visite. 
+
+#### Esempi di programmi su alberi genereici:
+
+1. Conta Nodi:
+```cpp
+int nodes (Node* tree) {
+    if (!tree) return 0;
+    return 1+nodes(tree->left)+nodes(tree->right);
+} 
+```
+2. Conta foglie:
+```cpp  
+int leaves(Node* tree) {
+    if (!tree) return 0;
+    if (!tree->left) return 1+ leaves(tree->right); // foglia
+    return leaves(tree->left)+ leaves(tree->right);
+}
+```
+3. Inserimento in fondo 
+```cpp
+void addSon(InfoType x, Node* &list)
+{
+    if (!list) { //lista vuota
+    list=new Node;
+    list>label=x;
+    list->left = list->right = NULL;
+    }
+    else //lista non vuota
+    addSon(x, list->right);
+}
+```
+
+4. inserisce son come ultimo figlio di father
+```cpp
+int insert(InfoType son, InfoType father, Node* &tree) {
+    Node* a=findNode(father, tree); // a: puntatore di father
+    if (!a) return 0; // father non trovato
+    addSon(son, a->left);
+    return 1;
+}
+```
+---
+
+## Alberi binari di ricerca
+
+Un albero binario di ricerca è un albero binario tale che per ogni nodo p:
+- i nodi del sottoalbero sinistro di p hanno etichetta minore dell’etichetta di p
+- i nodi del sottoalbero destro di p hanno etichetta maggiore dell’etichetta di p 
+    - Un esempio di un albero binario di ricerca:
+
+    ```mermaid
+    graph TD
+        A[50] --> B[30]
+        A[50] --> C[70]
+        B --> D[20]
+        B --> E[40]
+        C --> F[60]
+        C --> G[80]
+    ```
+
+    - oppure... 
+        ```mermaid
+        graph RL
+            A[90] --> B[80]
+            B ---> C[70]
+            C ---> D[60]
+            D ---> E[50]
+            E ---> F[10]
+        ```
+
+<div align="center">Dalla proprietà base segue che i nodi di un albero binario di ricerca hanno tutti etichette diverse</div>
+
+### Proprietà
+1. Assenza di Doppioni:
+
+- In un albero binario di ricerca, ogni nodo ha un'etichetta unica. Non sono ammessi duplicati, cioè non puoi avere due nodi con lo stesso valore.
+
+2. Ordinamento:
+- Gli alberi binari di ricerca sono ordinati in modo che:
+    - Ogni nodo del sottoalbero sinistro contiene valori minori del nodo radice.
+    - Ogni nodo del sottoalbero destro contiene valori maggiore del nodo radice.
+- Di conseguenza, una visita simmetrica (inorder traversal) dell'albero visita i nodi in ordine crescente.
+
+### Operazioni
+
+Gli **alberi binari di ricerca (BST)** sono una struttura dati fondamentale in informatica grazie alle loro proprietà che permettono di eseguire operazioni efficienti come la ricerca, l'inserimento e la cancellazione. Vediamo le **proprietà** e le **operazioni principali** su un albero binario di ricerca.
+
+### Proprietà degli Alberi Binari di Ricerca (BST):
+
+1. **Assenza di Doppioni**: 
+   - In un albero binario di ricerca, ogni nodo ha un'etichetta unica. Non sono ammessi duplicati, cioè non puoi avere due nodi con lo stesso valore.
+
+2. **Ordinamento**:
+   - Gli alberi binari di ricerca sono ordinati in modo che:
+     - Ogni nodo del sottoalbero sinistro contiene valori **minori** del nodo radice.
+     - Ogni nodo del sottoalbero destro contiene valori **maggiore** del nodo radice.
+   - Di conseguenza, una **visita simmetrica (inorder traversal)** dell'albero visita i nodi in ordine crescente.
+
+### Operazioni su Alberi Binari di Ricerca:
+
+1. **Ricerca di un Nodo**:
+   - La ricerca di un valore in un albero binario di ricerca inizia dalla radice.
+   - Se il valore cercato è minore del nodo corrente, si continua la ricerca nel sottoalbero sinistro.
+   - Se il valore cercato è maggiore del nodo corrente, si continua nel sottoalbero destro.
+   - La ricerca termina quando il nodo con il valore cercato è trovato o se si arriva a una foglia (null) senza trovarlo.
+
+2. **Inserimento di un Nodo**:
+   - L'inserimento di un nodo segue la stessa logica della ricerca, ma invece di fermarsi quando il valore è trovato, si inserisce il nuovo nodo nel posto giusto (nella posizione di una foglia).
+   - Se il valore è **minore** del nodo corrente, si inserisce nel sottoalbero sinistro; se è **maggiore**, si inserisce nel sottoalbero destro.
+   - Se il sottoalbero in quella direzione è vuoto, il nuovo nodo viene inserito lì.
+
+3. **Cancellazione di un Nodo**:
+   La cancellazione di un nodo in un albero binario di ricerca è più complessa e può avvenire in tre casi:
+   
+   - **Caso 1: Nodo senza figli** (foglia):
+     - Se il nodo da cancellare è una foglia (non ha figli), basta semplicemente rimuoverlo.
+   
+   - **Caso 2: Nodo con un solo figlio**:
+     - Se il nodo ha un solo figlio (sinistro o destro), il nodo viene sostituito dal suo unico figlio. Questo significa che il padre del nodo da cancellare avrà come figlio il nodo che era precedentemente figlio di quest'ultimo.
+   
+   - **Caso 3: Nodo con due figli**:
+      - Se il nodo da cancellare ha **due figli**, il processo diventa più complesso. In questo caso, bisogna trovare un **nodo sostituto**. Solitamente, si cerca:
+      - Il **successore in ordine**: il nodo con il valore più piccolo nel sottoalbero destro del nodo da cancellare (il nodo più a sinistra del sottoalbero destro).
+      - In alternativa, si può cercare il **precursore in ordine**: il nodo con il valore più grande nel sottoalbero sinistro del nodo da cancellare (il nodo più a destra del sottoalbero sinistro).
+   
+     - Una volta trovato il successore o il precursore, si **sostituisce il nodo da cancellare** con il successore o precursore. Successivamente, si elimina ricorsivamente il successore o precursore, che avrà al massimo un figlio (sinistro o destro), permettendo così di trattarlo come un caso di nodo con un solo figlio (Caso 2).
+
+#### Pseudocodice delle operazioni principali:
+Implementiamo il nostro nodo:
+```cpp
+struct Nodo {
+    int label;        // Il valore del nodo
+    Nodo* left;       // Puntatore al figlio sinistro
+    Nodo* right;      // Puntatore al figlio destro
+
+    // Costruttore per creare un nodo
+    Nodo(int val) : label(val), left(nullptr), right(nullptr) {}
+};
+```
+
+
+1. **Ricerca**:
+```cpp
+Nodo ricerca(Nodo* albero, int valore) {
+    if (albero == nullptr) return nullptr;
+    if (valore == albero->label) return albero;
+    if (valore < albero->label) return ricerca(albero->left, valore);
+    return ricerca(albero->right, valore);
+}
+
+    // Complessità in media : O(log(n))
+```
+
+2. **Inserimento**:
+```cpp
+Nodo inserisci(Nodo* albero, int valore) {
+    if (albero == nullptr) {
+        return nuovoNodo(valore);
+    }
+    if (valore < albero->label) {
+        albero->left = inserisci(albero->left, valore);
+    } else {
+        albero->right = inserisci(albero->right, valore);
+    }
+    return albero;
+}
+
+    // Complessità in media : O(log(n))
+```
+
+3. **Cancellazione**:
+```cpp
+Nodo elimina(Nodo* albero, int valore) {
+    if (albero == nullptr) return nullptr;
+    
+    if (valore < albero->label) {
+        albero->left = elimina(albero->left, valore);
+    } else if (valore > albero->label) {
+        albero->right = elimina(albero->right, valore);
+    } else {
+        if (albero->left == nullptr) return albero->right;
+        if (albero->right == nullptr) return albero->left;
+        
+        Nodo succ = min(albero->right);
+        albero->label = succ->label;
+        albero->right = elimina(albero->right, succ->label);
+    }
+    return albero;
+}
+
+    // Complessità in media : O(log(n))
+```
