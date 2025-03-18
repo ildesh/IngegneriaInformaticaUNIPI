@@ -22,6 +22,9 @@
 - [Calcolo sulle n-uple: Caratteristiche e Limitazioni](#calcolo-sulle-n-uple-caratteristiche-e-limitazioni)
   - [Vantaggi](#vantaggi)
   - [Limitazioni significative](#limitazioni-significative)
+  - [Confronto tra Calcolo Relazionale e Algebra Relazionale](#confronto-tra-calcolo-relazionale-e-algebra-relazionale)
+    - [Equivalenza fondamentale](#equivalenza-fondamentale)
+    - [Limiti comuni a entrambi i formalismi](#limiti-comuni-a-entrambi-i-formalismi)
 
 ---
 
@@ -315,26 +318,22 @@ Il calcolo relazionale sulle n-uple è un formalismo per interrogare database re
   - SQL, essendo basato sul calcolo relazionale su tuple, include un operatore esplicito di unione (`UNION`).
   - Non tutte le implementazioni di SQL supportano nativamente intersezione (`INTERSECT`) e differenza (`EXCEPT`).
 
->[!NOTE]
->[*da vedere a casa*]
-> <div align="center"><i><p style="font-size: 22px;">Argomenti in più...</i></p></div>
->Ecco la sezione modificata con il simbolo ">" all'inizio di ogni frase:
->
->### Confronto tra Calcolo Relazionale e Algebra Relazionale
->
->#### Equivalenza fondamentale
-> - Per ogni espressione del calcolo relazionale indipendente dal dominio esiste un'espressione equivalente nell'algebra relazionale.
-> - Per ogni espressione dell'algebra relazionale esiste un'espressione equivalente nel calcolo relazionale (che sarà quindi indipendente dal dominio).
->
->#### Limiti comuni a entrambi i formalismi
-> Nonostante la loro equivalenza, ci sono interrogazioni importanti che non possono essere espresse né nel calcolo né nell'algebra relazionale:
->
->1. **Calcolo di valori derivati**:
-> - Entrambi i formalismi permettono solo di estrarre valori esistenti, non di calcolarne di nuovi.
-> - Questo vale sia a livello di:
->   - Tuple o singoli valori (conversioni, somme, differenze, ecc.)
->   - Insiemi di tuple (somme aggregate, medie, ecc.)
->
->2. **Interrogazioni ricorsive**:
-> - Non è possibile esprimere interrogazioni inerentemente ricorsive, come la chiusura transitiva di una relazione.
-> - Esempio tipico: trovare tutti i percorsi possibili in un grafo partendo da un nodo, che richiede l'applicazione ripetuta di un'operazione fino al raggiungimento di un punto fisso.
+
+### Confronto tra Calcolo Relazionale e Algebra Relazionale
+
+#### Equivalenza fondamentale
+ - Per ogni espressione del calcolo relazionale indipendente dal dominio esiste un'espressione equivalente nell'algebra relazionale.
+ - Per ogni espressione dell'algebra relazionale esiste un'espressione equivalente nel calcolo relazionale (che sarà quindi indipendente dal dominio).
+
+#### Limiti comuni a entrambi i formalismi
+ Nonostante la loro equivalenza, ci sono interrogazioni importanti che non possono essere espresse né nel calcolo né nell'algebra relazionale:
+
+1. **Calcolo di valori derivati**:
+ - Entrambi i formalismi permettono solo di estrarre valori esistenti, non di calcolarne di nuovi.
+ - Questo vale sia a livello di:
+   - Tuple o singoli valori (conversioni, somme, differenze, ecc.)
+   - Insiemi di tuple (somme aggregate, medie, ecc.)
+
+2. **Interrogazioni ricorsive**:
+ - Non è possibile esprimere interrogazioni inerentemente ricorsive, come la chiusura transitiva di una relazione.
+ - Esempio tipico: trovare tutti i percorsi possibili in un grafo partendo da un nodo, che richiede l'applicazione ripetuta di un'operazione fino al raggiungimento di un punto fisso.
