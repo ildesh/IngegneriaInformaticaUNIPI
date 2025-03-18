@@ -1,4 +1,4 @@
-<h1> Lezione 4 - 12-03-2025 </h1>
+<h1> Lezione 4 - 12-03-2025 - 13-03-2025 </h1>
 
 ---
 
@@ -15,6 +15,13 @@
     - [Esempio 2 - Attraverso due relazioni...](#esempio-2---attraverso-due-relazioni)
   - [Dipendenza dal dominio](#dipendenza-dal-dominio)
   - [Indipendenza dal dominio](#indipendenza-dal-dominio)
+- [Calcolo sulle tuple](#calcolo-sulle-tuple)
+  - [Target list](#target-list)
+  - [Range List](#range-list)
+  - [Formule](#formule)
+- [Calcolo sulle n-uple: Caratteristiche e Limitazioni](#calcolo-sulle-n-uple-caratteristiche-e-limitazioni)
+  - [Vantaggi](#vantaggi)
+  - [Limitazioni significative](#limitazioni-significative)
 
 ---
 
@@ -206,3 +213,128 @@ le sue espressioni;
 - Il **_calcolo sui domini_** non è indipendente dal dominio;
 - **_L’algebra relazionale_** è indipendente dal dominio:
   - Costruisce i risultati a partire dalle relazioni presenti nella base didati, senza far mai riferimento ai domini degli attributi: i valori che compaiono nei risultati sono tutti presenti nell’istanza cui l’espressione viene applicata.
+
+---
+
+## Calcolo sulle tuple
+
+Il **calcolo su tuple** è un modello formale per esprimere interrogazioni sui database relazionali. Deriva dal **calcolo su domini**, ma semplifica la scrittura delle formule trattando **_INTERE TUPLE_** invece di **_SINGOLI VALORI_**.
+
+Il calcolo su domini presenta lo svantaggio di richiedere **numerose variabili**, spesso una per ciascun attributo di ciascuna relazione coinvolta (lo stesso con i quantificatori)
+
+Nel calcolo su domini, ogni valore di un attributo deve essere trattato separatamente con una variabile. Questo comporta:
+- ✔ Un numero elevato di variabili, rendendo le query lunghe e difficili da leggere.
+- ✔ La necessità di gestire esplicitamente i quantificatori esistenziali e universali per ciascun valore.
+
+Le espressioni hanno la forma:
+
+$$
+\{\text{T} | \text{L} | \text{f}\}
+$$
+
+dove: 
+- **T** è una **_Target List_** (obiettivo dell'interrogazione);
+- **L** è una **_Range List_** (lista di variabili di range):
+- **f** è una **_Formula_** (formula che specifica la condizione).
+
+### Target list
+
+La **Target List** rappresenta il risultato della query ed è ottenuta tramite **proiezione** di alcuni attributi della relazione.  
+Questa proiezione può essere formalizzata con le seguenti notazioni:  
+
+1. **\( Y : x . Z \)** → Definisce Y come l'insieme degli attributi \( Z \) della tupla \( x \).  
+   - Esprime la selezione di un sottoinsieme di attributi da una tupla.  
+
+2. **\( x . Z \equiv Z : x . Z \)** → Indica che la proiezione può essere espressa in entrambi i modi.  
+   - Mostra che la notazione può essere scritta sia indicando la variabile prima che dopo.  
+
+3. **\( x . * \equiv X : x . X \)** → Seleziona **tutti gli attributi della tupla \( x \)**.  
+   - Significa che prendere tutti gli attributi equivale a fare una proiezione sull'intero insieme degli attributi della relazione.  
+
+### Range List
+
+- L è una lista che contiene, senza ripetizioni, tutte le
+variabili della target list, con la relazione associata da
+cui sono prelevati i valori assunti dalla variabile.
+
+  - in altre parole, nella relazione...
+
+    $$ L \equiv x_1(R_1), \dots, x_k(R_k) $$
+
+    - **_x<sub>i</sub>_** è una variabile;
+    - **_R<sub>i</sub>_** è una relazione.
+
+- L è una dichiarazione di range: specifica l’insieme dei
+valori che possono essere assegnati alle variabili:
+  - Non occorrono più condizioni atomiche che vincolano una tupla ad appartenere ad una relazione. 
+
+### Formule 
+
+Rappresentiamo le formule tramite le seguenti notazioni:
+- **_x<sub>i</sub>_** indica una variabile, **_c_** indica una costante.
+- **_A<sub>i</sub>_** indica un attributo, **_R_** indica una relazione.
+
+>[!WARNING]
+> La formule atomiche sono formule!!
+
+Detto ciò possiamo rappresentare le formule atomiche nel seguente modo:
+
+- **_x<sub>i</sub>_** . **_A<sub>i</sub>_** OP **_x<sub>j</sub>_** . **_A<sub>j</sub>_**
+- **_x<sub>i</sub>_** . **_A<sub>i</sub>_** OP **_c_**
+- **_c_** OP **_x<sub>i</sub>_** . **_A<sub>i</sub>_**
+
+Rappresentiamo delle regole che possono essere applicate alle **_funzioni_**
+
+- Se f è una formula, allora anche ¬f lo è;
+- Se f<sub>1</sub> e f<sub>2</sub> sono formule, allora anche f<sub>1</sub> ∧ f<sub>2</sub> lo è;
+- Se f<sub>1</sub> e f<sub>2</sub> sono formule, allora anche f<sub>1</sub> ∨ f<sub>2</sub> lo è;
+- Se f è una formula e x una variabile che indica una n-upla su R, allora anche ∃x(R)(f) e ∀x(R)(f) sono formule, dove ∃ e ∀ sono **quantificatori**;
+  - Notare che anche i **quantificatori** contengono ora delle
+**dichiarazioni di range**; 
+  - ∃x(R)(f) significa “esiste nella relazione R una n-upla x che
+soddisfa la formula f”.
+
+---
+
+## Calcolo sulle n-uple: Caratteristiche e Limitazioni
+
+Il calcolo relazionale sulle n-uple è un formalismo per interrogare database relazionali dove le variabili rappresentano tuple complete invece di singoli valori.
+
+### Vantaggi
+- **Minore verbosità**: Poiché le variabili rappresentano tuple intere, le espressioni risultano più compatte rispetto ad altri formalismi.
+
+### Limitazioni significative
+- **Problemi con l'unione**: Non è possibile esprimere direttamente le unioni tra relazioni.
+  - Questo accade perché ogni variabile nel risultato può avere un solo range di definizione, mentre nell'unione vorremmo includere tuple provenienti da relazioni diverse (`R₁(AB) ∪ R₂(AB)`).
+  - In altri termini, non possiamo dichiarare che una variabile rappresenti contemporaneamente tuple di due relazioni diverse.
+
+- **Altre operazioni insiemistiche**:
+  - L'intersezione e la differenza sono invece esprimibili nel calcolo relazionale sulle n-uple.
+  
+- **Impatto su SQL**:
+  - SQL, essendo basato sul calcolo relazionale su tuple, include un operatore esplicito di unione (`UNION`).
+  - Non tutte le implementazioni di SQL supportano nativamente intersezione (`INTERSECT`) e differenza (`EXCEPT`).
+
+>[!NOTE]
+>[*da vedere a casa*]
+> <div align="center"><i><p style="font-size: 22px;">Argomenti in più...</i></p></div>
+>Ecco la sezione modificata con il simbolo ">" all'inizio di ogni frase:
+>
+>### Confronto tra Calcolo Relazionale e Algebra Relazionale
+>
+>#### Equivalenza fondamentale
+> - Per ogni espressione del calcolo relazionale indipendente dal dominio esiste un'espressione equivalente nell'algebra relazionale.
+> - Per ogni espressione dell'algebra relazionale esiste un'espressione equivalente nel calcolo relazionale (che sarà quindi indipendente dal dominio).
+>
+>#### Limiti comuni a entrambi i formalismi
+> Nonostante la loro equivalenza, ci sono interrogazioni importanti che non possono essere espresse né nel calcolo né nell'algebra relazionale:
+>
+>1. **Calcolo di valori derivati**:
+> - Entrambi i formalismi permettono solo di estrarre valori esistenti, non di calcolarne di nuovi.
+> - Questo vale sia a livello di:
+>   - Tuple o singoli valori (conversioni, somme, differenze, ecc.)
+>   - Insiemi di tuple (somme aggregate, medie, ecc.)
+>
+>2. **Interrogazioni ricorsive**:
+> - Non è possibile esprimere interrogazioni inerentemente ricorsive, come la chiusura transitiva di una relazione.
+> - Esempio tipico: trovare tutti i percorsi possibili in un grafo partendo da un nodo, che richiede l'applicazione ripetuta di un'operazione fino al raggiungimento di un punto fisso.
