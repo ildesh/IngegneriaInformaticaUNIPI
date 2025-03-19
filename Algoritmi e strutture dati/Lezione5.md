@@ -43,6 +43,10 @@
   - [Proprietà degli Alberi Binari di Ricerca (BST):](#proprietà-degli-alberi-binari-di-ricerca-bst)
   - [Operazioni su Alberi Binari di Ricerca:](#operazioni-su-alberi-binari-di-ricerca)
     - [Pseudocodice delle operazioni principali:](#pseudocodice-delle-operazioni-principali)
+    - [Esempio 1 (esercizio 1):](#esempio-1-esercizio-1)
+    - [Esempio 2 (esercizio 2)](#esempio-2-esercizio-2)
+    - [Esempio 3 (esercizio 3)](#esempio-3-esercizio-3)
+    - [Esempio 4 (esercizio 4)](#esempio-4-esercizio-4)
 
 
 --- 
@@ -834,11 +838,12 @@ Gli **alberi binari di ricerca (BST)** sono una struttura dati fondamentale in i
    - Se il valore cercato è maggiore del nodo corrente, si continua nel sottoalbero destro.
    - La ricerca termina quando il nodo con il valore cercato è trovato o se si arriva a una foglia (null) senza trovarlo.
 
+<a id="inserimento-nodo"></a>
 2. **Inserimento di un Nodo**:
    - L'inserimento di un nodo segue la stessa logica della ricerca, ma invece di fermarsi quando il valore è trovato, si inserisce il nuovo nodo nel posto giusto (nella posizione di una foglia).
-   - Se il valore è **minore** del nodo corrente, si inserisce nel sottoalbero sinistro; se è **maggiore**, si inserisce nel sottoalbero destro.
+   - Se il valore è **minore** del nodo corren  te, si inserisce nel sottoalbero sinistro; se è **maggiore**, si inserisce nel sottoalbero destro.
    - Se il sottoalbero in quella direzione è vuoto, il nuovo nodo viene inserito lì.
-
+<a id="cancellazione-nodo"></a>
 3. **Cancellazione di un Nodo**:
    La cancellazione di un nodo in un albero binario di ricerca è più complessa e può avvenire in tre casi:
    
@@ -939,3 +944,89 @@ void elimina(InfoType valore, Node* &albero) {
 
     // Complessità in media : O(log(n))
 ```
+
+#### Esempio 1 (esercizio 1):
+
+Albero iniziale:
+```mermaid
+graph TD
+    10[Radice: 10]
+    10 --- | Figlio sinistro | 8
+    10 --- | Figlio destro | 20
+    20 --- | Figlio sinistro | 15
+    20 --- | Figlio destro | 31
+    15 --- | Figlio sinistro| 12
+    31 --- | Figlio Sinistro |25
+```
+Albero con aggiunto 27 (seguire la parte della lezione: [Collegamento a Inserimento di un nodo](#inserimento-nodo)):
+```mermaid
+graph TD
+    10 --- | Figlio sinistro | 8
+    10 --- | Figlio destro | 20
+    20 --- | Figlio sinistro | 15
+    20 --- | Figlio destro | 31
+    15 --- | Figlio sinistro | 12
+    31 --- | Figlio sinistro | 25
+    25 --- | Figlio destro | 27
+```
+
+Albero con elimazione 20 (seguire la parte della lezione: [Collegamento a Cancellazione di un nodo](cancellazione-nodo)):
+```mermaid
+graph TD
+    10 --- | Figlio sinistro | 8
+    10 --- | Figlio destro | 25
+    25 --- | Figlio sinistro | 15
+    25 --- | Figlio destro | 31
+    31 --- | Figlio destro | 27
+    15 --- | Figlio sinistro | 12
+```
+
+#### Esempio 2 (esercizio 2)
+Scrivere una funzione che dato un albero generico, somma 1 ad ogni sua etichetta:
+
+```cpp
+void somma (Node *tree) {
+    if (! tree) return;
+    tree-> label++;
+    somma (tree->left);
+    somma (tree->right);
+}
+```
+
+#### Esempio 3 (esercizio 3)
+
+Scrivere una funzione che somma ad ogni nodo di un albero binario il numero dei suoi discendenti:
+
+```cpp
+int contaDiscendenti (Node *tree) {
+    if (! tree) return;
+    int leftCount = contaDiscendenti(tree->left);
+    int rightCount = contaDiscendenti(tree->right);
+
+    tree->label += leftCount + rightCount; // Sommo al contenuto dell'etichetta iniziale in cui ci troviamo
+                                          // la quantità di nodi collegata a quest'ultimo da destra e da sinistra
+
+    return 1 + leftCount + rightCount;
+}
+```
+
+#### Esempio 4 (esercizio 4)
+
+Per ogni nodo X di un albero binario sia definita sum(x) come la somma delle etichette dei nodi figli di x. Scrivere una funzione che, considerando tutti i nodi dell'albero, stampi il più alto valore di sum(x):
+
+```cpp 
+int maxSum(Nodo* tree, int& maxS){
+    if(tree == nullptr) return 0;
+
+
+    int leftSum = maxSum(tree->left, maxS);
+    int rightSum = maxSum(tree->right,maxS);
+
+    int myS = leftSum + rightSum;
+    if(myS > maxS) maxS = mys;
+
+    return tree->id;
+    
+}
+```
+
