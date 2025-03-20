@@ -54,10 +54,10 @@
 * L'A.M. Turing Award è il più alto riconoscimento nel campo dell'informatica. E' un premio, assegnato annualmente dalla Association for Computing Machinery (ACM), per contributi significativi alla scienza dell'informatica.
 * Il premio viene spesso anche chiamato "premio Nobel dell'informatica" ed è intitolato al matematico inglese Alan Mathison Turing, che ha fatto fondamentali contributi alla teoria dei calcolatori e alla scienza dell'informatica.
 >[!NOTE]
-> Association for Computing Machinery (ACM) [(website)](www.acm.org)  
-> 
-> ![Esempio Relazione Matematica](./images/ACM.png)
-> 
+> <div style="display: flex; align-items: center;">
+>   <span>Association for Computing Machinery (ACM) <a href="https://www.acm.org/">(website)</a></span>
+>   <img src="./images/ACM.png" width="80" style="margin-left: 10px;">
+> </div>
 > 
 > <br> Alcuni Vincitori: <br>
 > | Anno | Vincitore | Nazione | Note |
