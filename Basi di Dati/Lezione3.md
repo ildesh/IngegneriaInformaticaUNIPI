@@ -304,12 +304,14 @@ Tabella Unione (Paternità ∪ Maternità)
     <br>
 
     >[!TIP]
+    >
     >Cardinalità delle Proiezioni
     >
     > Una proiezione può contenere al più tante n-uple quante ne ha l'operando e contenerne di meno
     > Se X è una superchiave di R allora 𝜋<sub>X</sub>(R) contiene esattamente tante tuple quante ne ha R. 
 
     >[!IMPORTANT]
+    >
     > RICORDA!
     >
     >I valori degli altributi di quella tupla la identificano univocamente!
@@ -321,7 +323,8 @@ Tabella Unione (Paternità ∪ Maternità)
 - Proiezione **_𝜋_**: decompozione **verticale**
 
 #### Esempio:
->[!TIP]Calcola matricola e cognome degli impiegati che guadagnano più di 50000:
+>[!TIP]
+>Calcola matricola e cognome degli impiegati che guadagnano più di 50000:
 >
 >| Matricola | Cognome | Filiale  | Stipendio |
 >|-----------|---------|----------|-----------|
@@ -340,12 +343,6 @@ La selezione per gli impiegati che guadagnano più di 50.000 è espressa come:
 
 $$
 \sigma_{\text{Stipendio} > 50000}(\text{Impiegati})
-$$
-
-Possiamo scrivere sotto l'espressione:
-
-$$
-
 $$
 
 e rappresentarla con la seguente tabella:
