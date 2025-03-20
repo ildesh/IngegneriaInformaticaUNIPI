@@ -17,14 +17,14 @@ Esistono due tipi di categorie di operazioni:
       2. Aggiornamento (update)
 
 ### Linguaggi di interrogazione per le basi di dati
-1. >[!TIP]
-    >Cosa si intende per interrogazione?
-    > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
-2. >[!TIP]
-    >Cosa è necessario fare per specificare il significato di una interrogazione?
-    > Due formalismi
-    > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
-    > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
+>[!TIP]
+>Cosa si intende per interrogazione?
+> L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
+>[!TIP]
+>Cosa è necessario fare per specificare il significato di una interrogazione?
+> Due formalismi
+> 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
+> 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
 
 - Si definisce il **comportamento** delle interrogazioni in **modo preocedurale** utilizzando le espressioni dell'algebra relazionale.
 
@@ -323,7 +323,8 @@ Tabella Unione (Paternità ∪ Maternità)
 >| 1003      | Verdi   | Milano   | 55000     |
 >| 1004      | Neri    | Torino   | 70000     |
 
->[!WARNING] Eseguiamo prima una selezione per la condizione "stipendio > 50000" e poi in seguito una proiezione per estrarre solo le colonne "Matricola" e "Cognome".
+>[!WARNING]
+>Eseguiamo prima una selezione per la condizione "stipendio > 50000" e poi in seguito una proiezione per estrarre solo le colonne "Matricola" e "Cognome".
 
 
 ### Passo 1. Selezione
@@ -381,10 +382,12 @@ busta chiusa con il nome del candidato
 
 ## | Join Naturale
 
->[!TIP] Definizione
+>[!TIP]
+>Definizione
 >Il **join naturale** è un'operazione dell'algebra relazionale utilizzata nei database relazionali per combinare due tabelle in base agli attributi con lo stesso nome e dominio. È un tipo di **join equi-join** (_join basato sull'uguaglianza_), ma con la differenza che non richiede di specificare esplicitamente la condizione di join: il database riconosce automaticamente gli attributi comuni tra le due tabelle e li usa per eseguire l'unione.
 
->[!WARNING] Formalmente...
+>[!WARNING]
+>Formalmente...
 >Date due relazioni R<sub>1</sub>(X<sub>1</sub>) e R<sub>2</sub>(X<sub>2</sub>) , in generale questo operatore si scrive come:
 >
 >$$
@@ -557,20 +560,23 @@ Qui il numero di tuple nel join è **esattamente** \( |R2| = 3 \), perché ogni 
 
 ---
 
->[!TIP] Riassumendo...
+>[!TIP]
+>Riassumendo...
 >| Caso | Formula per il numero di tuple ( \|R1 ⋈ R2\| ) |
 >|------|--------------------------------------------|
 >| Caso Generale (nessuna chiave specifica) | 0 ≤ \|R1 ⋈ R2\| ≤ \|R1\| × \|R2\| |
 >| Se l'attributo di join è una chiave in ( R2 ) | 0 ≤ \|R1 ⋈ R2\| ≤ \|R1\| |
 >| Se l'attributo di join è chiave in ( R1 ) e c'è un vincolo di integrità >referenziale | \|R1 ⋈ R2\| = \|R2\| |
 
->[!WARNING] Attenzione...
+>[!WARNING]
+>Attenzione...
 > Alcune n-uple non contribuiscono al risultato: vengono “tagliate fuori”
 
 ---
 
 ## | Join Esterno
->[!TIP]Definizione
+>[!TIP]
+>Definizione
 >Il join esterno è una variante del join che include tutte le tuple di una o entrambe le relazioni coinvolte, anche se non trovano corrispondenza nell’altra tabella. Quando non c’è un match, i valori nelle colonne della tabella senza corrispondenza vengono riempiti con NULL.
 
 Esistono 3 tipi di Join Esterno:
@@ -700,7 +706,8 @@ Ordini R2:
 
 >[!NOTE] R2 ha p = 2 colonne (ID_Ordine e Prodotto) e n2 = 2 tuple.
 
->[!TIP] Utilizziamo la formula del Prodotto Cartesiano:
+>[!TIP]
+>Utilizziamo la formula del Prodotto Cartesiano:
 >Numero di colonne nel risultato: **m + p = 2 + 2 = 4**
 >
 >Numero di tuple nel risultato: **n1 × n2 = 3 × 2 = 6**
@@ -721,10 +728,12 @@ Riscrivendo il prodotto cartesiano (R<sub>1</sub> X R<sub>2</sub>):
 ---
 
 ## | Theta-Join
->[!TIP] Definizione
+>[!TIP]
+>Definizione
 >Il theta-join è un'operazione di join tra due tabelle (relazioni) che combina le tuple delle tabelle in base a una condizione arbitraria che coinvolge uno o più attributi. A differenza di un equi-join (dove la condizione è una semplice uguaglianza), il theta-join permette di utilizzare qualsiasi tipo di relazione (come =, <, >, <=, >=, ≠, etc.).
 
->[!WARNING] Formula logica:
+>[!WARNING]
+>Formula logica:
 >$$
 >R1 ⋈θ R2
 > $$
@@ -751,7 +760,8 @@ Riscrivendo il prodotto cartesiano (R<sub>1</sub> X R<sub>2</sub>):
 
   La domanda che ci facciamo è:
 
-  >[!WARNING]Supponiamo di voler fare un theta-join sulle tabelle Clienti e Ordini in cui l'ID_Cliente sia uguale a 1 e il Prezzo degli ordini sia maggiore di 500.
+  >[!WARNING]
+  >Supponiamo di voler fare un theta-join sulle tabelle Clienti e Ordini in cui l'ID_Cliente sia uguale a 1 e il Prezzo degli ordini sia maggiore di 500.
   >
   >Sottoforma logica:
   >$$
@@ -786,10 +796,12 @@ Tutti gli altri sono **operatori derivati/di convenienza**.
 
 ### Opeatore Divisione:
 
->[!TIP] Definizione
+>[!TIP]
+>Definizione
 >La divisione tra due relazioni R1 e R2 (dove R2 è un sottoinsieme di R1) restituisce tutte le tuple di R1 che sono associate a tutte le tuple di R2.
 
->[!WARNING] Formalmente...
+>[!WARNING]
+>Formalmente...
 >Dati due insiemi di attributi disgiunti X₁ e X₂, una relazione r su X₁ ∪ X₂ e una relazione r₂ su X₂, la divisione è una relazione su X₁ che contiene le tuple ottenute come “proiezione” di tuple di r che si combinano con tutte le tuple di r₂ per formare tuple di X₁.
 >
 >In altre parole, 
@@ -923,7 +935,8 @@ DBMS
 
 ## Profili delle Relazioni
 
->[!TIP]Definizione
+>[!TIP]
+>Definizione
 >I profili delle relazioni sono un insieme di informazioni quantitative relative a una base di dati, che descrivono le caratteristiche e le proprietà delle relazioni (tabelle) presenti nel database.      
 
 Queste informazioni sono fondamentali per ottimizzare le operazioni di accesso ai dati e di elaborazione delle query. Vengono memorizzate nel catalogo del database, che è una struttura contenente metadati sulle tabelle, gli attributi e altre informazioni necessarie per l'ottimizzazione delle query.
@@ -952,7 +965,6 @@ Questi profili sono utilizzati dal **query optimizer** del database per stimare 
 ---
 
 ## | Grafo
-
 
 Un **_grafo G = (V,E)_** consiste in:
 1. un insieme V di vertici (o nodi)
@@ -1007,7 +1019,8 @@ WHERE
 B > 100 AND H = 7 AND I > 2 AND C = D AND F = G
 ```
 
->[!WARNING] Dove:
+>[!WARNING]
+>Dove:
 > - FROM: prodotto cartesiano
 > - WHERE: selezione
 > - SELECT: proiezione
