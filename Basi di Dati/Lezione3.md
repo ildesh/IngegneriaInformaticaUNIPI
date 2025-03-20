@@ -22,6 +22,7 @@ Esistono due tipi di categorie di operazioni:
 >
 >Cosa si intende per interrogazione?
 > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
+
 >[!TIP]
 >
 >Cosa è necessario fare per specificare il significato di una interrogazione?
