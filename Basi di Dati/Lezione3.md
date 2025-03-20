@@ -2,7 +2,8 @@
 
 ## | Algebra Relazionale
 
->[!TIP] Che cos'è l'algebra relazionale ?
+>[!TIP]
+>Che cos'è l'algebra relazionale ?
 > L'algebra relazionale è un insieme di operazioni matematiche che definiscono le manipolazioni di dati in un database relazionale. Ogni operazione agisce su una o più relazioni (tabelle) e restituisce un'altra relazione come risultato. L'algebra relazionale è la base teorica dei linguaggi di query, come SQL, ed è fondamentale per la gestione delle basi di dati relazionali.
 
 ### Linguaggi per le basi di dati:
@@ -16,9 +17,11 @@ Esistono due tipi di categorie di operazioni:
       2. Aggiornamento (update)
 
 ### Linguaggi di interrogazione per le basi di dati
-1. >[!TIP] Cosa si intende per interrogazione?
+1. >[!TIP]
+    >Cosa si intende per interrogazione?
     > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
-2. >[!TIP] Cosa è necessario fare per specificare il significato di una interrogazione?
+2. >[!TIP]
+    >Cosa è necessario fare per specificare il significato di una interrogazione?
     > Due formalismi
     > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
     > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
