@@ -4,12 +4,8 @@
 
 - [Progettazione Concettuale](#progettazione-concettuale)
   - [Design Pattern](#design-pattern)
-  - [Reificazione di attributo di entità](#reificazione-di-attributo-di-entità)
-  - [Reificazione di relationship binaria](#reificazione-di-relationship-binaria)
-  - [Reificazione di attributo di relationship](#reificazione-di-attributo-di-relationship)
-    - [Caso particolare di entità](#caso-particolare-di-entità)
-  - [Relationship ternaria](#relationship-ternaria)
-    - [Reificazione di relationship ternaria](#reificazione-di-relationship-ternaria)
+  - [Reificazione](#reificazione)
+    - [Tipi di Reificazione](#tipi-di-reificazione)
   - [Strategie di progetto](#strategie-di-progetto)
     - [Strategia top-down](#strategia-top-down)
     - [Strategia bottom-up](#strategia-bottom-up)
@@ -39,23 +35,162 @@ I Design Pattern rappresentano soluzioni progettuali a problemi comuni, fungendo
 2. Largamente usati nell'ingegneria del software
 3. Vediamo alcuni pattern comuni nella progettazione concettuale di basi di dati
 
-## Reificazione di attributo di entità
+---
 
-- Reificazione di attributo di entità
-- Parte-di
-- Istanza-di
+## Reificazione
 
-## Reificazione di relationship binaria
+>[!IMPORTANT]
+>La reificazione serve a trasformare concetti che normalmente sarebbero attributi o relazioni in entità autonome, permettendo una modellazione più dettagliata e flessibile dei dati. Il suo scopo principale è risolvere problemi di espressività, normalizzazione e gestione della complessità nei database. 
 
-## Reificazione di attributo di relationship
+### Tipi di Reificazione
 
-### Caso particolare di entità
+- **_Reificazione di attributo di entità_**: Trasforma un attributo in un'entità separata per migliorare la modellazione dei dati.
 
-## Relationship ternaria
+   ```mermaid
+      erDiagram
+      Persona {
+          int ID
+          string Nome
+      }
+      DataNascita {
+          int ID
+          date Data
+      }
+      Persona ||--o{ DataNascita : ha
+   ```  
+  - **_Parte-di_**: Un'entità è parte di un'altra.
 
+    ```mermaid
+    erDiagram
+      Automobile {
+          int ID
+          string Modello
+      }
+      Motore {
+          int ID
+          string Tipo
+      }
+      Automobile ||--o{ Motore : "ha un"
+     ```
 
-### Reificazione di relationship ternaria
+  - **_Istanza-di_**: Un'entità è un'istanza di una categoria più generale.
 
+    ```mermaid
+    erDiagram
+      Animale {
+          int ID
+          string Nome
+      }
+      Cane {
+          string Razza
+      }
+      Animale ||--|{ Cane : "è un"
+    ```
+
+- **_Reificazione di relationship binaria_**: Una relazione binaria diventa un'entità.
+  ```mermaid
+  erDiagram
+      Studente {
+          int Matricola
+          string Nome
+      }
+      Corso {
+          int ID
+          string Nome
+      }
+      Iscrizione {
+          date Data
+          string Stato
+      }
+      Studente ||--o{ Iscrizione : "si iscrive a"
+      Corso ||--o{ Iscrizione : "ha iscrizione in"
+  ```
+
+- **_Reificazione di attributo di relationship_**: Quando un attributo di una relazione è significativo e va reificato.
+  ```mermaid
+  erDiagram
+      Cliente {
+          int ID
+          string Nome
+      }
+      Prodotto {
+          int ID
+          string Nome
+      }
+      Acquisto {
+          int ID
+          date Data
+          int Quantita
+      }
+      Cliente ||--o{ Acquisto : "effettua"
+      Prodotto ||--o{ Acquisto : "contiene"
+  ```
+
+  - **_Caso particolare di entità_**: Quando una relazione diventa un'entità con proprie caratteristiche.
+    ```mermaid
+    erDiagram
+        Autore {
+            int ID
+            string Nome
+        }
+        Libro {
+            int ID
+            string Titolo
+        }
+        Scrittura {
+            int ID
+            string Ruolo
+        }
+        Autore ||--o{ Scrittura : "scrive"
+        Libro ||--o{ Scrittura : "è scritto in"
+    ```
+
+- **_Relationship ternaria_**: Coinvolge tre entità contemporaneamente.
+  ```mermaid
+  erDiagram
+      Studente {
+          int Matricola
+          string Nome
+      }
+      Corso {
+          int ID
+          string Nome
+      }
+      Docente {
+          int ID
+          string Nome
+      }
+      Assegnazione {
+          date Data
+      }
+      Studente ||--o{ Assegnazione : "partecipa"
+      Corso ||--o{ Assegnazione : "assegnato a"
+      Docente ||--o{ Assegnazione : "tiene il corso per"
+  ```
+
+- **_Reificazione di relationship ternaria_**: Quando una relazione ternaria diventa un'entità.
+  ```mermaid
+  erDiagram
+      Cliente {
+          int ID
+          string Nome
+      }
+      Prodotto {
+          int ID
+          string Nome
+      }
+      Venditore {
+          int ID
+          string Nome
+      }
+      Transazione {
+          date Data
+          float Prezzo
+      }
+      Cliente ||--o{ Transazione : "acquista da"
+      Prodotto ||--o{ Transazione : "è parte di"
+      Venditore ||--o{ Transazione : "vende a"
+  ```
 
 ## Strategie di progetto
 >[!WARNING]
