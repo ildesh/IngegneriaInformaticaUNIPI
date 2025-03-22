@@ -3,7 +3,7 @@
 ## | Algebra Relazionale
 
 >[!TIP]
->Che cos'è l'algebra relazionale ?
+>### Che cos'è l'algebra relazionale ?
 >
 > L'algebra relazionale è un insieme di operazioni matematiche che definiscono le manipolazioni di dati in un database relazionale. Ogni operazione agisce su una o più relazioni (tabelle) e restituisce un'altra relazione come risultato. L'algebra relazionale è la base teorica dei linguaggi di query, come SQL, ed è fondamentale per la gestione delle basi di dati relazionali.
 
@@ -19,13 +19,11 @@ Esistono due tipi di categorie di operazioni:
 
 ### Linguaggi di interrogazione per le basi di dati
 >[!TIP]
->
->Cosa si intende per interrogazione?
+>### Cosa si intende per interrogazione?
 > L'interrogazione è un'**_operazione di lettura_** sulla base di dati che può richiedere l'accesso a **più di una tabella**.
 
 >[!TIP]
->
->Cosa è necessario fare per specificare il significato di una interrogazione?
+>### Cosa è necessario fare per specificare il significato di una interrogazione?
 > Due formalismi
 > 1. **_Modo dichiarativo_**: si specificano le proprietà del risultato ("che cosa");
 > 2. **_Modo procedurale_**: si specificano le modalità di generazione del risultato ("come").
@@ -306,14 +304,14 @@ Tabella Unione (Paternità ∪ Maternità)
 
     >[!TIP]
     >
-    >Cardinalità delle Proiezioni
+    >### Cardinalità delle Proiezioni
     >
     > Una proiezione può contenere al più tante n-uple quante ne ha l'operando e contenerne di meno
     > Se X è una superchiave di R allora 𝜋<sub>X</sub>(R) contiene esattamente tante tuple quante ne ha R. 
 
     >[!IMPORTANT]
     >
-    > RICORDA!
+    > ## RICORDA!
     >
     >I valori degli altributi di quella tupla la identificano univocamente!
     
@@ -372,7 +370,8 @@ Il risultato della proiezione sarà:
 
 
 
->[!NOTE] Note - Possiamo dunque dire che... 
+>[!NOTE] 
+> ### Possiamo dunque dire che... 
 > - Combinando selezione e proiezione possiao estrarre informazioni da **una sola** relazione
 > - **NON** possiamo **combinare informazioni** presenti in **relazioni diverse**
 > - **NON** possiamo combinare informazioni presenti in **n-uple diverse della stessa relazione**
@@ -388,7 +387,7 @@ busta chiusa con il nome del candidato
 ## | Join Naturale
 
 >[!TIP]
->Definizione
+>### Definizione
 >Il **join naturale** è un'operazione dell'algebra relazionale utilizzata nei database relazionali per combinare due tabelle in base agli attributi con lo stesso nome e dominio. È un tipo di **join equi-join** (_join basato sull'uguaglianza_), ma con la differenza che non richiede di specificare esplicitamente la condizione di join: il database riconosce automaticamente gli attributi comuni tra le due tabelle e li usa per eseguire l'unione.
 
 >[!WARNING]
@@ -427,7 +426,8 @@ busta chiusa con il nome del candidato
     |Neri| B| Bruni|
     |Bianchi| B| Bruni|
 
-    >[!IMPORTANT] Ogni n-upla contribuisce al risultato: join completo
+    >[!IMPORTANT] 
+    >#### Ogni n-upla contribuisce al risultato: join completo
 
   - #### Esempio 2:
     ##### Impiegato Reparto
@@ -566,7 +566,7 @@ Qui il numero di tuple nel join è **esattamente** \( |R2| = 3 \), perché ogni 
 ---
 
 >[!TIP]
->Riassumendo...
+>### Riassumendo...
 >| Caso | Formula per il numero di tuple ( \|R1 ⋈ R2\| ) |
 >|------|--------------------------------------------|
 >| Caso Generale (nessuna chiave specifica) | 0 ≤ \|R1 ⋈ R2\| ≤ \|R1\| × \|R2\| |
@@ -581,7 +581,7 @@ Qui il numero di tuple nel join è **esattamente** \( |R2| = 3 \), perché ogni 
 
 ## | Join Esterno
 >[!TIP]
->Definizione
+>### Definizione
 >Il join esterno è una variante del join che include tutte le tuple di una o entrambe le relazioni coinvolte, anche se non trovano corrispondenza nell’altra tabella. Quando non c’è un match, i valori nelle colonne della tabella senza corrispondenza vengono riempiti con NULL.
 
 Esistono 3 tipi di Join Esterno:
@@ -701,7 +701,8 @@ Clienti R1:
 | 2          | Marco |
 | 3          | Luca  |
 
->[!NOTE] R1 ha m = 2 colonne (ID_Cliente e Nome) e n1 = 3 tuple.
+>[!NOTE] 
+> #### R1 ha m = 2 colonne (ID_Cliente e Nome) e n1 = 3 tuple.
 
 Ordini R2:
 | ID_Ordine | Prodotto  |
@@ -709,7 +710,8 @@ Ordini R2:
 | A1        | Laptop    |
 | A2        | Smartphone|
 
->[!NOTE] R2 ha p = 2 colonne (ID_Ordine e Prodotto) e n2 = 2 tuple.
+>[!NOTE] 
+> #### R2 ha p = 2 colonne (ID_Ordine e Prodotto) e n2 = 2 tuple.
 
 >[!TIP]
 >Utilizziamo la formula del Prodotto Cartesiano:
@@ -734,7 +736,7 @@ Riscrivendo il prodotto cartesiano (R<sub>1</sub> X R<sub>2</sub>):
 
 ## | Theta-Join
 >[!TIP]
->Definizione
+>### Definizione
 >Il theta-join è un'operazione di join tra due tabelle (relazioni) che combina le tuple delle tabelle in base a una condizione arbitraria che coinvolge uno o più attributi. A differenza di un equi-join (dove la condizione è una semplice uguaglianza), il theta-join permette di utilizzare qualsiasi tipo di relazione (come =, <, >, <=, >=, ≠, etc.).
 
 >[!WARNING]
@@ -744,7 +746,8 @@ Riscrivendo il prodotto cartesiano (R<sub>1</sub> X R<sub>2</sub>):
 > $$
 > Dove θ è il predicato (condizione) che può essere qualsiasi operatore logico tra i valori delle colonne nelle due tabelle.
 
->[!IMPORTANT] In poche parole...
+>[!IMPORTANT] 
+>### In poche parole...
 > Il theta-join è una forma generale di join che consente di specificare condizioni personalizzate tra le colonne di due tabelle. È utile quando vogliamo combinare tabelle basandoci su relazioni diverse dall'uguaglianza, come le disuguaglianze o altre condizioni logiche. 
 
 - #### ( 1 ) Esempio:
@@ -802,7 +805,8 @@ Tutti gli altri sono **operatori derivati/di convenienza**.
 ### Opeatore Divisione:
 
 >[!TIP]
->Definizione
+>### Definizione
+>
 >La divisione tra due relazioni R1 e R2 (dove R2 è un sottoinsieme di R1) restituisce tutte le tuple di R1 che sono associate a tutte le tuple di R2.
 
 >[!WARNING]
@@ -941,7 +945,8 @@ DBMS
 ## Profili delle Relazioni
 
 >[!TIP]
->Definizione
+>### Definizione
+>
 >I profili delle relazioni sono un insieme di informazioni quantitative relative a una base di dati, che descrivono le caratteristiche e le proprietà delle relazioni (tabelle) presenti nel database.      
 
 Queste informazioni sono fondamentali per ottimizzare le operazioni di accesso ai dati e di elaborazione delle query. Vengono memorizzate nel catalogo del database, che è una struttura contenente metadati sulle tabelle, gli attributi e altre informazioni necessarie per l'ottimizzazione delle query.
