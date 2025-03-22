@@ -68,9 +68,9 @@ $$
 - $R(A_1 : x_1, \ldots, A_p : x_p)$, dove $R(A_1, \ldots, A_p)$ è uno **schema di relazione** e $x_1, \ldots, x_p$ sono variabili
 - Interpretabile come $[x_1, \ldots, x_p] \in R$
 - $x_i$ OP $x_j$
-- dove $x_i$ e $x_j$ sono variabili e OP è un **operatore di confronto** $<, >, =, \leq, \geq, \neq$
+  - dove $x_i$ e $x_j$ sono variabili e OP è un **operatore di confronto** $<, >, =, \leq, \geq, \neq$
 - $x_i$ OP $c$ oppure $c$ OP $x_i$
-- dove $c$ è una costante (nel dominio $A_i$ di $x_i$)
+  - dove $c$ è una costante (nel dominio $A_i$ di $x_i$)
 
 Le formule atomiche sono formule:
 
@@ -84,8 +84,7 @@ Le formule atomiche sono formule:
 
 - Per convenienza, useremo le parentesi laddove necessario.
 - Raggrupperemo le variabili usate nei quantificatori con la medesima formula;  
-  per esempio:  
-  ∃*x(∃y(f))* ≡ ∃*x, y(f)*
+  per esempio: ∃*x(∃y(f))* ≡ ∃*x, y(f)*
 
 ### Il valore di verità di una formula
 
