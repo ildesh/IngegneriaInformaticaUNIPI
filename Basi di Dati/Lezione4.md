@@ -6,7 +6,7 @@
 
 - [Calcolo relazionale](#calcolo-relazionale)
   - [Che cos'è il calcolo relazionale?](#che-cosè-il-calcolo-relazionale)
-  - [Calcolo sui domini](#calcolo-sui-domini)
+- [Calcolo sui domini](#calcolo-sui-domini)
   - [Formule Atomiche](#formule-atomiche)
     - [Convenzioni:](#convenzioni)
   - [Il valore di verità di una formula](#il-valore-di-verità-di-una-formula)
@@ -48,7 +48,9 @@ Esistono diverse versioni:
     - Il risultato di un’interrogazione (formula aperta) è costituito dalle tuple di valori che, sostituiti alle variabili libere, la rendono vera.
 - In coerenza con quanto fatto in algebra relazionale (attributi con nome), utilizzeremo una **_notazione non posizionale_**.
 
-### Calcolo sui domini
+---
+
+## Calcolo sui domini
 
 - **_Sintassi_**: le **espressioni** hanno la forma:
 $$
@@ -121,7 +123,8 @@ Le formule atomiche sono formule:
 
 Supponiamo di avere una relazione Studenti con il seguente schema: $\text{Studenti(Nome, Matricola, Voto)}$
 
->[!TIP] Cosa vogliamo trovare?
+>[!TIP] 
+>### Cosa vogliamo trovare?
 > Vogliamo trovare i nomi e le matricole degli studenti che hanno preso un voto maggiore di 27.
 
 Espressione del calcolo sui domini:
@@ -138,13 +141,15 @@ Avendo questa espressione possiamo dire che:
 
 #### Esempio 2 - Attraverso due relazioni...
 
->[!TIP] Sapendo che abbiamo due relazioni...
+>[!TIP] 
+> ### Sapendo che abbiamo due relazioni...
 >- Impiegato(Matr, Nome, Età, Stipendio)
 >- Supervisione(Matr, Capo)
 
 
 L'esercizio chiede di:
->[!IMPORTANT] Selezionare i nomi degli impiegati con stipendio superiore a 3000
+>[!IMPORTANT] 
+> #### Selezionare i nomi degli impiegati con stipendio superiore a 3000
 
 Scrivi un'espressione in calcolo relazionale per ottenere i nomi degli impiegati che guadagnano più di 3000 euro.
 Per risolverlo possiamo:
@@ -175,12 +180,14 @@ Nome:x ∣ ∃m,e,s(Impiegato(Matr:m,Nome:x,Etaˋ:e,Stipendio:s)∧s>3000)
 $$
 
 5. Spiegando la formula in maniera frasale possiamo dire che:
->[!TIP] Soluzione
+>[!TIP] 
+> ### Soluzione
 >Esistono delle variabili _(∃m, e, s)_ che rappresentano i valori di _**Matr (m)**_, _**Età (e)**_ e _**Stipendio (s)**_ per un impiegato, tale che **l'impiegato abbia Matr (m), Nome (x), Età (e) e Stipendio (s)**, ossia _Impiegato(Matr: m, Nome: x, Età: e, Stipendio: s)_, con la **_condizione che s > 3000_**.
 
 ### Dipendenza dal dominio
 
->[!IMPORTANT] Che cos'è la dipendenza del dominio, o meglio, come si verifica?
+>[!IMPORTANT] 
+> ### Che cos'è la dipendenza del dominio, o meglio, come si verifica?
 >La dipendenza dal dominio si verifica quando il risultato di un'espressione del calcolo relazionale dipende non solo dalle tuple presenti nelle relazioni della base di dati, ma anche dall'insieme completo di valori possibili (dominio) degli attributi coinvolti nell'espressione.
 
 1. Mostriamo il primo esempio:
