@@ -1,19 +1,19 @@
 <div align="center">
 
-# [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=35&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&center=true&vCenter=true&width=510&height=100&lines=Benvenuto%2Fa+Ingegnere%21;Welcome+Engineer%21)](https://git.io/typing-svg)
+<img src="https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=35&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&vCenter=true&width=510&height=100&lines=Benvenuto%2Fa+Ingegnere!" alt="Typing SVG" />
 
 </div>
 
 ---
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)]()
 
 
 Benvenuti nel repository ufficiale degli appunti dei corsi di informatica! Questa raccolta è pensata per fornire materiale didattico completo e ben organizzato per supportare il vostro percorso di apprendimento.
 
 ---
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%82+Struttura+del+Repository)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%82+Struttura+del+Repository)]()
 
 Il repository è organizzato nelle seguenti sezioni:
 
@@ -31,7 +31,7 @@ Il repository è organizzato nelle seguenti sezioni:
 
 ---
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=600&height=50&lines=%F0%9F%9A%80+Come+Utilizzare+gli+Appunti)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=600&height=50&lines=%F0%9F%9A%80+Come+Utilizzare+gli+Appunti)]()
 
 1. **Naviga nelle cartelle** dei diversi corsi
 2. **Consulta i file .md** che contengono gli appunti dettagliati per ogni lezione
@@ -47,7 +47,7 @@ git pull origin main
 
 ---
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=650&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=650&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]()
 
 Hai trovato un errore nei materiali o hai suggerimenti per migliorare gli appunti?
 
@@ -66,7 +66,7 @@ Partecipa alle discussioni nella sezione **Discuss** suddivisa in:
 - **Q&A**: Domande e risposte sulla materia
 - **Richieste**: Suggerimenti per nuovi contenuti
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=530&lines=%F0%9F%99%8F+Contribuite+tra+di+voi!)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=530&lines=%F0%9F%99%8F+Contribuite+tra+di+voi!)]()
 
 Le tue contribuzioni sono sempre benvenute! Se desideri contribuire con nuovi appunti o migliorare quelli esistenti:
 
