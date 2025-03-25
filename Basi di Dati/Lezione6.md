@@ -12,6 +12,8 @@
       - [Nella pratica…](#nella-pratica)
   - [Una metodologia](#una-metodologia)
   - [Qualità di uno schema concettuale](#qualità-di-uno-schema-concettuale)
+  - [Strutturazione dei requisiti in gruppi di frasi omogenee](#strutturazione-dei-requisiti-in-gruppi-di-frasi-omogenee)
+      - [Esercizio:](#esercizio)
 
 # Progettazione Concettuale
 >[!WARNING]
@@ -252,3 +254,251 @@ Lo schema concettuale deve avere al suo interno:
 2. **_Completezza_**;
 3. **_Leggibilità_**;
 4. e soprattutto... **_minimalità_**;
+
+---
+
+## Strutturazione dei requisiti in gruppi di frasi omogenee
+
+>[!NOTE]
+>### 1) Frasi di carattere generale
+>Si vuole realizzare una base di dati per una società che
+eroga corsi: di ogni corso vogliamo rappresentare i dati
+dei partecipanti e dei docenti.
+>
+>Corso,Partecipante,Docenti --> **_Entità_**
+>
+>Partecipazione,Docenza --> **_Relationship_**
+
+Creiamo lo scheletro del nostro progetto:
+
+```mermaid
+graph TD
+   A[Corso] --> B{"Docenza"}
+   A --> C{"Partecipazione"}
+   B ---> D["Docenti"]
+   C ---> E["Partecipanti"]
+
+   style A fill:#0096FF,stroke:#0096FF,color:white
+   style B fill:#0096FF,stroke:#0096FF,color:white,shape:diamond
+   style C fill:#0096FF,stroke:#0096FF,color:white
+```
+
+>[!NOTE]
+>### 2) Frasi relative ai partecipanti
+> Per i partecipanti (circa 5000), identificati da un
+codice, rappresentiamo il codice fiscale, il cognome,
+l'età, il sesso, la città di nascita, i nomi dei loro attuali
+datori di lavoro e di quelli precedenti (insieme alle date
+di inizio e fine rapporto), le edizioni dei corsi che
+stanno attualmente frequentando e quelli che hanno
+frequentato nel passato, con la relativa votazione finale
+in decimi.
+>
+> Codice, CF, Cognome, Età, Sesso, Città --> **_Attributi di partecipanti_**
+
+Non dobbiamo dimenticare che loro hanno dei **_datori di lavoro_** (_con nome_)
+
+```mermaid
+graph TD
+   %% Nodo principale
+   A[Partecipanti] -->|Codice| B(( ))
+   A -->|CF| C(( ))
+   A -->|Cognome| D(( ))
+   A -->|Età| E(( ))
+   A -->|Sesso| F(( ))
+   A -->|Città| G(( ))
+
+   %% Relazioni lavorative
+   A -- "(1,1)" --> H[Corrente]
+   A -- "(0,N)" --> I[Passato]
+   H -- "(1,1)" --> J[Datore]
+   I -- "(0,N)" --> J
+
+   %% Stili
+   style A fill:#0096FF,stroke:#0096FF,color:white
+   style H fill:#0096FF,stroke:#0096FF,color:white
+   style I fill:#0096FF,stroke:#0096FF,color:white
+   style J fill:#FFFF,stroke:#0096FF,color:black
+   style B fill:#DDD,stroke:#0096FF,color:black
+   style C fill:#DDD,stroke:#0096FF,color:black
+   style D fill:#DDD,stroke:#0096FF,color:black
+   style E fill:#DDD,stroke:#0096FF,color:black
+   style F fill:#DDD,stroke:#0096FF,color:black
+   style G fill:#DDD,stroke:#0096FF,color:black
+
+```
+
+<h3 align = "center">2.1) Edizione di un corso, attuale o passato...</h3>
+
+```mermaid
+graph TD
+   A[Partecipanti]
+
+   A ---> H{"Ed. Corrente"}
+   A  ---> I{"Ed. Passata"}
+   H ---> J[Corso]
+   I  ---> J
+   
+
+   style A fill:#0096FF,stroke:#0096FF,color:white
+   style H fill:#0096FF,stroke:#0096FF,color:white
+   style I fill:#0096FF,stroke:#0096FF,color:white
+   style J fill:#FFFF,stroke:#0096FF,color:black
+```
+
+
+>[!NOTE]
+>### 3) Frasi relative ai datori di lavoro
+>Relativamente ai datori di lavoro presenti e passati dei
+partecipanti, rappresentiamo il nome, l'indirizzo e il
+numero di telefono.
+
+```mermaid
+graph TD
+   A[Datore di Lavoro] -->|Nome| B(( ))
+   A -->|Indirizzo| C(( ))
+   A -->|Telefono| D(( ))
+
+   %% Relazione con i partecipanti
+   E[Partecipanti] -- "(1,1)" --> F[Datore Corrente]
+   E -- "(0,N)" --> G[Datore Passato]
+   F -- "(1,1)" --> A
+   G -- "(0,N)" --> A
+
+   %% Stili
+   style A fill:#0096FF,stroke:#0096FF,color:white
+   style F fill:#0096FF,stroke:#0096FF,color:white
+   style G fill:#0096FF,stroke:#0096FF,color:white
+   style B fill:#DDD,stroke:#0096FF,color:black
+   style C fill:#DDD,stroke:#0096FF,color:black
+   style D fill:#DDD,stroke:#0096FF,color:black
+```
+
+
+
+>[!NOTE]
+> ### 4) Frasi relative ai corsi
+> Per i corsi (circa 200), rappresentiamo il titolo e il
+codice, le varie edizioni con date di inizio e
+fine e, per ogni edizione, rappresentiamo il numero di
+partecipanti e il giorno della settimana, le aule e le ore
+dove sono tenute le lezioni.
+
+```mermaid
+graph TD
+   A[Corso] -->|Codice| B(( ))
+   A -->|Titolo| C(( ))
+
+   %% Edizioni
+   A --> P{"Composizione"}
+   A --> D["Edizione"]
+   D -->|Data inizio| E(( ))
+   D -->|Data fine| F(( ))
+   D -->|N. partecipanti| G(( ))
+   D -->|Giorno sett.| H(( ))
+   D -->|Aule| I(( ))
+   D -->|Ore| J(( ))
+
+   %% Stili
+   style A fill:#0096FF,stroke:#0096FF,color:white
+   style D fill:#0096FF,stroke:#0096FF,color:white
+   style B fill:#DDD,stroke:#0096FF,color:black
+   style C fill:#DDD,stroke:#0096FF,color:black
+   style E fill:#DDD,stroke:#0096FF,color:black
+   style F fill:#DDD,stroke:#0096FF,color:black
+   style G fill:#DDD,stroke:#0096FF,color:black
+   style H fill:#DDD,stroke:#0096FF,color:black
+   style I fill:#DDD,stroke:#0096FF,color:black
+   style J fill:#DDD,stroke:#0096FF,color:black
+```
+
+>[!NOTE]
+> ### 5) Frasi relative a tipi specifici di partecipanti
+> Per i partecipanti che sono liberi professionisti,
+rappresentiamo l'area di interesse e, se lo possiedono, il
+titolo professionale. Per i partecipanti che sono
+dipendenti, rappresentiamo invece il loro livello e la
+posizione ricoperta.
+
+```mermaid
+graph TD
+   A[Partecipanti] -->|Codice| B(( ))
+   A -->|CF| C(( ))
+
+   %% Tipologie di partecipanti
+   A -->|Libero professionista| D{"Area interesse"}
+   A -->|Titolo prof.| E(( ))
+   A -->|Dipendente| F{"Livello"}
+   F -->|Posizione| G(( ))
+
+   %% Stili
+   style A fill:#0096FF,stroke:#0096FF,color:white
+   style D fill:#0096FF,stroke:#0096FF,color:white
+   style F fill:#0096FF,stroke:#0096FF,color:white
+   style B fill:#DDD,stroke:#0096FF,color:black
+   style C fill:#DDD,stroke:#0096FF,color:black
+   style E fill:#DDD,stroke:#0096FF,color:black
+   style G fill:#DDD,stroke:#0096FF,color:black
+```
+
+
+>[!NOTE]
+> ### 6) Frasi relative ai docenti
+> Per i docenti (circa 300), rappresentiamo il cognome,
+l'età, la città di nascita, tutti i numeri di telefono, il
+titolo del corso che insegnano, di quelli che hanno
+insegnato nel passato e di quelli che possono insegnare.
+I docenti possono essere dipendenti interni della società
+di formazione o collaboratori esterni.
+
+---
+
+#### Esercizio:
+
+>[!NOTE]
+> <p>FILM(<u>CF</u>,T,R,A,CN)</p>
+> <p>ARTISTI(<u>CA</u>,C,N,S,DN,Naz)</p>
+> <p>INTERP(CF,CA,P)</p>
+>
+> 1. Trovare i titoli dei film nei quali Henry Fonda è stato interprete.
+
+- Attr T in FILM 
+- Attr N,C in ARTISTI
+    - FILM(CF,T,...)
+    - ARTISTI(CA,C,N,...)
+    - INTERP(CF,CA,...)
+
+- Passaggi per la risoluzione:
+
+  $$ 1) \space \space F_1 = \pi_\text{CF,T}(\text{FILM}) $$
+  $$ 2) \space \space A_1 = \sigma_\text{ N = 'Henry' AND C = 'Folda'}(\text{ARTISTI}) $$
+  $$ 3) \space \space A_2 = \pi_\text{CA}(A_1) $$
+  $$ 4) \space \space R_1 = \text{INTERP} \bowtie A_2 \rightarrow R_1(\text{CT,CA,P}) $$
+  $$ 5) \space \space R_2 = \pi_\text{CF}(R_1) $$
+  $$ 6) \space \space R_3 = R_2 \bowtie F_1 $$
+  $$ 7) \space \space R_4 = \pi_\text{T}(R_3) $$
+
+- Utilizziamo il calcolo dei domini:
+
+  $$ {(T | F)} : T \rightarrow T:t $$
+  $$ F \rightarrow \text{relazione da usare più predicati vincolanti} $$
+
+  - FILM(CF: _f_ , T: _t_ , ...) ∧
+  - ARTISTI(CA: _a_ , C: _c_ , N: _n_ , ...) ∧
+  - INTERP(CF: _f_ , CA: _a_ , ...) ∧
+    - {Nome = "Henry" AND Cognome = "Folda"}
+
+  - Quindi:
+    - Domini: { T: t | FILM(CF: _f_ , CA: _a_ , T: _t_ , ...) ∧ | INTERP(CF: _f_ , CA: _a_ , ...)}
+
+- Utilizziamo il calcolo delle tuple
+  * Variabile libera: **ttt** (titolo del film)
+  * Variabili vincolate: 
+      * f : (codice film) 
+      * a : (codice artista)
+
+  - Quindi:
+
+    - Tuple: {t ∣∃f,a (FILM(f,t,...)∧INTERP(f,a,...)∧ARTISTI(a,′Fonda′,′Henry′,...))}
+
+-
