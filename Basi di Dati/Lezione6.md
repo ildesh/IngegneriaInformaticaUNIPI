@@ -500,5 +500,3 @@ di formazione o collaboratori esterni.
   - Quindi:
 
     - Tuple: {t ∣∃f,a (FILM(f,t,...)∧INTERP(f,a,...)∧ARTISTI(a,′Fonda′,′Henry′,...))}
-
--
