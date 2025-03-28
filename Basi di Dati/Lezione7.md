@@ -1,4 +1,4 @@
-<h1> Lezione 7 - 26-03-2025 </h1>
+<h1> Lezione 7 - 26-03-2025 - 28-03-2025</h1>
 
 <h1>📚 Indice</h1>
 
@@ -264,3 +264,30 @@ I casi principali sono i seguenti:
   <img src="./images/accorpamentoE-R2.png" alt="Accorpamento E-R 2" style="max-width: 48%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
 </div>
 
+--- 
+
+### Scelta degli identificatori principali
+
+Operazione indispensabile per la traduzione nel
+modello relazionale
+I criteri riguardo la scelta di questi identificatori sono:
+- assenza di opzionalità
+- semplicità
+- utilizzo nelle operazioni più frequenti o importanti
+>[!IMPORTANT]
+> #### Se nessuno degli identificatori soddisfa i requisiti visti? Cosa si fa??
+>
+> - Si introducono nuovi attributi (codici) contenenti
+valori speciali generati appositamente per questo
+scopo
+
+---
+
+#### Esempio: Entità e relationship molti a molti
+
+- Impiegato(Matricola, Cognome, Stipendio)
+- Progetto(Codice, Nome, Budget)
+- Partecipazione(Matricola, Codice, DataInizio)
+- Vincoli di integrità referenziale fra:
+  - Matricola in Partecipazione e (la chiave di) Impiegato
+  - Codice in Partecipazione e (la chiave di) Progetto
