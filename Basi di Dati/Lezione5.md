@@ -395,7 +395,7 @@ graph LR
 ```mermaid
 graph LR
    A[Entità A] -- "(1,1)" --> B{"Relazione"}
-   B -- "(1,1)" --> C[Entità B]
+   B -- "(1,N)" --> C[Entità B]
 
    style A fill:#0096FF,stroke:#0096FF,color:white
    style B fill:#0096FF,stroke:#0096FF,color:white,shape:diamond
