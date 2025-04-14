@@ -4,6 +4,24 @@
 
 <h1> 📚 Indice </h1>
 
+1. [Heap](#heap)  
+   1.1 [Definizione](#definizione)  
+   1.2 [Proprietà](#proprietà)  
+   1.3 [Operazioni](#operazioni)  
+   1.4 [Classe `Heap`](#class-heap)  
+   1.5 [Costruttore e distruttore](#costruttore-e-distruttore)  
+   1.6 [Funzione di inserimento](#funzione-di-inserimento)  
+   1.7 [Funzione di risalita (`up`)](#funzione-di-risalita)  
+   1.8 [Funzione di estrazione](#funzione-di-estrazione)  
+   1.9 [Funzione di discesa (`down`)](#funzione-di-discesa)  
+   1.10 [Quando si usa l'heap?](#quando-si-usa-lheap)
+
+2. [HeapSort](#heapsort)  
+   2.1 [Definizione](#definizione-1)  
+   2.2 [Algoritmo](#algoritmo)  
+   2.3 [Funzione `buildHeap`](#funzione-di-costruzione-dellheap)  
+   2.4 [Funzione `extract` modificata](#extract-modificata)  
+   2.5 [Funzione `down` modificata](#down-modificata)
 
 ---
 
