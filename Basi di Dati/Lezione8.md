@@ -1,4 +1,4 @@
-## Espansione dettagliata su Dipendenze Funzionali e Normalizzazione
+## Dipendenze Funzionali e Normalizzazione
 
 ### 1. Introduzione alle Dipendenze Funzionali
 **Contesto storico e motivazione**
