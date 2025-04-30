@@ -17,7 +17,7 @@
 **Esempi reali**
 1. In un archivio studenti, Matricola determina Nome, Cognome, DataNascita.
 2. In un sistema di fatturazione, CodProdotto determina Descrizione, PrezzoUnitario, Categoria.
-
+---
 ### 2. Obiettivi della Progettazione Logica
 
 1. Conservazione dell’informazione
@@ -33,7 +33,7 @@
 **Approccio top-down vs bottom-up**
 - Top-down: partenza da modello E-R, traduzione guidata da FD.
 - Bottom-up: riflessione su schemi già esistenti e decomposizione.
-
+---
 ### 3. Linee Guida per la Progettazione
 
 - Semplicità: ogni relazione rappresenta un solo concetto.
@@ -43,7 +43,7 @@
 **Approfondimento**
 - Balance tra forme normali e performance: normalizzazione spinta può frammentare eccessivamente lo schema.
 - Design pragmatico: a volte accettare 3NF invece di BCNF per preservazione dipendenze.
-
+---
 ### 4. Definizione Formale di Dipendenza Funzionale
 
 - Dato R(T) e FD X → Y, consideriamo l'insieme di tutte le istanze possibili.
@@ -51,7 +51,7 @@
 - Superchiavi e chiavi:
   - Calcolo di chiusura degli attributi X+.
   - Chiave: X+ = T e nessun sottoinsieme proprio di X ha chiusura pari a T.
-
+---
 ### 5. Forme Normali e Normalizzazione
 
 - 1NF: atomicità degli attributi.
@@ -62,7 +62,7 @@
 **Vantaggi e svantaggi**
 - 3NF conserva dipendenze, BCNF evita ogni ridondanza residua.
 - BCNF può rompere la preservazione dipendenze.
-
+---
 ### 6. Regole di Inferenza di Armstrong
 
 1. **_Riflessività_**: se Y è contenuto in X allora X → Y.
@@ -74,7 +74,7 @@
 2. **_Decomposizione_**: {X → YZ} ⊢ X → Y
 3. **_Indebolimento_**: {X → Y} ⊢ XZ → Y
 4. **_Identità_**: {} ⊢ X → X 
-
+---
 ### 7. Chiusura di Attributi e Insiemi di Dipendenze
 
 **Definizione:** 
@@ -84,8 +84,6 @@ La **chiusura di un insieme di attributi** `X`, indicata come `X⁺`, è l'insie
 #### **Perché serve?**
 - Serve a verificare se `X` può determinare tutti gli attributi della relazione → quindi a capire se `X` è una *chiave candidata*.
 - Serve a derivare nuove dipendenze implicate da `F`.
-
----
 
 #### **Algoritmo per calcolare X⁺**
 È un algoritmo iterativo, semplice da ricordare:
@@ -113,7 +111,7 @@ Fine: `A⁺ = {A, B, C, D}` → Quindi `A` è chiave, perché determina tutto!
 
 ---
 
-### 🔎 **Chiusura di un Insieme di FD (F⁺)**
+### **Chiusura di un Insieme di FD (F⁺)**
 
 **Definizione:**  
 La **chiusura di un insieme di dipendenze funzionali** `F`, indicata come `F⁺`, è l'insieme di *tutte* le dipendenze funzionali che sono *implicate logicamente* da `F`.
