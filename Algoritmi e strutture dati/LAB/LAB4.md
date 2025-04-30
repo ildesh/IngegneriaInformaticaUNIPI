@@ -10,7 +10,6 @@
 Implementiamo un codice `binTree` che rappresenta un albero binario di ricerca. L'albero è definito come una struttura dati ricorsiva, in cui ogni nodo ha un valore e due figli (sinistro e destro). La proprietà principale di un albero binario di ricerca è che per ogni nodo, il valore del nodo sinistro è minore del valore del nodo padre e il valore del nodo destro è maggiore del valore del nodo padre.
 
 ```cpp
-
 struct Node{
     int value;
     Node * left;
@@ -26,7 +25,6 @@ public:
     BinTree() { root_ = NULL; }
     Node * getRoot() { return root_; }
 }
-
 ```
 
 ### Funzioni principali
@@ -58,13 +56,11 @@ void insert(int val){
     else
         pre->right = node;
 }
-
 ```
 
 - `min/Max()`: restituisce il valore minimo/massimo dell'albero. Queste funzioni percorrono l'albero a sinistra (per il minimo) o a destra (per il massimo) fino a raggiungere una foglia.
 
 ```cpp
-
 Node * minValue(){
     Node * temp = root_;
     while( temp->left != NULL )
@@ -78,7 +74,6 @@ Node * maxValue(){
         temp = temp->right;
     return temp;
 }
-
 ```
 
 - Visite:
@@ -99,7 +94,6 @@ void inOrder(Node * node){
 
     }
 }
-
 ```
 ---
 
@@ -233,7 +227,6 @@ int main(){
 
     return 0;
 }
-
 ```
 
 4. Compiliamo il codice con il comando `g++ main.cpp -o lab4` e poi eseguiamo il programma con `./lab4`. Dovremmo vedere l'output della visita in ordine e i valori minimo e massimo dell'albero.
@@ -434,7 +427,6 @@ int main(){
 
     return 0;
 }
-
 ```
 
 1. Compiliamo il codice adesso con la nuova funzione `search` e testiamola. Ecco il comando per compilare il codice:
