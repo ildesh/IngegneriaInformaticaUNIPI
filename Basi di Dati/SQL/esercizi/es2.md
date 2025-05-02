@@ -92,3 +92,6 @@ Passo dopo passo:
         | nomePaziente | cognomePaziente |
         | ------------ | --------------- |
         | Luca         | Bianchi         |
+
+>[!TIP]
+> L'utilizzo di `DISTINCT` non è necessario in questo caso, poiché stiamo già raggruppando i risultati per `Paziente`, `nomePaziente` e `cognomePaziente`.
