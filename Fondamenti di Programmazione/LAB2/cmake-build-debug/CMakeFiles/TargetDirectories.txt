@@ -1,0 +1,3 @@
+C:/Users/Windows 11 Pro/Desktop/uni/fondamenti di programmazione/LAB2/cmake-build-debug/CMakeFiles/LAB2.dir
+C:/Users/Windows 11 Pro/Desktop/uni/fondamenti di programmazione/LAB2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Windows 11 Pro/Desktop/uni/fondamenti di programmazione/LAB2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
