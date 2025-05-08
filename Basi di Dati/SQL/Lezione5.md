@@ -19,6 +19,17 @@
 - [Tipologie di parametro](#tipologie-di-parametro)
   - [Che cosa sono?](#che-cosa-sono-1)
     - [1. Ingresso](#1-ingresso)
+      - [Esempio dell'ingresso:](#esempio-dellingresso)
+    - [2. Uscita](#2-uscita)
+      - [Esempio di Uscita](#esempio-di-uscita)
+- [Istruzioni condizionali](#istruzioni-condizionali)
+  - [Che cosa sono?](#che-cosa-sono-2)
+    - [1. Esempio `IF`:](#1-esempio-if)
+    - [2. Esempio `CASE`](#2-esempio-case)
+- [Istruzioni iterative](#istruzioni-iterative)
+  - [Che cosa sono:](#che-cosa-sono-3)
+    - [1. While](#1-while)
+    - [2. Repeat](#2-repeat)
 
 ---
 
@@ -192,9 +203,230 @@ Una stored procedure MySQL accetta parametri di tipo
 
 ### 1. Ingresso
 
-Un parametro in ingresso può essere letto, ma non modificato
+Un parametro in ingresso **_può essere letto_**, ma non modificato
 
 - i parametri sono in ingresso per default
-- equivalente al passaggio per valores
+- equivalente al passaggio per valore
 
-(da pagina 5 a 25 manca LEZIONE 5).
+#### Esempio dell'ingresso:
+
+```SQL
+DROP PROCEDURE IF EXISTS parcella_media_spec;
+
+DELIMITER $$
+CREATE PROCEDURE parcella_media_spec(IN _specializzazione VARCHAR(100))
+BEGIN
+  SELECT AVG(M.Parcella)
+  FROM Medico M
+  WHERE M.specializzazione = _specializzazione;
+END $$
+DELIMITER;
+
+-- Chiamata della stored procedure
+CALL parcella_media_spec('Ortopedia'); --chiamata
+```
+
+>[!NOTE]
+>## Esecuzione
+>```terminal
+>|AVG(Parcella)|
+>|-------------|
+>|  170.0000   |
+
+---
+
+### 2. Uscita
+
+Un parametro di uscita **_può essere modificato_** per assumere il valore del risultato della stored procedure
+
+- nella chiamata si possono usare variabili user-defined(quelle che iniziano con '@').
+
+#### Esempio di Uscita
+```SQL
+DROP PROCEDURE IF EXISTS tot_pazienti_visitati_spec;
+
+DELIMITER $$
+CREATE PROCEDURE tot_pazienti_visitati_spect(
+                 IN _specializzazione VARCHAR(100)
+                 OUT totale_pazienti_ INT)
+  BEGIN
+    SELECT COUNT(DISTINCT V.Paziente) INTO totale_pazienti_
+    FROM Visita V
+      INNER JOIN
+      Medico M ON V.Medico = M.Matricola
+    WHERE M.Specializzazione = _specializzazione;
+  END $$
+DELIMITER;
+
+CALL tot_pazienti_visitati_spect('Neurologia', @quantiPazienti);
+
+SELECT @quantiPazienti;
+```
+
+>[!NOTE]
+>## Esecuzione
+>```terminal
+>|@quantiPazienti|
+>|---------------|
+>|      18       |
+
+---
+
+# Istruzioni condizionali
+
+## Che cosa sono?
+
+Le istruzioni condizionali permettono di esprimere conizioni modificando il flusso di esecuzione
+
+1. istruzione `IF`
+2. istruzione `CASE`
+
+- possono contenere letterali, variabili e funzioni
+
+### 1. Esempio `IF`:
+
+La dicitura per l'`IF` è la seguente:
+
+```SQL
+IF --condizione
+-- blocco istruzione
+ELSE --/ELSEIF
+-- blocco istruzione
+ENDIF
+```
+
+
+>[!TIP]
+>Scrivere una stored procedure che riceva come parametro un inter t e una specializzazione s e restituisca in uscita true se il numero di visite della psecializzazione s nel mese in corso p superiore a t, false se è inferiore, e NULL se è uguale
+```SQL
+DROP PROCEDURE IF EXISTS visite_sopra_soglia
+
+DELIMITER $$
+CREATE PROCEDURE visite_sopra_sogla(IN _t INT, IN _s VARCHAR(100), OUT passed BOOLEAN)
+BEGIN
+  DECLARE visite_mese_attuale INT DEFAULT 0;
+  SET visite_mese_attuale = (
+      SELECT COUNT (*)
+      FROM VISITA V
+        INNER JOIN
+        Medico M ON V.Medico = M.Matricola
+      WHERE M.Specializzazione = _s
+        AND MONTH(V.'Data') = MONTH(CURRENT_DATE)
+        AND YEAR(V.'Data') = YEAR(CURRENT_DATE)
+  );
+
+  IF visite_mese_attuale > _t THEN
+    SET passed = TRUE;
+  ELSEIF visite_mese_attuale < _t THEN
+    SET passed = FALSE;
+  ELSE
+    SET passed = NULL;
+  END IF;
+END $$
+DELIMITER;
+
+CALL visite_sopra_soglia(10,'Otorinolaringoiatria', @controllo);
+```
+
+### 2. Esempio `CASE`
+
+La dicitura in SQL del `CASE` è la seguente:
+
+```SQL
+CASE
+  WHEN --condizione
+   THEN
+    -- blocco istruzione
+  WHEN --condizione 
+   THEN
+    -- blocco istruzione
+  ELSE
+    -- blocco istruzione
+END CASE
+```
+
+>[!TIP]
+>Scrivere una stored procedure che riceva come parametro un intero t e una specializzazione s e restituisca in uscita una stringa che indichi "Sopra soglia" se il numero di visite della specializzazione s nel mese in corso è superiore a t, "Sotto soglia" se è inferiore, e "Uguale alla soglia" se è uguale.
+
+```SQL
+DROP PROCEDURE IF EXISTS verifica_visite_soglia;
+
+DELIMITER $$
+
+CREATE PROCEDURE verifica_visite_soglia(IN _t INT, IN _s VARCHAR(100), OUT risultato VARCHAR(50))
+BEGIN
+  DECLARE visite_mese_attuale INT DEFAULT 0;
+  SET visite_mese_attuale = (
+      SELECT COUNT(*)
+      FROM Visita V
+        INNER JOIN
+        Medico M ON V.Medico = M.Matricola
+      WHERE M.Specializzazione = _s
+        AND MONTH(V.Data) = MONTH(CURRENT_DATE)
+        AND YEAR(V.Data) = YEAR(CURRENT_DATE)
+  );
+
+  CASE
+    WHEN visite_mese_attuale > _t THEN
+      SET risultato = 'Sopra soglia';
+    WHEN visite_mese_attuale < _t THEN
+      SET risultato = 'Sotto soglia';
+    ELSE
+      SET risultato = 'Uguale alla soglia';
+  END CASE;
+END $$
+
+DELIMITER;
+
+CALL verifica_visite_soglia(10, 'Cardiologia', @esito);
+
+SELECT @esito;
+```
+
+---
+
+# Istruzioni iterative
+
+## Che cosa sono:
+
+Le istruzioni iterative permettono di ripetere blocchi di codice, dipendentemente dalla veridicità di una condizione
+
+1. Istruzioni `WHILE`
+2. Istruzioni `REPEAT`
+3. Istruzioni `LOOP`
+
+- La condizione può valutare anche delle funzioni
+
+### 1. While
+
+La dicitura in SQL per il WHILE è la seguente:
+
+```SQL
+
+WHILE -- condizione
+  DO
+    -- blocco istruzioni
+END WHILE
+
+-- ovviamente il blocco viene eseguito fino a che la condizione del WHILE non diventa FALSE
+
+```
+
+### 2. Repeat
+
+La dicitura in SQL per il REPEAT è la seguente:
+
+```SQL
+
+REPEAT
+  -- blocco istruzioni
+UNTIL -- condition
+END REPEAT;
+
+-- il REPEAT viene eseguito fintantochè non si verifica la condizione
+-- (UNTIL contiene una condizione d'uscita)
+```
+
+>[!NOTE]
+> ## NOTA BENE: 
+> Il `REPEAT` in SQL corrisponde al `DO WHILE` negli altri linguaggi di programmazione.
