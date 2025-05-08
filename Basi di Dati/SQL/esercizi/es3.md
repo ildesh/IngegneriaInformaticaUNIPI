@@ -62,7 +62,7 @@ MediciValidi AS (
     SELECT 
         C.Medico
     FROM ContaAnni C
-    WHERE C.AnniVisitati >= (C.AnniSuccessivi / 2.0)  -- /2.0 per forza floating point
+    WHERE C.AnniVisitati > (C.AnniSuccessivi / 2.0)  -- /2.0 per forza floating point
     GROUP BY C.Medico
 )
 
@@ -73,6 +73,4 @@ SELECT
 FROM Medico M
 JOIN MediciValidi MV ON M.matricola = MV.Medico
 GROUP BY M.specializzazione;
-
-
 ```
