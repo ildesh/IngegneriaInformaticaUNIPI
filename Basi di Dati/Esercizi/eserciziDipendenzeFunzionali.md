@@ -301,14 +301,272 @@ $$
   - **AD → F** e **B → A** ⇒ **BD → F**  
     - Infatti, B (che dà A) + D → F  
 
-✅ Quindi, sì: **Gmin** e **Hmin** sono equivalenti, rappresentano la stessa chiusura.
+Quindi, sì: **Gmin** e **Hmin** sono equivalenti, rappresentano la stessa chiusura.
+
 
 ---
 
-## Risposta Finale
 
-- **Copertura minimale di G**: { B → C, B → A, AD → E, BD → F }  
-- **Copertura minimale di H**: { B → C, B → A, AD → E, AD → F }  
-- ✅ **Sono equivalenti**.
+## Esercizio 3
+
+**Insieme di dipendenze funzionali (F):**
+
+```
+F = { ABC → DEG, BD → ACE, C → BH, H → BDE }
+```
+
+---
+
+### Passo 1: Riduzione degli attributi estranei
+
+#### 📚 Teoria:
+
+Un attributo è **estraneo** nella parte sinistra di una dipendenza funzionale se, rimuovendolo, la dipendenza continua a essere valida (cioè la chiusura degli attributi rimanenti determina ancora il lato destro).
+
+---
+
+#### 🔎 Analisi delle dipendenze:
+
+1. **ABC → DEG**
+
+  - Verifichiamo se **A** è estraneo:
+    - Calcoliamo **BC⁺** (chiusura di BC):
+     - BC → DEG (da ABC → DEG, rimuovendo A)
+     - C → BH
+     - H → BDE
+     - **BC⁺ = {B, C, D, E, G, H, A}**
+    - **BC⁺** include **DEG**, quindi **A** è estraneo.
+
+  - Riscriviamo la dipendenza come: **BC → DEG**
+
+  - Verifichiamo se **B** è estraneo:
+    - Calcoliamo **C⁺** (chiusura di C):
+     - C → BH
+     - H → BDE
+     - **C⁺ = {C, B, H, D, E}**
+    - **C⁺** include **DEG**, quindi **B** è estraneo.
+
+  - Riscriviamo la dipendenza come: **C → DEG**
+
+2. **BD → ACE**
+
+  - Verifichiamo se **B** è estraneo:
+    - Calcoliamo **D⁺** (chiusura di D):
+     - Nessuna dipendenza parte da D direttamente.
+     - **D⁺ = {D}**
+    - **D⁺** non include **ACE**, quindi **B** non è estraneo.
+
+  - Verifichiamo se **D** è estraneo:
+    - Calcoliamo **B⁺** (chiusura di B):
+     - Nessuna dipendenza parte da B direttamente.
+     - **B⁺ = {B}**
+    - **B⁺** non include **ACE**, quindi **D** non è estraneo.
+
+  - La dipendenza rimane: **BD → ACE**
+
+3. **C → BH**
+
+  - Verifichiamo se **C** è minimale:
+    - **C** è già singolo, quindi non ci sono attributi da verificare.
+
+  - La dipendenza rimane: **C → BH**
+
+4. **H → BDE**
+
+  - Verifichiamo se **H** è minimale:
+    - **H** è già singolo, quindi non ci sono attributi da verificare.
+
+  - La dipendenza rimane: **H → BDE**
+
+---
+
+### Passo 2: Eliminazione delle dipendenze ridondanti
+
+#### 📚 Teoria:
+
+Una dipendenza funzionale è **ridondante** se può essere derivata dalle altre dipendenze nell'insieme. Per verificare, rimuoviamo temporaneamente la dipendenza e calcoliamo la chiusura degli attributi per vedere se il lato destro della dipendenza può essere determinato.
+
+---
+
+#### 🔎 Analisi delle ridondanze:
+
+1. **C → DEG**
+  - Rimuoviamo temporaneamente **C → DEG** e calcoliamo **C⁺** usando le altre dipendenze:
+    - C → BH
+    - H → BDE
+    - **C⁺ = {C, B, H, D, E, G}**
+  - **C⁺** include **DEG**, quindi **C → DEG** è ridondante.
+
+2. **BD → ACE**
+  - Rimuoviamo temporaneamente **BD → ACE** e calcoliamo **BD⁺** usando le altre dipendenze:
+    - Nessuna dipendenza determina **A**, **C**, o **E** partendo da **BD**.
+    - **BD⁺ = {B, D}**
+  - **BD⁺** non include **ACE**, quindi **BD → ACE** non è ridondante.
+
+3. **C → BH**
+  - Rimuoviamo temporaneamente **C → BH** e calcoliamo **C⁺** usando le altre dipendenze:
+    - Nessuna dipendenza determina **B** o **H** partendo da **C**.
+    - **C⁺ = {C}**
+  - **C⁺** non include **BH**, quindi **C → BH** non è ridondante.
+
+4. **H → BDE**
+  - Rimuoviamo temporaneamente **H → BDE** e calcoliamo **H⁺** usando le altre dipendenze:
+    - Nessuna dipendenza determina **B**, **D**, o **E** partendo da **H**.
+    - **H⁺ = {H}**
+  - **H⁺** non include **BDE**, quindi **H → BDE** non è ridondante.
+
+---
+
+### Passo 3: Risultato finale
+
+Dopo aver eliminato gli attributi estranei e le dipendenze ridondanti, l'insieme minimale delle dipendenze funzionali è:
+
+```
+Fmin = {
+  BD → ACE,
+  C → BH,
+  H → BDE
+}
+```
+
+--- 
+
+## Esercizio 4:
+
+```
+F = {AB --> CDE, CE --> AB, A --> G, G --> B}
+```
+
+- AB --> C
+- AB --> D
+- AB --> E
+- CE --> A 
+- CE --> B
+- A --> G
+- G --> B
+- G --> D
+
+1. A<sup>+</sup> = AGBD ==> B è estraneo
+2. C<sup>+</sup> = C ==> C non è estraneo
+
+Ora troviamo le dipendenze ridondanti:
+
+Noi ora abbiamo:
+
+- A --> C
+- A --> D
+- A --> E
+- CE --> A 
+- CE --> B
+- A --> G
+- G --> B
+- G --> D
+
+
+(DA FINIRE)
+
+
+---
+
+## Esercizio 5
+
+G = {A --> B, C --> AD, AF --> EC}
+
+- F<sup>+</sup> = F
+- AF<sup>+</sup> = AFBCED ==> CHIAVE
+- CF<sup>+</sup> = CFADEB ==> CHIAVE
+
+- A --> B
+- C --> AD
+- AF --> E
+- AF --> C
+
+1. A<sup>+</sup> = AB ==> non è estraneo
+2. F<sup>+</sup> = F == non è estraneo
+
+---
+
+## Esercizio 5:
+
+F = {E --> D, C --> B, CE --> G, B --> A}
+
+- CE<sup>+</sup> = CEDBGA ==> chiave
+
+1. R1 = (ED)
+2. R2 = (CB)
+3. R3 = (CEG)
+4. R4 = (AB)
+
+---
+
+## Esercizio 6:
+
+F = {AB --> CDE, AC --> BDE, B --> C, C --> BD, B --> E}
+
+1. A fa parte della chiave perché non è presente in nessuna della parte destra
+2. B fa la stessa cosa
+
+Controlliamo: 
+
+1. AB<sup>+</sup> = ABCDE ==> chiave
+2. AC<sup>+</sup> = ACBDE ==> chiave
+
+Facciamo un check se sono tutte in terza forma normale (3FN)
+
+1. AB e AC sono entrambi chiavi quindi va bene così
+2. B --> C
+   1. B non è superchiave però C fa parte di una delle chiavi
+3. C --> B
+   1. C non è superchiave però B fa parte di una delle chiavi
+4. C --> D
+   1. C non è superchiave e D non fa parte delle chiavi (NO 3FN)
+5. B --> E
+   1. B non è una superchiave e E non fa parte delle chiavi (NO 3FN)
+
+Quindi NON E' IN TERZA FORMA NORMALE!
+
+Calcoliamo dunque la copertura minimale:
+
+1. Troviamo gli attributi estranei:
+   1. AB --> C
+      1. controlliamo se A è estraneo
+         1. B<sup>+</sup> = BCDAE --> A è estraneo
+      2. controlliamo se B è estraneo
+         1. A<sup>+</sup> = A --> B non è estraneo
+   2. AB --> D
+      1. non serve
+   3. AB --> E
+      1. non serve
+2. Controlliamo le ridondanze
+    1. Controllo **B → C**:
+       1. È dato direttamente ⇒ NON ridondante
+    2. Controllo **B → D**:
+       1. Verifica se **B → D** è derivabile da altre:
+          1. B → C e **C → D**
+          2. Quindi: B → C → D
+             1.  Quindi **B → D è ridondante** (posso eliminarla!)
+    3. Controllo **B → E**:
+        1. È dato direttamente ⇒ NON ridondante
+    4. Controllo **C → B**:
+       1.  È dato direttamente ⇒ NON ridondante
+    5. Controllo **C → D**:
+       1. È dato direttamente ⇒ NON ridondante
+
+    La nostra copertura minimale finale è:
+    - B → C
+    - B → E
+    - C → B
+    - C → D
+
+    O magari meglio:
+    - B → CE
+    - C → BD
+
+3. Visto che non abbiamo ancora la 3FN allora creiamo delle relazioni (decomposizione):
+   1. R1 = (BCE)
+   2. R2 = (CBD)
+   3. R3 = (AB) --> devo mettere una relazione con una chiave perché appunto nelle altre non compare una chiave
+4. Adesso è in 3FN!
+
 
 ---
