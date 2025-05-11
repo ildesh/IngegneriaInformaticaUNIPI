@@ -1,7 +1,40 @@
 <h1> Lezione 4 SQL - 16/04/2025 </h1>
 
+---
+
 <h1> Indice </h1>
 
+- [SubQuery](#subquery)
+  - [Non-correlated subquery:](#non-correlated-subquery)
+    - [Esempio:](#esempio)
+  - [Negazione della subquery](#negazione-della-subquery)
+    - [Esempio 2:](#esempio-2)
+    - [Esempio 3:](#esempio-3)
+- [Versione Join-equivalente](#versione-join-equivalente)
+    - [Esempio:](#esempio-1)
+  - [Query con Subquery](#query-con-subquery)
+  - [Query con Join](#query-con-join)
+- [Annidamento multiplo](#annidamento-multiplo)
+    - [Esempio:](#esempio-2)
+  - [Visibilità:](#visibilità)
+- [Subquery vs Subquery scalari](#subquery-vs-subquery-scalari)
+    - [Esempio:](#esempio-3)
+    - [Esempio:](#esempio-4)
+- [Correlated subquery](#correlated-subquery)
+    - [Esempio:](#esempio-5)
+- [Costrutto EXIST - NOT EXISTS](#costrutto-exist---not-exists)
+    - [Esempio:](#esempio-6)
+    - [Esempio 2:](#esempio-2-1)
+- [Divisione](#divisione)
+    - [Esempio di divisione con doppio NOT EXISTS:](#esempio-di-divisione-con-doppio-not-exists)
+    - [Esempio di divisione con raggruppamento](#esempio-di-divisione-con-raggruppamento)
+
+---
+
+Se vuoi, posso anche aggiungere questo **indice ipertestuale** direttamente sopra il tuo testo completo, così hai il file **pronto per stampare o trasformare in PDF**.
+
+Vuoi che proceda e ti preparo il file **completo** con l’indice già incluso?
+(Posso fartelo in **PDF** o **Markdown** come per le altre lezioni 👇)
 
 ---
 
@@ -17,7 +50,7 @@ Struttura: Query ESTERNA + Query INTERNA = query con Subquery
 > #### Che cosa sono?
 > Una non-correlated subquery è una sottoquery che può essere eseguita indipendentemente dalla query esterna. 
 >
-> > In breve... I record ottenuti dalla subquery non dipendono dalla outer query.
+> In breve... I record ottenuti dalla subquery non dipendono dalla outer query.
 
 Il risultato della Noncorrelated subquery possiamo definirlo così:
 
@@ -51,6 +84,8 @@ solo se non è presente nel result set della subquery.
 >[!WARNING]
 > IN controlla che il record sia anche nel risultato
 della subquery, mentre NOT IN che non ci sia
+
+---
 
 #### Esempio 2:
 
@@ -307,7 +342,8 @@ WHERE YEAR(V1.Data) = 2013
 >[!IMPORTANT]
 > ### Che cos'è?
 > Il costrutto EXISTS è un operatore logico che restituisce TRUE se la subquery produce almeno un record, FALSE altrimenti.
-> > In breve... Se la subquery produce almeno un record, il costrutto EXISTS è TRUE, altrimenti è FALSE.
+> 
+> In breve... Se la subquery produce almeno un record, il costrutto EXISTS è TRUE, altrimenti è FALSE.
 
 #### Esempio:
 
@@ -328,6 +364,8 @@ WHERE MONTH(V1.Data) = 1
 
 >[!NOTE]
 > ∃ i record del risultato hanno almeno un record nel result set della subquery
+
+---
 
 #### Esempio 2:
 
@@ -360,7 +398,7 @@ WHERE YEAR(V1.Data) = 2013
 >
 > In dettaglio... la divisione è un operatore insiemistico derivato utile per interrogazioni che contengono condizioni esaustive espresse mediante l’avverbio **_tutti_**.
 
-#### Esempio:
+#### Esempio di divisione con doppio NOT EXISTS:
 
 >[!TIP]
 > Indicare i pazienti visitati da tutti i medici
@@ -371,11 +409,36 @@ FROM Paziente P
 WHERE NOT EXISTS
 (
     SELECT *
-    FROM Visita V
-    WHERE V.Medico = M.Matricola
-        AND V.Paziente = P.CodFiscale
-)
+    FROM Medico M
+    WHERE NOT EXISTS
+    (
+        SELECT *
+        FROM Visita V
+        WHERE V.Medico = M.Matricola
+            AND V.Paziente = P.CodFiscale
+    )
+);
+```
 
 >[!NOTE]
-> Prendi ogni paziente P per il quale non trovi nemmeno un medico M che non abbia visitato P (cioè nemmeno un medico qui).
+> La parte all'interno del primo NOT EXISTS prende ogni paziente P per il quale non trovi nemmeno un medico M che non abbia visitato P (cioè nemmeno un medico qui).
 
+---
+
+#### Esempio di divisione con raggruppamento
+
+>[!TIP]
+>Indicare i pazienti visitati da tutti i medici
+
+```SQL
+SELECT V.Paziente
+FROM Visita V
+GROUP BY V.Paziente
+HAVING COUNT(DISTINCT V.Medico) = (
+    SELECT COUNT(*)
+    FROM MEDICO
+):
+```
+
+>[!NOTE]
+> Nell'HAVING COUNT vengono controllati medici diversi che hanno visitato il paziente.

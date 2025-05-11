@@ -1,4 +1,38 @@
-# Lezione 1 - 27/03/2025
+ <h1> Lezione 1 - 27/03/2025 </h1>
+
+---
+
+<h1> Indice  </h1>
+
+* [Cos’è un database relazionale](#cosè-un-database-relazionale)
+  * [Chiavi primarie e chiavi esterne](#chiavi-primarie-e-chiavi-esterne)
+  * [RDBMS e proprietà ACID](#rdbms-e-proprietà-acid)
+* [Introduzione a SQL](#introduzione-a-sql)
+  * [Esempio di query SQL](#esempio-di-query-sql)
+  * [Best practice di base](#best-practice-di-base)
+* [Clausole e operatori in SQL](#clausole-e-operatori-in-sql)
+  * [Flusso logico di una query SQL](#flusso-logico-di-una-query-sql)
+  * [Errori comuni da evitare](#errori-comuni-da-evitare)
+* [Gestione delle date in SQL](#gestione-delle-date-in-sql)
+  * [Best practice con le date](#best-practice-con-le-date)
+* [Operatori di aggregazione](#operatori-di-aggregazione)
+  * [Funzioni aggregate principali](#funzioni-aggregate-principali)
+  * [Best practice e avvertenze](#best-practice-e-avvertenze)
+* [JOIN e relazioni](#join-e-relazioni)
+  * [Tipi di JOIN](#tipi-di-join)
+  * [Errori comuni sui JOIN](#errori-comuni-sui-join)
+* [Valori NULL](#valori-null)
+  * [Regole e comportamento dei NULL](#regole-e-comportamento-dei-null)
+  * [Best practice sui NULL](#best-practice-sui-null)
+* [Sottoquery](#sottoquery)
+  * [Esempio di sottoquery semplice](#esempio-di-sottoquery-semplice)
+  * [Sottoquery scalari vs set-oriented](#sottoquery-scalari-vs-set-oriented)
+  * [Sottoquery correlate](#sottoquery-correlate)
+  * [Suggerimenti e avvertenze](#suggerimenti-e-avvertenze)
+  * [Esempio riassuntivo](#esempio-riassuntivo)
+* [Collegamenti tra concetti SQL](#collegamenti-tra-concetti-sql)
+
+---
 
 ## Cos’è un database relazionale
 

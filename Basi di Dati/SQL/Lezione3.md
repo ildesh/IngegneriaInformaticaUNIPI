@@ -1,4 +1,30 @@
-# Lezione 3 - 09/04/2025
+<h1> Indice Lezione 3 - Raggruppamento </h1>
+
+---
+
+- [Raggruppamento](#raggruppamento)
+  - [Esempio di raggruppamento](#esempio-di-raggruppamento)
+- [Raggruppamento e aggregazione](#raggruppamento-e-aggregazione)
+- [Raggruppamento e proiezione](#raggruppamento-e-proiezione)
+  - [STIAMO ATTENTI...](#stiamo-attenti)
+- [Condizioni sui gruppi](#condizioni-sui-gruppi)
+  - [Esempio:](#esempio)
+    - [Come possiamo agire?](#come-possiamo-agire)
+      - [Step 1: Calcolare la media per ogni specializzazione](#step-1-calcolare-la-media-per-ogni-specializzazione)
+      - [Step 2: Calcolare la massima parcella media](#step-2-calcolare-la-massima-parcella-media)
+      - [Step 3: Restituire le specializzazioni con la media massima](#step-3-restituire-le-specializzazioni-con-la-media-massima)
+- [Condizioni sui gruppi vs. condizioni sui record](#condizioni-sui-gruppi-vs-condizioni-sui-record)
+  - [Esempio: Specializzazioni con più di 2 medici di Pisa](#esempio-specializzazioni-con-più-di-2-medici-di-pisa)
+- [Ordine di esecuzione di una query SQL](#ordine-di-esecuzione-di-una-query-sql)
+- [Common Table Expression (CTE)](#common-table-expression-cte)
+  - [Sintassi generale](#sintassi-generale)
+  - [Esempio: Pazienti di Siena mai visitati da ortopedici](#esempio-pazienti-di-siena-mai-visitati-da-ortopedici)
+    - [Step 1: Creo una CTE con i pazienti visitati da ortopedici](#step-1-creo-una-cte-con-i-pazienti-visitati-da-ortopedici)
+  - [Esempio avanzato: Uso di **2 CTE**](#esempio-avanzato-uso-di-2-cte)
+- [✅ Riepilogo Lezione 3](#-riepilogo-lezione-3)
+
+---
+
 
 ## Raggruppamento 
 
@@ -278,13 +304,160 @@ RISOLVIAMO DUNQUE LA QUERY:
 2. Calcolo della massima parcella media 
 3. Specializzazioni con media parcelle uguale alla massima parcella media 
 
-- Partiamo dalla prima query:
+##### Step 1: Calcolare la media per ogni specializzazione
 
-    ```sql
-    SELECT Specializzazione, AVG(Parcella)
+```sql
+SELECT Specializzazione, AVG(Parcella) AS MediaParcelle
+FROM Medico
+GROUP BY Specializzazione;
+```
+
+##### Step 2: Calcolare la massima parcella media
+
+```sql
+SELECT MAX(D.MediaParcelle)
+FROM (
+    SELECT Specializzazione, AVG(Parcella) AS MediaParcelle
     FROM Medico
-    GROUP BY Specializzazione;
-    ```
-- Poi calcoliamo la massima parcella media:
+    GROUP BY Specializzazione
+) AS D;
+```
 
-    ```sql
+##### Step 3: Restituire le specializzazioni con la media massima
+
+```sql
+SELECT M.Specializzazione
+FROM Medico M
+GROUP BY M.Specializzazione
+HAVING AVG(M.Parcella) = (
+    SELECT MAX(D.MediaParcelle)
+    FROM (
+        SELECT M2.Specializzazione, AVG(M2.Parcella) AS MediaParcelle
+        FROM Medico M2
+        GROUP BY M2.Specializzazione
+    ) AS D
+);
+```
+
+> [!NOTE]
+> ✔️ Questa query proietta **tutte le specializzazioni a pari merito** che hanno la massima parcella media!
+
+---
+
+## Condizioni sui gruppi vs. condizioni sui record
+
+> [!TIP]
+> 🔎 **Regola d’oro**:
+>
+> * Le **condizioni sui record** vanno in `WHERE`
+> * Le **condizioni sui gruppi** (usano funzioni aggregate) vanno in `HAVING`
+
+| Dove va la condizione? | Tipo                         | Quando si usa?           |
+| ---------------------- | ---------------------------- | ------------------------ |
+| `WHERE`                | Su singoli record            | Prima del raggruppamento |
+| `HAVING`               | Su gruppi (usa aggregazioni) | Dopo il raggruppamento   |
+
+---
+
+### Esempio: Specializzazioni con più di 2 medici di Pisa
+
+```sql
+SELECT Specializzazione
+FROM Medico
+WHERE Citta = 'Pisa'
+GROUP BY Specializzazione
+HAVING COUNT(*) > 2;
+```
+
+* ✅ `WHERE Citta = 'Pisa'` ➔ scarta subito i medici non di Pisa (record)
+* ✅ `HAVING COUNT(*) > 2` ➔ mantiene solo i gruppi con più di 2 medici (gruppi)
+
+---
+
+## Ordine di esecuzione di una query SQL
+
+1. **FROM**
+2. **WHERE**
+3. **GROUP BY**
+4. **HAVING**
+5. **SELECT**
+
+> [!NOTE]
+> ✔️ Prima si selezionano i record (`WHERE`), poi si formano i gruppi (`GROUP BY`), poi si filtrano i gruppi (`HAVING`), e infine si proietta (`SELECT`).
+
+---
+
+## Common Table Expression (CTE)
+
+* Una **CTE** crea un risultato temporaneo **con nome** usando `WITH`
+* Utile per costruire passaggi intermedi
+* Puoi creare anche più CTE contemporaneamente!
+
+### Sintassi generale
+
+```sql
+WITH nome1 AS (query1),
+     nome2 AS (query2),
+     ...
+SELECT ...
+FROM nome1, nome2, ...;
+```
+
+---
+
+### Esempio: Pazienti di Siena mai visitati da ortopedici
+
+#### Step 1: Creo una CTE con i pazienti visitati da ortopedici
+
+```sql
+WITH pazienti_visitati_ortopedici AS (
+    SELECT V.Paziente AS CodFiscale
+    FROM Visita V
+        INNER JOIN Medico M ON V.Medico = M.Matricola
+    WHERE M.Specializzazione = 'Ortopedia'
+)
+SELECT COUNT(*)
+FROM Paziente P
+    NATURAL RIGHT OUTER JOIN pazienti_visitati_ortopedici PVO
+WHERE PVO.CodFiscale IS NULL;
+```
+
+---
+
+### Esempio avanzato: Uso di **2 CTE**
+
+```sql
+WITH ortopedici AS (
+    SELECT M.Matricola AS Medico
+    FROM Medico M
+    WHERE M.Specializzazione = 'Ortopedia'
+),
+paz_visitati_ortopedici AS (
+    SELECT V.Paziente AS CodFiscale
+    FROM Visita V NATURAL JOIN ortopedici O
+)
+SELECT COUNT(*)
+FROM Paziente P
+    NATURAL LEFT OUTER JOIN paz_visitati_ortopedici PVO
+WHERE P.Citta = 'Siena'
+  AND PVO.CodFiscale IS NULL;
+```
+
+> [!NOTE]
+> ✔️ Qui la seconda CTE (`paz_visitati_ortopedici`) **usa** la prima (`ortopedici`).
+> La query finale conta i pazienti di Siena **mai visitati** da ortopedici.
+
+---
+
+## ✅ Riepilogo Lezione 3
+
+| Concetto                          | Clausola SQL                         | Note                                  |
+| --------------------------------- | ------------------------------------ | ------------------------------------- |
+| Condizioni sui **record**         | `WHERE`                              | Prima del raggruppamento              |
+| Condizioni sui **gruppi**         | `HAVING`                             | Dopo il raggruppamento, con aggregati |
+| Calcolo media per gruppi          | `AVG()` + `GROUP BY`                 |                                       |
+| Filtrare gruppi                   | `HAVING COUNT(*) > n`                |                                       |
+| Proiezione valida                 | Solo attributi di gruppo + aggregati |                                       |
+| **CTE (Common Table Expression)** | `WITH`                               | Definisce tabelle temporanee nominate |
+
+---
