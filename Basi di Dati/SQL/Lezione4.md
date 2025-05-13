@@ -29,12 +29,6 @@
     - [Esempio di divisione con doppio NOT EXISTS:](#esempio-di-divisione-con-doppio-not-exists)
     - [Esempio di divisione con raggruppamento](#esempio-di-divisione-con-raggruppamento)
 
----
-
-Se vuoi, posso anche aggiungere questo **indice ipertestuale** direttamente sopra il tuo testo completo, così hai il file **pronto per stampare o trasformare in PDF**.
-
-Vuoi che proceda e ti preparo il file **completo** con l’indice già incluso?
-(Posso fartelo in **PDF** o **Markdown** come per le altre lezioni 👇)
 
 ---
 
