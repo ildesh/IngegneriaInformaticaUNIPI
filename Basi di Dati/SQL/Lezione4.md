@@ -22,7 +22,7 @@
     - [Esempio:](#esempio-4)
 - [Correlated subquery](#correlated-subquery)
     - [Esempio:](#esempio-5)
-- [Costrutto EXIST - NOT EXISTS](#costrutto-exist---not-exists)
+- [Costrutto EXISTS - NOT EXISTS](#costrutto-exists---not-exists)
     - [Esempio:](#esempio-6)
     - [Esempio 2:](#esempio-2-1)
 - [Divisione](#divisione)
@@ -187,11 +187,11 @@ WHERE D.Medico IS NULL;
 >[!WARNING]
 > ## Ma quando devo usare il join al posto delle subquery?
 > Il join va usato al posto delle subquery perché i join sono più efficenti e leggibili dai codificatori.
-
-| | Join | Subquery |
-|---|---|---|
-| **Vantaggi** | Efficiente, leggibile per esperti | Può essere più semplice da scrivere e capire per chi non ha esperienza |
-| **Svantaggi** | Non sempre possibile in alcuni casi | Può essere difficile da leggere e avere presatazioni non ottimali
+>
+>| | Join | Subquery |
+>|---|---|---|
+>| **Vantaggi** | Efficiente, leggibile per esperti | Può essere più semplice da scrivere e capire per chi non ha esperienza |
+>| **Svantaggi** | Non sempre possibile in alcuni casi | Può essere difficile da leggere e avere presatazioni non ottimali
 
 ---
 
@@ -223,7 +223,7 @@ WHERE P.Comune = 'Siena'
 
 ### Visibilità:
 
-In una subquery si possono riferire tutti gli attrivuti delle query esterne, a qualsiasi liveloo di annidamento esterno essi si trovino (SI ESCE MA NON SI ENTRA).
+In una subquery si possono riferire tutti gli attributi delle query esterne, a qualsiasi livello di annidamento esterno essi si trovino (SI ESCE MA NON SI ENTRA).
 
 ---
 
@@ -277,7 +277,7 @@ WHERE M1.Specializzazione = 'Otorinolaringoiatria'
 >```
 >
 >```sql
->SELECT, Nome, Cognome
+>SELECT Nome, Cognome
 >FROM Paziente
 >WHERE Reddito = 
 >    MAX(Reddito);
@@ -331,7 +331,7 @@ WHERE YEAR(V1.Data) = 2013
 
 ---
 
-## Costrutto EXIST - NOT EXISTS
+## Costrutto EXISTS - NOT EXISTS
 
 >[!IMPORTANT]
 > ### Che cos'è?

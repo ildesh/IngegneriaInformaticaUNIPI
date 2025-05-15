@@ -40,7 +40,7 @@ Formalmente...
 Consideriamo la seguente tabella STUDENTE:
 - STUDENTE( Matricola, Nome, Cognome, Età, Sesso, ColoreCapelli)
 
-<div align = "center"><p style="font-size: 24px;"><b>Svolgiamo e risolviamo le seguenti query: </b></p></div>
+<div align = "center"><p style="font-size: 20px;"><b>Svolgiamo e risolviamo le seguenti query: </b></p></div>
 
 >[!TIP]
 > **Query 1**: Indicare il numero di studenti biondi:
