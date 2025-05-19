@@ -451,17 +451,17 @@ FD: OrdineID → Prezzo (dipendenza parziale dalla chiave composta)
 
 - **Modello E-R per biblioteca:**
 
-      [Utente]---<Prestito>---[Libro]
+   [Utente]--->Prestito<---[Libro]
 
-      **Traduzione in relazione:**
-      Prestito(CF_Utente, CodiceLibro, DataPrestito, TitoloLibro, Genere)
+   **Traduzione in relazione:**
+   Prestito(CF_Utente, CodiceLibro, DataPrestito, TitoloLibro, Genere)
 
-      **FD problematiche:**
-      - CodiceLibro → TitoloLibro, Genere (viola 3NF)
+   **FD problematiche:**
+   - CodiceLibro → TitoloLibro, Genere (viola 3NF)
 
-      **Decomposizione corretta:**
-      1. Prestiti(CF_Utente, CodiceLibro, DataPrestito)
-      2. Libri(CodiceLibro, TitoloLibro, Genere)
+   **Decomposizione corretta:**
+   1. Prestiti(CF_Utente, CodiceLibro, DataPrestito)
+   2. Libri(CodiceLibro, TitoloLibro, Genere)
 
 
 ---
@@ -475,7 +475,6 @@ FD: OrdineID → Prezzo (dipendenza parziale dalla chiave composta)
 **Perdita di dipendenze:**
 
 * Se X → Y ma X e Y in relazioni separate, non preservata
-
 
 **Caso 1 - Anomalia di Inserimento:**
 Tabella non normalizzata ClientiOrdini:
