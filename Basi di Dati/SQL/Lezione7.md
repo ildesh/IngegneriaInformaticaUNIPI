@@ -294,6 +294,17 @@ AND YEAR(V.'Data') BETWEEN 2010 AND 2019;
 >[!WARNING]
 > Nella riga `LAG(V.'Data',1)` significa che k = 1, quindi si va indietro di una sola row e si affianca alla current row (i) la data della visita j posta nella posizione (i-k). 
 
+Il seguente è il risultato della query:
+
+| Medico | Paziente | Data       | DataVisitaPrecedente |
+| ------ | -------- | ---------- | -------------------- |
+| M101   | P001     | 2011-02-10 | NULL                 |
+| M102   | P001     | 2012-03-15 | 2011-02-10           |
+| M103   | P001     | 2015-06-20 | 2012-03-15           |
+| M101   | P002     | 2013-01-10 | NULL                 |
+| M102   | P002     | 2014-03-22 | 2013-01-10           |
+
+
 #### 5.2 Funzione LEAD
 >[!IMPORTANT]
 > ## Che cosa fa:
@@ -317,5 +328,16 @@ FROM Visita V INNER JOIN Medico M ON V.Medico = M.Matricola
 WHERE M.Specializzazzione = 'Otorinolaringoiatria'
 AND YEAR(V.'Data') BETWEEN 2010 AND 2019;
 ```
+
+Il seguente è il risultato della query:
+
+| Medico | Paziente | Data       | DataVisitaSuccessiva |
+| ------ | -------- | ---------- | -------------------- |
+| M101   | P001     | 2011-02-10 | 2012-03-15           |
+| M102   | P001     | 2012-03-15 | 2015-06-20           |
+| M103   | P001     | 2015-06-20 | NULL                 |
+| M101   | P002     | 2013-01-10 | 2014-03-22           |
+| M102   | P002     | 2014-03-22 | NULL                 |
+
 
 ---
