@@ -166,7 +166,7 @@ Qui devo verificare se **N**, **L** o **C** sono estranei.
 
   ➔ NL⁺ = {N, L, M, D} ➔ Non ottengo **A** ➔ C non è estraneo.
 
-✅ Quindi NLC → A resta com'è.
+ Quindi NLC → A resta com'è.
 
 ---
 
@@ -203,10 +203,10 @@ R(ABCDEF)
 ### 1. Copertura minimale per **G**
 
 #### Step 1: Rendere il lato destro singolo attributo (forma canonica)
-- AB → C ✅ già singolo
-- B → A ✅ già singolo
-- AD → E ✅ già singolo
-- BD → F ✅ già singolo
+- AB → C  già singolo
+- B → A  già singolo
+- AD → E  già singolo
+- BD → F  già singolo
 
 #### Step 2: Eliminare attributi estranei dal lato sinistro
 
@@ -243,8 +243,8 @@ $$
 ### 2. Copertura minimale per **H**
 
 #### Step 1: Rendere il lato destro singolo attributo
-- **AB → C** ✅ già singolo
-- **B → A** ✅ già singolo
+- **AB → C**  già singolo
+- **B → A**  già singolo
 - **AD → EF**  
   - Si spezza in:  
     - **AD → E**  
@@ -286,7 +286,7 @@ $$
 - **Gmin**: { B → C, B → A, AD → E, BD → F }
 - **Hmin**: { B → C, B → A, AD → E, AD → F }
 
-✅ Le prime tre sono uguali.  
+ Le prime tre sono uguali.  
 ❓ La differenza sta in:  
 - **G** ha **BD → F**  
 - **H** ha **AD → F**
@@ -570,3 +570,287 @@ Calcoliamo dunque la copertura minimale:
 
 
 ---
+
+## Esercizio 7:
+
+Quali producono anomalie?
+
+>[!TIP]
+> ## Ripasso sulle schedulazioni di transazioni
+>1. Letture sporche (dirty read) – Una transazione legge dati scritti da un’altra non ancora confermata (che potrebbe abortire).
+>
+>2. Letture non ripetibili (non-repeatable read) – Una transazione legge due volte lo stesso dato e ottiene risultati diversi, perché un’altra transazione l'ha modificato nel frattempo.
+>
+>3. Letture fantasma (phantom read) – Una transazione vede un insieme di righe che cambia in una successiva lettura, perché un'altra transazione ha inserito o eliminato righe nel frattempo.
+>
+>4. Scritture perse (lost update) – Due transazioni scrivono sullo stesso dato senza considerare le scritture dell’altra.
+
+Perfetto, stai lavorando con **schedulazioni di transazioni** e vuoi capire se producono **anomalie** come:
+
+1. **Letture sporche (dirty read)** – Una transazione legge dati scritti da un’altra non ancora confermata (che potrebbe abortire).
+2. **Letture non ripetibili (non-repeatable read)** – Una transazione legge due volte lo stesso dato e ottiene risultati diversi, perché un’altra transazione l'ha modificato nel frattempo.
+3. **Letture fantasma (phantom read)** – Una transazione vede un insieme di righe che cambia in una successiva lettura, perché un'altra transazione ha inserito o eliminato righe nel frattempo.
+4. **Scritture perse (lost update)** – Due transazioni scrivono sullo stesso dato senza considerare le scritture dell’altra.
+
+---
+
+## Analisi dei tuoi esempi
+
+### 1) `r₁(x) w₁(x) r₂(x) w₂(y) a₁ c₂`
+
+- **Transazione 1:** legge `x`, scrive `x`, poi **aborta**
+- **Transazione 2:** legge `x` (modificato da T1), scrive `y`, **committa**
+
+ **Anomalia: Lettura sporca**.
+
+- T2 ha letto `x` modificato da T1 che poi ha fatto rollback → T2 si basa su dati inconsistenti.
+
+---
+
+### 2) `r₁(x) w₁(x) r₂(y) w₂(y) a₁ c₂`
+
+T1: legge e scrive `x`, poi **aborta**
+T2: lavora su `y`, committa
+
+**Nessuna anomalia**:
+- Le due transazioni lavorano su dati diversi. Nessuna interdipendenza.
+
+---
+
+### **3) `r₁(x) r₂(x) w₁(x) w₂(y) a₁ c₂`**
+
+* **T1:** legge `x`, scrive `x`, poi **aborta**
+* **T2:** legge `x` (originale), scrive `y`, **committa**
+
+ **Nessuna anomalia**:
+- T2 legge `x` **prima** che T1 lo modifichi → nessuna lettura sporca.
+La scrittura di `y` è indipendente → nessuna interazione pericolosa.
+
+---
+
+### **4) `r₁(x) r₂(x) w₂(x) w₁(x) c₁ c₂`**
+
+* **T1:** legge e poi scrive `x`, **committa**
+* **T2:** legge e scrive `x`, **committa**
+
+ **Anomalia: Scrittura persa (Lost Update)**
+- Entrambe le transazioni scrivono su `x`.
+T1 legge `x`, ma la sua scrittura avviene **dopo** quella di T2 → la scrittura di T2 viene **sovrascritta** da T1 → **aggiornamento perso**.
+
+---
+
+### **5) `r₁(x) r₂(x) w₂(y) r₁(x) c₁ c₂`**
+
+* **T1:** legge `x`, poi lo rilegge
+* **T2:** legge `x`, scrive `y`
+
+**Nessuna anomalia**:
+- T1 legge `x` **prima e dopo** che T2 scriva su **`y`**.
+T2 **non modifica `x`**, quindi la seconda lettura di T1 non cambia → **nessuna lettura non ripetibile**, nessuna interferenza.
+T1 legge sempre lo stesso valore di `x`.
+
+---
+
+### **`6) S = r₁(x) r₂(y) w₁(y) r₂(x) w₂(x) `**
+
+
+* X: R₁R₂W₂
+* Y: R₂W₁
+
+**F (S) = {W₂,W₁}**
+**LEGGENDA (S) = {}**
+
+
+---
+
+## Esercizio 8:
+
+>[!NOTE]
+> # Ripasso CSR e VSR
+>## CSR – Conflict Serializable
+>CSR sta per Conflict Serializability, ovvero serializzabilità per conflitto.
+>
+>Una schedulazione è CSR se è equivalente per conflitto a una schedulazione seriale (cioè ordinata interamente: prima una transazione, poi l’altra), mantenendo l’ordine dei conflitti.
+>
+>### Cos’è un conflitto?
+>Due operazioni sono in conflitto se:
+>
+>- Appartengono a transazioni diverse
+>- Operano sullo stesso dato
+>- Almeno una è una scrittura
+>
+>#### Esempio:
+>
+>1. r₁(x) e w₂(x) → conflitto
+>
+>2. w₁(x) e w₂(x) → conflitto
+>
+>3. r₁(x) e r₂(x) → no conflitto
+>
+>Se riusciamo a riordinare la schedulazione in modo seriale senza violare l’ordine dei conflitti, allora è CSR.
+>
+>## VSR – View Serializable
+>VSR sta per View Serializability, ovvero serializzabilità per vista.
+>
+>È una condizione più debole di CSR.
+>Una schedulazione è VSR se:
+>
+>- Ogni transazione legge gli stessi valori (da stesse transazioni o iniziali) come nella seriale equivalente.
+>- Le scritture finali su ogni variabile sono le stesse.
+>
+>Quindi: una schedulazione può non essere CSR ma essere VSR.
+
+S = R1(x)R2(y)W1(x)W1(Y)R2(x)W2(x)
+
+>[!TIP]
+>1. E' o Meno in CSR?
+>2. E' o Meno in VSR?
+>3. O entrambi?
+
+
+- T(x) = R1(X)R2(x)W1(X)W2(X)
+- T(y) = R2(Y)W1(Y)
+
+T1T2 = R1(x)W1(x)W1(y)R2(x)R2(y)W2(x)
+
+Creiamo il finale e legge Da:
+
+1. FINALE = {W2(x),W1(y)}
+2. Legge Da = {W1(x),R2(x),R1(x),R1(y)}
+
+---
+
+## Esercizio 9:
+
+S = R1(x)R4(x)W4(X)R1(y)R4(z)W4(z)W3(Y)W3(z)W1(t)W2(z)W2(t)
+
+- T(x) = R1(x)R4(x)W4(x)
+  - Due conflitti:
+    - R1 --> W4
+- T(y) = R1(y)W3(y)
+  - Un conflitto
+    - R1 --> W3
+- T(z) = R4(z)W4(z)W3(z)W2(z)
+  - Cinque conflitti
+    - R4 --> W3
+    - R4 --> W2
+    - W4 --> W3
+    - W4 --> W2
+    - W3 --> W2
+- T(t) = W1(t)W2(t)
+  - Un conflitto
+    - W1 --> W2
+
+1. Ci saranno 4! combinazioni ==> 24 combinazioni possibili.
+
+2. Controlliamo se sono presenti vari cicli:
+   - Ogni transazione è un nodo, e ogni conflitto crea un arco direzionale nel grafo:
+   - R1(x) → W4(x) → T1 → T4
+
+      R1(y) → W3(y) → T1 → T3
+
+      R4(z) → W3(z) → T4 → T3
+
+      R4(z) → W2(z) → T4 → T2
+
+      W4(z) → W3(z) → T4 → T3
+
+      W4(z) → W2(z) → T4 → T2
+
+      W3(z) → W2(z) → T3 → T2
+
+      W1(t) → W2(t) → T1 → T2
+
+    - Quindi possiamo dire che:
+      - T1 → T4
+      - T1 → T3
+      - T1 → T2
+      - T4 → T3
+      - T4 → T2
+      - T3 → T2
+    - Da T1 possiamo andare a T4, T3 e T2. Da T4 possiamo andare T3 ma anche a T2. Da T3 si può andare a T2 che si può arrivare anche da T4
+      - T1 → T4 → T3 → T2
+    - La schedulazione è una **Conflict Serializzabile** (CSR) perché il grafo dei conflitti è aciclico.
+
+---
+
+## Esercizio 10:
+
+S = r1(x)r4(y)w1(z)r4(z)w2(y)r3(y)w1(x)w2(x)w3(z)w4(x)w3(x)
+
+- T(x) = r1(x)w1(x)w2(x)w3(x)w4(x)
+- T(y) = r3(y)r4(y)w2(y)
+- T(z) = r4(z)w1(z)w3(z)
+
+1. CSR ?
+2. VSR ?
+
+- T(x) = r1(x)w1(x)w2(x)w3(x)w4(x)
+  - R1 -> W2
+  - R1 -> W3
+  - R1 -> W4
+  - W1 -> W2
+  - W1 -> W3
+  - W2 -> W4
+  - W2 -> W3
+  - W3 -> W4
+- T(y) = r3(y)r4(y)w2(y)
+  - R3 -> R4
+  - R3 -> W2
+  - R4 -> W2
+- T(z) = r4(z)w1(z)w3(z)
+  - R4 -> W1
+  - R4 -> W3
+  - W1 -> W3
+
+1. Ci saranno 3! combinazioni ==> 6 combinazioni possibili.
+2. Controlliamo se sono presenti vari cicli:
+   - T1 -> T2
+   - T1 -> T3
+   - T1 -> T4
+   - T2 -> T4
+   - T2 -> T3
+   - T3 -> T4
+   - T3 -> T2
+   - T4 -> T2
+   - T4 -> T1
+   - T4 -> T3
+ - Sono presenti 2 CICLI
+   - T2 -> T4 e T4 -> T2
+   - T1 -> T4 e T4 -> T1
+ - Quindi possiamo concludere che non è CSR
+
+- Questa però può essere VSR ? Controlliamo:
+
+  - T(x) = r1(x)w1(x)w2(x)w3(x)w4(x)
+  - T(y) = r3(y)r4(y)w2(y)
+  - T(z) = r4(z)w1(z)w3(z)
+- Adesso controlliamo la FINALE e la LEGGE DA:
+
+  - 
+
+
+---
+
+## Esercizio 11: 
+
+S = r1(x)r2(y)r2(x)w2(x)w1(x)w1(y)
+
+1. CSR ?
+2. VSR ?
+
+- T(x): r1(x)r2(x)w1(x)w2(x)
+  - R1 -> R2
+  - R2 -> W1
+- T(y): r2(y)w1(y)
+  - R2 -> W1
+
+- Ciclo trovato (T1 -> T2 e T2 -> T1)
+
+
+---
+
+## Esercizio 12:
+
+
+GUARDARE BENE LA VSR E LA 2PL
