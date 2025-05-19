@@ -198,3 +198,314 @@ insieme di regole corretto e completo!
 - Se F ≡ G allora F è una copertura di G e viceversa
 - Per verificare l’equivalenza è sufficiente che:
   - F ⊆ G<sup>+</sup> e G ⊆ F<sup>+</sup>
+
+**Esempio di equivalenza:**
+Consideriamo due insiemi FD:
+- F = {A → B, B → C}
+- G = {A → B, A → C, B → C}
+
+**Verifica F ≡ G:**
+1. Calcoliamo F⁺:
+   - A+ = {A,B,C}
+   - B+ = {B,C}
+   - C+ = {C}
+
+2. Verifichiamo se G ⊆ F⁺:
+   - A → C ∈ F⁺? Sì, perché A determina C tramite transitività.
+
+3. Verifichiamo se F ⊆ G⁺:
+   - A → B ∈ G⁺? Sì (direttamente in G).
+   - B → C ∈ G⁺? Sì (direttamente in G).
+
+**Conclusione:** F ≡ G. La copertura minima è {A → B, B → C}.
+
+---
+
+### 9. Decomposizione
+
+**Definizione:** {R1(T1), ..., Rk(Tk)} è decomposizione di R se T1 ∪ ... ∪ Tk = T
+
+**Proprietà desiderate:**
+
+* Preservazione dei dati:
+
+  * Teorema: r = πT1(r) ⋈ ... ⋈ πTk(r)
+  * Basta che T1 ∩ T2 → T1 ∈ F+ o T2
+
+* Preservazione delle dipendenze:
+
+  * ∪i πTi(F) ≈ F
+
+**Proiezione di FD su Ti:**
+
+* πTi(F) = {X → Y ∈ F+ | X, Y ⊆ Ti}
+
+**Esempio di decomposizione con perdita di dati:**
+Schema R(A,B,C) con FD {A → B}
+- Decomposizione in R1(A,B) e R2(A,C)
+
+**Tabella originale:**
+| A | B | C |
+|---|---|---|
+| 1 | X | 10 |
+| 2 | Y | 20 |
+
+**Proiezioni:**
+R1:
+| A | B |
+|---|---|
+| 1 | X |
+| 2 | Y |
+
+R2:
+| A | C |
+|---|---|
+| 1 | 10 |
+| 2 | 20 |
+
+**Join naturale:** Ricostruisce correttamente i dati originali → decomposizione senza perdita.
+
+**Caso problematico (senza FD A → B):**
+Se decomponiamo in R1(B,C) e R2(A,C), il join può creare tuple spurie.
+
+---
+
+### 10. Algoritmo per decomposizione in BCNF
+
+**Caso complesso:** 
+R(Studente, Corso, Professore) con FD:
+1. Studente, Corso → Professore
+2. Professore → Corso
+
+**Passaggi:**
+1. Chiavi candidate: {Studente, Corso} e {Studente, Professore}
+2. FD problematica: Professore → Corso (LHS non è superchiave)
+3. Decomposizione:
+   - R1(Professore, Corso)
+   - R2(Studente, Professore)
+
+**Verifica:**
+- R1 soddisfa BCNF (Professore è chiave)
+- R2 non ha FD non banali → BCNF
+
+**Perdita dipendenze:** FD originale Studente,Corso→Professore non è preservata.
+
+
+
+1. Finché esiste una FD X → A che viola BCNF:
+2. Dividi in:
+
+   * R1 = (X ∪ A)
+   * R2 = (T \ A)
+3. Ripeti ricorsivamente su R1, R2
+
+* Garantisce: dati preservati
+* Non garantisce: dipendenze preservate
+
+**Esempio dettagliato:**
+
+Supponiamo lo schema R(A, B, C, D) con F = {A → B, B → C, C → D}
+
+1. Calcoliamo le chiavi:
+
+   * A+ = {A, B, C, D} ⇒ A è chiave
+
+2. Verifichiamo BCNF:
+
+   * A → B: A è chiave ⇒ OK
+   * B → C: B non è chiave ⇒ viola BCNF
+   * C → D: C non è chiave ⇒ viola BCNF
+
+3. Decomposizione su B → C:
+
+   * R1 = (B, C)
+   * R2 = (A, B, D) (con FD proiettate: A → B, C → D non resta in R2 perché C manca)
+
+4. Verifica in R2:
+
+   * A → B: A è chiave ⇒ OK
+   * D non ha dipendenze ⇒ OK
+
+5. Verifica R1:
+
+   * B → C: B non è chiave ⇒ viola BCNF
+
+6. Decomposizione di R1 su B → C:
+
+   * R1a = (B, C)
+   * R1b = (C) — da eliminare, già incluso in R1a
+
+7. Schema finale:
+
+   * R1a(B, C)
+   * R2(A, B, D)
+
+Nota: la FD C → D è persa nella decomposizione, quindi non tutte le dipendenze sono preservate. Tuttavia, lo schema risultante è in BCNF e preserva i dati (nessuna perdita informativa con join naturali).
+
+---
+
+### 11. Algoritmo per decomposizione in 3NF
+
+1. Trova copertura minima G di F
+2. Per ogni FD X → Y in G crea relazione XY
+3. Se nessuna relazione contiene una chiave di R, aggiungila
+
+* Garantisce: dati e dipendenze preservate
+* Tutte le relazioni in 3NF
+
+**Esempio pratico:**
+
+Schema: R(A, B, C, D) con F = {A → B, B → C, C → D, A → D}
+
+1. Troviamo una copertura minima:
+
+   * Scomponiamo RHS:
+
+     * F1 = {A → B, B → C, C → D, A → D}
+   * Nessun attributo estraneo
+   * Verifica ridondanza:
+
+     * A → D è implicata? A+ = {A, B} → B → C → C → D ⇒ A+ = {A, B, C, D} ⇒ A → D è implicata → possiamo rimuoverla.
+     * Risultato: G = {A → B, B → C, C → D}
+
+2. Creiamo una relazione per ogni FD:
+
+   * R1(A, B)
+   * R2(B, C)
+   * R3(C, D)
+
+3. Controlliamo se abbiamo una relazione che contiene una chiave:
+
+   * A+ con G = {A → B, B → C, C → D} ⇒ A+ = {A, B, C, D} ⇒ A è chiave
+   * Nessuna delle R1–R3 contiene tutti questi attributi, quindi aggiungiamo:
+   * R4(A, C, D) oppure R4(A, B, C, D)
+
+4. Schema finale:
+
+   * R1(A, B)
+   * R2(B, C)
+   * R3(C, D)
+   * R4(A, B, C, D)
+
+Tutte le relazioni sono in 3NF, e sia le FD che i dati sono preservati. copertura minima G di F
+2\. Per ogni FD X → Y in G crea relazione XY
+3\. Se nessuna relazione contiene una chiave di R, aggiungila
+
+**Scenario ospedaliero:**
+R(Paziente, Medico, Reparto, Specializzazione) con FD:
+1. Medico → Reparto
+2. Reparto → Specializzazione
+3. Paziente, Medico → Reparto
+
+**Copertura minima:**
+- Decomponi RHS: già elementari
+- Rimuovi attributi estranei: nessuno
+- Elimina FD ridondanti: Paziente,Medico→Reparto è implicata da Medico→Reparto? No.
+
+**Decomposizione:**
+1. R1(Medico, Reparto)
+2. R2(Reparto, Specializzazione)
+3. R3(Paziente, Medico)
+4. Aggiungi chiave originale (Paziente, Medico) se necessario
+
+---
+
+### 12. Verifica di BCNF / 3NF
+
+**BCNF:** Per ogni FD non banale X → A, X è superchiave
+**3NF:** X è superchiave oppure A è attributo primo
+
+* 3NF ∈ BCNF ma più permissiva
+
+**Tabella Non Normalizzata (1NF):**
+| OrdineID | Prodotti (Lista) |
+|----------|------------------|
+| 1001     | Penna, Matita   |
+
+**Dopo 1NF:**
+| OrdineID | Prodotto |
+|----------|----------|
+| 1001     | Penna    |
+| 1001     | Matita   |
+
+**Violazione 2NF:**
+| OrdineID | Prodotto | Prezzo |
+|----------|----------|--------|
+| 1001     | Penna    | 1.50   |
+| 1001     | Matita   | 0.80   |
+
+FD: OrdineID → Prezzo (dipendenza parziale dalla chiave composta)
+
+
+---
+
+### 13. Applicazioni alla Progettazione Concettuale
+
+**Verifica su entità**
+
+* PartitaIVA → Nome, Indirizzo: viola 3NF se PartitaIVA non è chiave
+
+**Verifica su relationship**
+
+* Studente → Corso, Professore: se Professore → Dipartimento, e Professore non è chiave, → violazione 3NF
+
+- **Modello E-R per biblioteca:**
+
+      [Utente]---<Prestito>---[Libro]
+
+      **Traduzione in relazione:**
+      Prestito(CF_Utente, CodiceLibro, DataPrestito, TitoloLibro, Genere)
+
+      **FD problematiche:**
+      - CodiceLibro → TitoloLibro, Genere (viola 3NF)
+
+      **Decomposizione corretta:**
+      1. Prestiti(CF_Utente, CodiceLibro, DataPrestito)
+      2. Libri(CodiceLibro, TitoloLibro, Genere)
+
+
+---
+
+### 14. Esempi di decomposizione errata
+
+**Perdita di dati:**
+
+* Join su proiezioni produce tuple spurie
+
+**Perdita di dipendenze:**
+
+* Se X → Y ma X e Y in relazioni separate, non preservata
+
+
+**Caso 1 - Anomalia di Inserimento:**
+Tabella non normalizzata ClientiOrdini:
+| ClienteID | OrdineID | DettagliCliente |
+|-----------|----------|------------------|
+| C001      | O1001    | Via Roma 5       |
+| C001      | O1002    | Via Roma 5       |
+
+**Problema:** Per inserire un nuovo cliente senza ordini, devo inserire un ordine fittizio.
+
+**Caso 2 - Anomalia di Cancellazione:**
+Se elimino l'ultimo ordine di C001, perdo l'indirizzo del cliente.
+
+---
+
+### 15. Diagrammi Decisionali
+```plantuml
+start
+if (FD X→Y) then (X superchiave?)
+  :BCNF OK;
+else
+  :Decomponi in R1(XY)\nR2(T-Y);
+endif
+
+if (A è attributo primo?) then (yes)
+  :3NF OK;
+else (no)
+  :Decomponi;
+endif
+stop
+```
+
+---
