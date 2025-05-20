@@ -2,6 +2,19 @@
 
 <h1>📚 Indice</h1>
 
+- [Progettazione Logica](#progettazione-logica)
+    - [Ristrutturazione di uno schema E-R](#ristrutturazione-di-uno-schema-e-r)
+    - [Indicatori per valutare le prestazioni:](#indicatori-per-valutare-le-prestazioni)
+      - [Tavola dei volumi](#tavola-dei-volumi)
+  - [Attività di ristrutturazione](#attività-di-ristrutturazione)
+    - [Analisi delle ridondanze:](#analisi-delle-ridondanze)
+      - [Esempi:](#esempi)
+    - [Analizziamo una ridondanza...](#analizziamo-una-ridondanza)
+    - [Eliminazione delle generalizzazioni](#eliminazione-delle-generalizzazioni)
+    - [Partizionamento/accorpamento di entità e relationship](#partizionamentoaccorpamento-di-entità-e-relationship)
+      - [Esempi:](#esempi-1)
+    - [Scelta degli identificatori principali](#scelta-degli-identificatori-principali)
+      - [Esempio: Entità e relationship molti a molti](#esempio-entità-e-relationship-molti-a-molti)
 
 ---
 

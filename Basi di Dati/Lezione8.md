@@ -1,4 +1,39 @@
-## Dipendenze Funzionali e Normalizzazione
+<h1> Lezione 8 </h1> 
+<h2>📚 Indice</h2>
+
+- [Dipendenze Funzionali e Normalizzazione](#dipendenze-funzionali-e-normalizzazione)
+    - [1. Introduzione alle Dipendenze Funzionali](#1-introduzione-alle-dipendenze-funzionali)
+    - [2. Obiettivi della Progettazione Logica](#2-obiettivi-della-progettazione-logica)
+    - [3. Linee Guida per la Progettazione](#3-linee-guida-per-la-progettazione)
+    - [4. Definizione Formale di Dipendenza Funzionale](#4-definizione-formale-di-dipendenza-funzionale)
+    - [5. Forme Normali e Normalizzazione](#5-forme-normali-e-normalizzazione)
+    - [6. Regole di Inferenza di Armstrong](#6-regole-di-inferenza-di-armstrong)
+    - [7. Chiusura di Attributi e Insiemi di Dipendenze](#7-chiusura-di-attributi-e-insiemi-di-dipendenze)
+      - [**Perché serve?**](#perché-serve)
+      - [**Algoritmo per calcolare X⁺**](#algoritmo-per-calcolare-x)
+        - [**Esempio**](#esempio)
+    - [**Chiusura di un Insieme di FD (F⁺)**](#chiusura-di-un-insieme-di-fd-f)
+      - [**Perché serve?**](#perché-serve-1)
+    - [**Applicazioni pratiche**](#applicazioni-pratiche)
+    - [**Teorema di chiusura degli attributi**](#teorema-di-chiusura-degli-attributi)
+    - [**Teorema di Correttezza e Completezza**](#teorema-di-correttezza-e-completezza)
+      - [**Correttezza**](#correttezza)
+      - [**Completezza**](#completezza)
+      - [**Tradotto in parole semplici:**](#tradotto-in-parole-semplici)
+        - [**Schema mentale per ricordare**](#schema-mentale-per-ricordare)
+    - [8. Equivalenza tra Insiemi di Dipendenze](#8-equivalenza-tra-insiemi-di-dipendenze)
+    - [9. Decomposizione](#9-decomposizione)
+    - [10. Algoritmo per decomposizione in BCNF](#10-algoritmo-per-decomposizione-in-bcnf)
+    - [11. Algoritmo per decomposizione in 3NF](#11-algoritmo-per-decomposizione-in-3nf)
+    - [12. Verifica di BCNF / 3NF](#12-verifica-di-bcnf--3nf)
+    - [13. Applicazioni alla Progettazione Concettuale](#13-applicazioni-alla-progettazione-concettuale)
+    - [14. Esempi di decomposizione errata](#14-esempi-di-decomposizione-errata)
+    - [15. Diagrammi Decisionali](#15-diagrammi-decisionali)
+
+---
+
+
+# Dipendenze Funzionali e Normalizzazione
 
 ### 1. Introduzione alle Dipendenze Funzionali
 **Contesto storico e motivazione**
