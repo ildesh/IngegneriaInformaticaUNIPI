@@ -852,5 +852,9 @@ S = r1(x)r2(y)r2(x)w2(x)w1(x)w1(y)
 
 ## Esercizio 12:
 
+>[!TIP]
+>- Dire se il seguente schedule
+>   - S1=r1(a), r2(a), r3(a), w1(b), w2(b), w3(b)
+>- e’ view-equivalente al seguente schedule seriale
+>   - S2=r2(a), w2(b), r1(a), w1(b), r3(a), w3(b)
 
-GUARDARE BENE LA VSR E LA 2PL
