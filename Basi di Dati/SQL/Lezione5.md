@@ -184,13 +184,12 @@ FROM Visita V
 WHERE MONTH(V.Data) = MONTH(CURRENT_DATE)
     AND YEAR(V.Data) = YEAR(CURRENT_DATE);
 
-
-```
 SELECT COUNT(*)
 FROM Visita V
 WHERE MONTH(V.Data) = MONTH(CURRENT_DATE)
     AND YEAR(V.Data) = YEAR(CURRENT_DATE)
 INTO visite_mese_attuale;
+```
 
 >[!WARNING]
 > ```SQL
