@@ -1,4 +1,4 @@
-# Lezione 2 - 11/03/2025
+# Lezione 4 - 11/03/2025
 
 ## | Classificazione di alcune relazioni di ricorrenza
 
