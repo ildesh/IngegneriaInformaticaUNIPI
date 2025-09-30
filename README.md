@@ -5,14 +5,10 @@
 </div>
 
 ---
-
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)]()
-
-
 Benvenuti nel repository ufficiale degli appunti dei corsi di informatica! Questa raccolta è pensata per fornire materiale didattico completo e ben organizzato per supportare il vostro percorso di apprendimento.
 
 ---
-
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%82+Struttura+del+Repository)]()
 
 Il repository è organizzato nelle seguenti sezioni:
@@ -29,9 +25,7 @@ Il repository è organizzato nelle seguenti sezioni:
   
 - **Fondamenti di Programmazione** - ⚠️ *Work in progress...* Gli appunti saranno disponibili a breve!
 
-
 ---
-
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=600&height=50&lines=%F0%9F%9A%80+Come+Utilizzare+gli+Appunti)]()
 
 1. **Naviga nelle cartelle** dei diversi corsi
@@ -48,17 +42,14 @@ git pull origin main
 
 ---
 
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=650&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]()
-
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=650&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]
 Hai trovato un errore nei materiali o hai suggerimenti per migliorare gli appunti?
-
 ### Sezione ISSUES
 Utilizza la sezione **Issues** per segnalare problemi specifici come:
 - Errori concettuali
 - Imprecisioni nel codice
 - Problemi di formattazione
 - Richieste di chiarimenti
-
 ### Sezione DISCUSS
 Partecipa alle discussioni nella sezione **Discuss** suddivisa in:
 - **Annunci**: Informazioni importanti e aggiornamenti
@@ -66,11 +57,9 @@ Partecipa alle discussioni nella sezione **Discuss** suddivisa in:
 - **Polls**: Sondaggi per migliorare il materiale
 - **Q&A**: Domande e risposte sulla materia
 - **Richieste**: Suggerimenti per nuovi contenuti
-
+---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=530&lines=%F0%9F%99%8F+Contribuite+tra+di+voi!)]()
-
 Le tue contribuzioni sono sempre benvenute! Se desideri contribuire con nuovi appunti o migliorare quelli esistenti:
-
 1. Fai un fork del repository
 2. Crea un branch per le tue modifiche
 3. Invia una pull request

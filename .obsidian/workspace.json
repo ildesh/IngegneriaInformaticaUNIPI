@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SECONDO ANNO/Reti logiche/Lezione04(26-09-25).md",
+                "file": "SECONDO ANNO/Reti logiche/Lezione02(24-09-25).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione04(26-09-25)"
+              "title": "Lezione02(24-09-25)"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Esplora risorse"
             }
           },
           {
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "57bcd79d9bed341e",
@@ -160,32 +161,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
       "bases:Create new base": false
     }
   },
   "active": "ca719c01e8771292",
   "lastOpenFiles": [
     "SECONDO ANNO/Reti logiche/Lezione01(23-09-25).md",
+    "Senza nome.canvas",
     "SECONDO ANNO/Reti logiche/Lezione02(24-09-25).md",
     "SECONDO ANNO/Reti logiche/Lezione03(25-09-25).md",
     "SECONDO ANNO/Reti logiche/Lezione04(26-09-25).md",
-    "Pasted image 20250926130021.png",
+    "README.md",
+    "Senza nome.base",
+    "SECONDO ANNO/images/JUMPifCONDITION6.png",
     "SECONDO ANNO/images/JUMPifCONDITION5.png",
     "SECONDO ANNO/images/JUMPifCONDITION4.png",
     "SECONDO ANNO/images/JUMPifCONDITION3.png",
     "SECONDO ANNO/images/JUMPifCONDITION2.png",
     "SECONDO ANNO/images/JUMPifCONDITION.png",
     "SECONDO ANNO/images/IstruzioniDiRotazione.png",
-    "Senza nome.canvas",
-    "Senza nome.base",
     "SECONDO ANNO/images/spazio_I-O.png",
-    "SECONDO ANNO/images/Programma principale-Sottoprogramma-Pila.png",
-    "README.md"
+    "SECONDO ANNO/images/Programma principale-Sottoprogramma-Pila.png"
   ]
 }
