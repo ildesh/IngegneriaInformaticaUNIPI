@@ -5,5 +5,7 @@
     "margin": "0",
     "downscalePercent": 100
   },
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "autoPairMarkdown": true,
+  "smartIndentList": true
 }
