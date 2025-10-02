@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SECONDO ANNO/Reti logiche/Lezione06(01-10-25).md",
+                "file": "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione06(01-10-25)"
+              "title": "Lezione 01 (02-10-25)"
             }
           }
         ]
@@ -172,22 +172,29 @@
   },
   "active": "ca719c01e8771292",
   "lastOpenFiles": [
-    "SECONDO ANNO/images/IstruzioniStringaIO.png",
-    "SECONDO ANNO/Reti logiche/Lezione02(24-09-25).md",
-    "SECONDO ANNO/Reti logiche/Lezione01(23-09-25).md",
-    "Senza nome.canvas",
-    "SECONDO ANNO/Reti logiche/Lezione03(25-09-25).md",
-    "SECONDO ANNO/Reti logiche/Lezione04(26-09-25).md",
+    "PRIMO ANNO/README.md",
     "README.md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione06(01-10-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler",
+    "SECONDO ANNO/Reti logiche/Untitled.md",
+    "TempoDiAttraversamento.png",
+    "SECONDO ANNO/images/TabellaDiVerità.png",
+    "SECONDO ANNO/images/transizioneDeiSegnali.png",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie",
+    "SECONDO ANNO/images/IstruzioniStringaIO.png",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione02(24-09-25).md",
+    "Senza nome.canvas",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione03(25-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione04(26-09-25).md",
     "Senza nome.base",
     "SECONDO ANNO/images/JUMPifCONDITION6.png",
     "SECONDO ANNO/images/JUMPifCONDITION5.png",
     "SECONDO ANNO/images/JUMPifCONDITION4.png",
     "SECONDO ANNO/images/JUMPifCONDITION3.png",
     "SECONDO ANNO/images/JUMPifCONDITION2.png",
-    "SECONDO ANNO/images/JUMPifCONDITION.png",
-    "SECONDO ANNO/images/IstruzioniDiRotazione.png",
-    "SECONDO ANNO/images/spazio_I-O.png",
-    "SECONDO ANNO/images/Programma principale-Sottoprogramma-Pila.png"
+    "SECONDO ANNO/images/JUMPifCONDITION.png"
   ]
 }
