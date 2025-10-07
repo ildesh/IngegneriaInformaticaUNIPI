@@ -1,5 +1,5 @@
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%82+Struttura+della+cartella)]()
-Il repository è organizzato nelle seguenti sezioni:
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=800&height=50&lines=%F0%9F%93%82+Struttura+della+cartella+Primo+Anno)]()
+Il **Primo Anno** è organizzato nelle seguenti sezioni:
 - **Algoritmi e strutture dati** - Fondamenti teorici e implementazioni pratiche
   - Esercizi
   - LAB - Laboratori pratici
