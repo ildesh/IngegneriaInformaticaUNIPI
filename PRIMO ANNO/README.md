@@ -7,5 +7,5 @@ Il repository è organizzato nelle seguenti sezioni:
 - **Basi di Dati** - Teoria e pratica sui database
   - Esercizi
   - SQL (grazie alle lezioni del professore Pistolesi)
-  - Lezioni teoria (aggiornate giornalmente a seconda delle lezioni - grazie alle lezioni del professore Tonellotto)
+  - Lezioni teoria (aggiornate giornalmente a seconda delle lezioni - grazie alle lezioni del professore Tonellotto e Pistolesi)
 - **Fondamenti di Programmazione** - ⚠️ *Work in progress...* Gli appunti saranno disponibili a breve!
