@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "57bcd79d9bed341e",
@@ -172,9 +171,12 @@
   },
   "active": "06ef237305d41c66",
   "lastOpenFiles": [
+    "SECONDO ANNO/Progettazione Web/Teoria",
+    "SECONDO ANNO/Progettazione Web/Laboratori",
+    "SECONDO ANNO/Progettazione Web/Untitled.md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
     "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
-    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/images/TempoDiAttraversamento.png",
     "SECONDO ANNO/images/AlgebraDiBoole+RetiCombinatorie.png",
     "SECONDO ANNO/images/ProprietàOperatoriBooleani.png",
