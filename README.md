@@ -45,7 +45,8 @@ Per lavorare in locale e avere sempre i materiali aggiornati, segui questi sempl
     git pull origin main
     ```
     
->[!TIP] 💡 _Suggerimento:_  
+>[!TIP] 
+> #### 💡 _Suggerimento:_  
 > Se hai modificato dei file localmente e vuoi mantenere i tuoi cambiamenti separati dagli aggiornamenti, crea un nuovo **branch** personale prima di fare il pull:
 > 
 > ```bash
