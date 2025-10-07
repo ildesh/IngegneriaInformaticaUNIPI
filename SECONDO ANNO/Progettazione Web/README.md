@@ -3,7 +3,6 @@ Benvenuti nella cartella di <span style="font-size: 25px; font-weight: bolder;">
 In questa cartella troverete due sezioni:
 1. TEORIA
 2. LABORATORI
-
 ---
 ### [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=Sezione+Teoria)]()
 In questa parte sono raccolti tutti i **contenuti teorici** del corso, come:
