@@ -3,6 +3,7 @@
 <img src="https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=35&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&vCenter=true&width=510&height=100&lines=Benvenuto%2Fa+Ingegnere!" alt="Typing SVG" />
 
 </div>
+
 ---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)]()
 Benvenuti nel repository ufficiale degli appunti dei corsi di informatica! Questa raccolta è pensata per fornire materiale didattico completo e ben organizzato per supportare il vostro percorso di apprendimento.
@@ -22,8 +23,7 @@ Benvenuti nel repository ufficiale degli appunti dei corsi di informatica! Quest
 > 🧠 *In questo modo potrai leggere la teoria con Obsidian e provare il codice con VS Code, ottenendo un’esperienza completa e produttiva!*
 
 ---
- 
- <a id="scarica-e-aggiorna-il-repository"></a>[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=580&height=50&lines=%F0%9F%92%BE+Scarica+e+Aggiorna+il+Repository)]()
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=580&height=50&lines=%F0%9F%92%BE+Scarica+e+Aggiorna+il+Repository)]()
 Per lavorare in locale e avere sempre i materiali aggiornati, segui questi semplici passaggi 👇  
 
 1. **Clona il repository (scaricalo) sul tuo dispositivo**:
@@ -69,7 +69,7 @@ Il repository è organizzato nelle seguenti sezioni:
 1. **Naviga nelle cartelle** dei diversi corsi
 2. **Consulta i file .md** che contengono gli appunti dettagliati per ogni lezione
 3. **Scarica o clona** il repository per avere sempre accesso offline al materiale
-	1. Visualizzare sopra nella sezione : [Scarica e Aggiorna il Repository](#-scarica-e-aggiorna-il-repository)
+	1. Visualizzare sopra nella sezione : #-scarica-e-aggiorna-il-repository
 
 ---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=650&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]
