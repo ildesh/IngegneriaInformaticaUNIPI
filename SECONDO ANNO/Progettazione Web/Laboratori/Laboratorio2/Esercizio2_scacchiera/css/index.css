@@ -1,0 +1,22 @@
+body{
+  display: flex;
+  justify-content: center;   /* centra orizzontalmente */
+  align-items: center;       /* centra verticalmente */
+  height: 100vh;             /* occupa tutta l’altezza della finestra */
+  margin: 0;                 /* elimina margini di default del body */
+}
+
+table{
+  border-collapse: collapse;
+}
+
+table tr th{
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+}
+
+tr:nth-child(odd) th:nth-child(odd),
+tr:nth-child(even) th:nth-child(even){
+  background-color: black;
+}

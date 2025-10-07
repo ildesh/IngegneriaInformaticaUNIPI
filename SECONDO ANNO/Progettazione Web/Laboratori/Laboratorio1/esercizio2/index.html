@@ -1,0 +1,76 @@
+<!--
+• Creare una pagina HTML5 su un personaggio/persona a piacere
+• La pagina deve contenere immagini con path assoluti
+• Usare i nuovi elementi di HTML5: • <header>
+• <footer>
+• <nav>
+• <article>
+• <section>
+• Utilizzare i tag <em>, <strong>, <cite>
+• Inserire nella parte di navigazione dei link alle sezioni della pagina
+• Inserire almeno un link che si apre una pagina esterna (ad esempio
+wikipedia) con un nuovo tab
+• Inserire delle liste ordinate (e non)
+• Validare il codice HTML e rimuovere gli eventuali errori presenti
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booker DeWitt - Wiki</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/favicon.ico">
+    <style>
+        body{
+            font-family: "Alan Sans";
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WikiGames</h1>
+        <nav>
+            <ul>
+                <li><a href="https://www.google.com/" target="_blank">Home</a></li>
+                <li><a href="#" target="_blank">About</a></li>
+                <li><a href="#" target="_blank">Generes</a></li>
+                <li><a href="#" target="_blank">Characters</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <h2>Rappresentazione visiva del personaggio</h2>
+            <img src="images/Booker.png" alt="BookerDeWitt photo" height="200"> <br>
+            <cite>“One thing I've learned: if you don't draw first, 
+                <br> you don't get to draw at all.” <br>
+                ― Booker DeWitt, to Elizabeth</cite>
+            <section>
+                <h3>Presentazione del personaggio</h3>
+                <ol>
+                    <li><strong>Nome</strong>: Booker</li>
+                    <li><strong>Cognome</strong>: DeWitt</li>
+                    <li><strong>Data di Nascita</strong>: 19 Aprile, 1874</li>
+                    <li><strong>Descrizione:</strong> Booker DeWitt è il protagonista di BioShock Infinite. 
+                        È un investigatore privato e, prima del suo riluttante arrivo a 
+                        Columbia, un ex soldato e agente Pinkerton. 
+                        A Booker viene offerto un accordo per <em>cancellare i suoi debiti</em> 
+                        se andrà a Columbia e recupererà una ragazza imprigionata lì. <br>
+                        Nel corso della storia, Booker rivela le sue esperienze passate e 
+                        dimostra la sua capacità di prendere decisioni indipendentemente 
+                        dal giocatore. A differenza di Jack e del Soggetto Delta, 
+                        Booker ha una personalità propria, 
+                        piuttosto che essere un avatar silenzioso e senza 
+                        volto per il giocatore.
+                    </li>
+                    <li><strong>Luogo di Nascita:</strong>: Stati Uniti</li>
+                </ol>
+            </section>
+    </article>
+    <footer>&copy; Copyright Deniel Bertolini, WikiGames</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* Impostare l'altezza di ogni immagine a 100px */
+img{
+    height: 100px;
+}
+
+/* Mettere un bordo tratteggiato di 1px a tutte le sezioni */
+section{
+    border: 1px dashed solid black;
+}
+
+/* Colorare lo sfondo di rosso del titolo di Youtube */
+#Youtube h2{
+    background-color: red;
+}
+
+/* Colorare lo sfondo di giallo per tutti i link "Torna su" */
+.top{
+    background-color: yellow;
+}
+
+/* Colorare di rosso la scritta "100 lingue" */
+#Facebook article p span strong{
+    color: red;
+}
+
+/* Colorare di verde lo sfondo della scritta "primo servizio" */
+#Facebook article span + em{
+    background-color: green;
+}
+
+/* Mettere un bordo spesso 5px intorno all'immagine di Youtube */
+#Youtube img{
+    border: 5px solid black;
+}
+
+/* Provare la differenza tra attribute *= value e attribute ~= value */
+a[href*="top"]{
+    font-size: 16px;
+    color: aquamarine;
+}
+
+a[href~="top"] {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* "*=" → contiene la parola logo */
+img[alt*="logo"] {
+    border: 2px solid aquamarine;
+}
+
+/* "~=" → contiene la parola esatta "facebook", "youtube", "whatsapp" */
+img[alt~="facebookz"] {
+    border: 2px solid red;
+}
+img[alt~="youtubers"] {
+    border: 2px solid red;
+}
+img[alt~="whatsapp"] {
+    border: 2px solid red;
+} */
+
+/* Quando si passa sopra i link "Torna su" cambiare il background in rosso e mettere il font a 50px */
+.top:hover{
+    background-color: red;
+    font-size: 50px;
+}
