@@ -35,7 +35,8 @@
               "title": "README"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -88,8 +89,7 @@
               "title": "Segnalibri"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -184,8 +184,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "cc522849fc1410ea",
+  "active": "940303f1d0a19fcd",
   "lastOpenFiles": [
+    "README.md",
     "SECONDO ANNO/Progettazione Web/README.md",
     "PRIMO ANNO/README.md",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/Lab1.pdf",
@@ -215,7 +216,6 @@
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione05(30-09-25).md",
     "SECONDO ANNO/Reti logiche/Lezione05(30-09-25).md",
-    "README.md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione06(01-10-25).md",
     "SECONDO ANNO/Reti logiche/Untitled.md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione02(24-09-25).md",
