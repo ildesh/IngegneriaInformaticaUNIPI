@@ -73,7 +73,7 @@ Il repository è organizzato nelle seguenti sezioni:
 	1. Visualizzare sopra nella sezione : #-scarica-e-aggiorna-il-repository
 
 ---
-## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=600&height=50&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]()
+## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=800&height=50&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]()
 Hai trovato un errore nei materiali o hai suggerimenti per migliorare gli appunti?
 ### Sezione ISSUES
 Utilizza la sezione **Issues** per segnalare problemi specifici come:
