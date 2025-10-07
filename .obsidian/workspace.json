@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "cc522849fc1410ea",
+            "id": "940303f1d0a19fcd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "SECONDO ANNO/README.md",
                 "mode": "source",
                 "source": false
               },
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "940303f1d0a19fcd",
+            "id": "74beda2a780ca216",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -35,8 +35,7 @@
               "title": "README"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -186,9 +185,10 @@
   },
   "active": "940303f1d0a19fcd",
   "lastOpenFiles": [
+    "PRIMO ANNO/README.md",
+    "SECONDO ANNO/README.md",
     "README.md",
     "SECONDO ANNO/Progettazione Web/README.md",
-    "PRIMO ANNO/README.md",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/Lab1.pdf",
     "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio2/images/favicon.ico",
@@ -211,8 +211,8 @@
     "SECONDO ANNO/Progettazione Web/Untitled.md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
     "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
-    "SECONDO ANNO/images/TempoDiAttraversamento.png",
-    "SECONDO ANNO/images/AlgebraDiBoole+RetiCombinatorie.png",
+    "SECONDO ANNO/Reti logiche/images/TempoDiAttraversamento.png",
+    "SECONDO ANNO/Reti logiche/images/AlgebraDiBoole+RetiCombinatorie.png",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione05(30-09-25).md",
     "SECONDO ANNO/Reti logiche/Lezione05(30-09-25).md",
