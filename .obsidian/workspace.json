@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SECONDO ANNO/Reti logiche/README.md",
+                "file": "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Lezione 02 (07-10-25)"
             }
           },
           {
@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PRIMO ANNO/README.md",
+                "file": "SECONDO ANNO/Reti logiche/README.md",
                 "mode": "source",
                 "source": false
               },
@@ -185,10 +185,11 @@
   },
   "active": "940303f1d0a19fcd",
   "lastOpenFiles": [
-    "SECONDO ANNO/README.md",
-    "SECONDO ANNO/Progettazione Web/README.md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
     "SECONDO ANNO/Reti logiche/README.md",
     "PRIMO ANNO/README.md",
+    "SECONDO ANNO/README.md",
+    "SECONDO ANNO/Progettazione Web/README.md",
     "README.md",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/Lab1.pdf",
     "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
@@ -211,7 +212,6 @@
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini",
     "SECONDO ANNO/Progettazione Web/Untitled.md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
-    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
     "SECONDO ANNO/Reti logiche/images/TempoDiAttraversamento.png",
     "SECONDO ANNO/Reti logiche/images/AlgebraDiBoole+RetiCombinatorie.png",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
