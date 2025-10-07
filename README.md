@@ -3,17 +3,61 @@
 <img src="https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=35&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&vCenter=true&width=510&height=100&lines=Benvenuto%2Fa+Ingegnere!" alt="Typing SVG" />
 
 </div>
-
 ---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%9A+Appunti+di+Informatica+%F0%9F%92%BB)]()
 Benvenuti nel repository ufficiale degli appunti dei corsi di informatica! Questa raccolta è pensata per fornire materiale didattico completo e ben organizzato per supportare il vostro percorso di apprendimento.
+
+---
+> [!IMPORTANT]  
+> ⚙️ **Visualizzazione consigliata dei contenuti**
+>
+> Per una migliore esperienza di lettura, si consiglia di:
+> - 📖 **Installare [Obsidian](https://obsidian.md/)** → permette di visualizzare in modo chiaro e ordinato tutti i file `.md` (Markdown) presenti nel repository.  
+>   Puoi aprire direttamente la cartella del progetto come un *Vault* e navigare tra gli appunti come se fosse un wiki interattivo!  
+>
+> - 💻 **Utilizzare [Visual Studio Code](https://code.visualstudio.com/)** o un altro IDE per modificare ed eseguire file di codice:  
+>   - `.cpp` → per esercizi o esempi di **C++**  
+>   - `.html`, `.css`, `.js` → per esercizi di **Programmazione Web**  
+>
+> 🧠 *In questo modo potrai leggere la teoria con Obsidian e provare il codice con VS Code, ottenendo un’esperienza completa e produttiva!*
+
+---
+ 
+ <a id="scarica-e-aggiorna-il-repository"></a>[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=580&height=50&lines=%F0%9F%92%BE+Scarica+e+Aggiorna+il+Repository)]()
+Per lavorare in locale e avere sempre i materiali aggiornati, segui questi semplici passaggi 👇  
+
+1. **Clona il repository (scaricalo) sul tuo dispositivo**:
+   ```bash
+   git clone https://github.com/<nome-utente>/<nome-repo>.git
+	```
+
+2. **Accedi alla cartella del progetto**:
+    ```bash
+    cd <nome-repo>
+    ```
+
+3. **(Facoltativo) Apri la cartella con Obsidian o VS Code**
+    - Con **Obsidian**, apri la cartella clonata come _Vault_ per esplorare gli appunti in modo interattivo.
+    - Con **VS Code**, apri la cartella per modificare o eseguire il codice sorgente.
+
+4. **Aggiorna periodicamente il repository per ottenere gli ultimi appunti e correzioni**:
+    ```bash
+    git pull origin main
+    ```
+    
+>[!TIP] 💡 _Suggerimento:_  
+> Se hai modificato dei file localmente e vuoi mantenere i tuoi cambiamenti separati dagli aggiornamenti, crea un nuovo **branch** personale prima di fare il pull:
+> 
+> ```bash
+> git checkout -b nome-branch-personale
+> ```
 
 ---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=550&height=50&lines=%F0%9F%93%82+Struttura+del+Repository)]()
 Il repository è organizzato nelle seguenti sezioni:
 
 - **PRIMO ANNO**: All'interno sono presenti tutti gli elementi di teoria e anche pratica di:
-	1. Fondamenti di programmazione
+	1. Fondamenti di programmazione (da completare ancora..)
 	2. Base di Dati
 	3. Algoritmi e strutture dati (da completare ancora..)
 - **SECONDO ANNO**: All'interno sono presenti tutti gli elementi di teoria di:
@@ -22,21 +66,12 @@ Il repository è organizzato nelle seguenti sezioni:
 
 ---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=600&height=50&lines=%F0%9F%9A%80+Come+Utilizzare+gli+Appunti)]()
-
 1. **Naviga nelle cartelle** dei diversi corsi
 2. **Consulta i file .md** che contengono gli appunti dettagliati per ogni lezione
 3. **Scarica o clona** il repository per avere sempre accesso offline al materiale
-
-### 🔄 Aggiornamenti
-
-Gli appunti vengono aggiornati regolarmente. Per rimanere al passo con gli ultimi aggiornamenti:
-
-```bash
-git pull origin main
-```
+	1. Visualizzare sopra nella sezione : [Scarica e Aggiorna il Repository](#-scarica-e-aggiorna-il-repository)
 
 ---
-
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=650&lines=%F0%9F%90%9B+Segnalazione+Errori+e+Contributi)]
 Hai trovato un errore nei materiali o hai suggerimenti per migliorare gli appunti?
 ### Sezione ISSUES

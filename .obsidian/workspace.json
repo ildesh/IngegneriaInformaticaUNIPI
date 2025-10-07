@@ -4,21 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "b6da56df33fdf4fd",
+        "id": "1366209e1f7dda4c",
         "type": "tabs",
         "children": [
           {
-            "id": "06ef237305d41c66",
+            "id": "cc522849fc1410ea",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 02 (07-10-25)"
+              "title": "README"
+            }
+          },
+          {
+            "id": "940303f1d0a19fcd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PRIMO ANNO/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -61,7 +75,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Ricerca"
+              "title": "Search"
             }
           },
           {
@@ -74,7 +88,8 @@
               "title": "Segnalibri"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -169,8 +184,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "58302780f891b3e0",
+  "active": "cc522849fc1410ea",
   "lastOpenFiles": [
+    "SECONDO ANNO/Progettazione Web/README.md",
+    "PRIMO ANNO/README.md",
+    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/Lab1.pdf",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio2/images/favicon.ico",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio2/images/Booker.png",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio2/images",
@@ -188,10 +207,7 @@
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/casa.png",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/alimenti.gif",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/lisa.html",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/incostruzione.html",
     "SECONDO ANNO/Progettazione Web/Untitled.md",
-    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
     "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
     "SECONDO ANNO/images/TempoDiAttraversamento.png",
@@ -199,7 +215,6 @@
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione05(30-09-25).md",
     "SECONDO ANNO/Reti logiche/Lezione05(30-09-25).md",
-    "PRIMO ANNO/README.md",
     "README.md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione06(01-10-25).md",
     "SECONDO ANNO/Reti logiche/Untitled.md",
