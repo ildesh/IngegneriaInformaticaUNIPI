@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione03(25-09-25).md",
+                "file": "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 04 (14-10-25).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione03(25-09-25)"
+              "title": "Lezione 04 (14-10-25)"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#-scarica-e-aggiorna-il-repository",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "57bcd79d9bed341e",
@@ -171,17 +172,30 @@
   },
   "active": "55b0c3e669b38160",
   "lastOpenFiles": [
+    "SECONDO ANNO/Reti logiche/images/ListeCoperturaNonRidondanti.png",
+    "SECONDO ANNO/Reti logiche/images/EsempioSottoCubiAlgoritmo2.png",
+    "SECONDO ANNO/Reti logiche/images/EsempioSottoCubiAlgoritmo1.png",
+    "SECONDO ANNO/Reti logiche/images/MappaDiKarnaughEsempio.png",
+    "SECONDO ANNO/Reti logiche/images/SemplificoFormaCanonicaSP.png",
+    "Pasted image 20251014120050.png",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 04 (14-10-25).md",
+    "SECONDO ANNO/Reti logiche/images/SistesiRetiInFormaSPCostoMinimo.png",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 03 (09-10-25).md",
+    "SECONDO ANNO/Reti logiche/images/MultiplexerReteCombUniversale.png",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
+    "SECONDO ANNO/Reti logiche/images/Multiplexer.png",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione03(25-09-25).md",
+    "SECONDO ANNO/Reti logiche/Laboratorio/es1.asm",
+    "SECONDO ANNO/Reti logiche/Laboratorio/es1.s",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione04(26-09-25).md",
     "SECONDO ANNO/Reti logiche/Laboratorio",
     "SECONDO ANNO/Reti logiche/Untitled.md",
-    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione03(25-09-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione06(01-10-25).md",
-    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione05(30-09-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione02(24-09-25).md",
     "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
     "SECONDO ANNO/Reti logiche/README.md",
-    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
     "PRIMO ANNO/README.md",
     "SECONDO ANNO/README.md",
@@ -195,18 +209,8 @@
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio2",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/suoni/simpsons.mp3",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/suoni/itchyscratchy.mp3",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/suoni/gmasock.mp3",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/suoni",
     "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/sfondo.gif",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/lavori.gif",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/foto.gif",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/famiglia.gif",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/donut.png",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/casa.png",
-    "SECONDO ANNO/Progettazione Web/Laboratori/Laboratorio1/esercizio1/immagini/alimenti.gif",
     "SECONDO ANNO/Progettazione Web/Untitled.md",
-    "SECONDO ANNO/Reti logiche/images/TempoDiAttraversamento.png",
-    "SECONDO ANNO/Reti logiche/images/AlgebraDiBoole+RetiCombinatorie.png",
     "SECONDO ANNO/Reti logiche/Lezione05(30-09-25).md",
     "Senza nome.canvas"
   ]
