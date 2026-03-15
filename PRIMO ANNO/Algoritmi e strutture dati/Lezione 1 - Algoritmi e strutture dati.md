@@ -1,4 +1,3 @@
-# Lezione 1 - Algoritmi e strutture dati
 ## | Nozione di Algoritmo
 
 Un algoritmo è una sequenza finita di passaggi ben definiti che, dati alcuni input, produce un output desiderato. Gli algoritmi sono fondamentali in informatica per risolvere problemi e automatizzare processi.
@@ -40,23 +39,13 @@ Ricordando Donald Knuth, profeossere emerito di informatica all'Università di S
 
 #### Importanza teorica:
 
-<blockquote>
-
-"Se è vero che un problema non si capisce a fondo finch+ non lo si deve insegnare a qualcuno altro, a maggior ragione nulla è compreso in modo più approfondito di ciò che si deve insegnare ad una macchina, ovvero di ciò che va espresso tramite un algoritmo."
-
-</blockquote>
-
+>"Se è vero che un problema non si capisce a fondo finchè non lo si deve insegnare a qualcuno altro, a maggior ragione nulla è compreso in modo più approfondito di ciò che si deve insegnare ad una macchina, ovvero di ciò che va espresso tramite un algoritmo."
 #### Importanza pratica:
 
-<blockquote>
-
-"Se vuoi diventare un programmatore di classe mondiale, hai due scelte:
-
-1. programma ogni giorno per 10 anni
-2. oppure programma ogni giorno per 2 anni ...
-
-</blockquote>
-
+>"Se vuoi diventare un programmatore di classe mondiale, hai due scelte:
+>
+>1. programma ogni giorno per 10 anni
+>2. oppure programma ogni giorno per 2 anni ...
 #### Esempio: PROBLEMA DEL MASSIMO COMUN DIVISORE FRA DUE NUMERI INTERI NON NEGATIVI - uso di un algoritmo di Euclide
 
 MCD(30,21) = 3
@@ -64,7 +53,7 @@ MCD(30,21) = 3
 Il MCD fra due numeri è uguale al MCD fra il più piccolo dei due e la loro differenza.
 
 ```cpp
-int MCD(int x, y){
+int MCD(int x, int y){
     while(x != y){
         if(x < y) y = y-x; 
         else x = x-y;
@@ -75,19 +64,19 @@ int MCD(int x, y){
 
 Risoluzione con calcoli (differenza tra numeri):
 
-Passaggio  |Operazione  |x	|y
+|Passaggio  |Operazione  |x	|y|
 |-----------|----------|-----------|-----------|
-|Iniziale	|MCD(30, 21)	|30	|21
-|1° iterazione	|30 > 21, x = x - y	|9	|21
-|2° iterazione	|21 > 9, y = y - x	|9	|12
-|3° iterazione	|12 > 9, y = y - x	|9	|3
-|4° iterazione	|9 > 3, x = x - y	|6	|3
-|5° iterazione	|6 > 3, x = x - y	|3	|3
-|Fine	|x == y, MCD = 3	|3	|3
+|Iniziale	 |MCD(30, 21)	 |30	|21|
+|1° iterazione	|30 > 21, x = x - y	|9	|21|
+|2° iterazione	|21 > 9, y = y - x	|9	|12|
+|3° iterazione	|12 > 9, y = y - x	|9	|3|
+|4° iterazione	|9 > 3, x = x - y	|6	|3|
+|5° iterazione	|6 > 3, x = x - y	|3	|3|
+|Fine	|x == y, MCD = 3	|3	|3|
 
 
 ```cpp
-int MCD(int x, y){
+int MCD(int x, int y){
     while (y != 0){
         int k = x;
         x = y;
@@ -118,7 +107,7 @@ Esistono diversi approcci per trovare tutti i numeri primi fino a un numero \( n
 
 2. **Metodo leggermente migliorato:**  
    - Per ogni numero da \( 2 \) a \( n \), controllare se è primo dividendo solo per i numeri primi già trovati minori o uguali alla sua radice quadrata.  
-   - Complessità: **O(n \sqrt{n})**.
+   - Complessità: **O(n $\sqrt{n}$)**.
 
 3. **Crivello di Eratostene (efficiente):**  
    - Creare un array di booleani di dimensione \( n+1 \) inizializzato a `true`.  

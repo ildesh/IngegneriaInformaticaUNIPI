@@ -94,8 +94,7 @@ per ogni k, n<sup>k</sup> appartenente a O(a<sup>n</sup>), per ogni a > 1, una q
 
 ---
 
-## | SelectionSort
-
+## | Selection Sort
 
 Selection Sort è un algoritmo di ordinamento che funziona selezionando ripetutamente l'elemento minimo (o massimo) dall'array non ordinato e spostandolo nella posizione corretta. Ecco una descrizione dettagliata dell'algoritmo:
 
