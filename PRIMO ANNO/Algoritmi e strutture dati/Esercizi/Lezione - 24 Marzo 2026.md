@@ -11,6 +11,9 @@
 >* **$g_{while}$ / $g_{for}$ (Guardia del ciclo)**: Rappresenta il numero di volte in cui viene valutata la condizione (guardia) di un ciclo, che è approssimativamente uguale al numero di iterazioni del ciclo stesso.
 >* **$O(...)$ (O-Grande)**: È la notazione asintotica che descrive il **limite superiore** della crescita di una funzione. Ci dice, nel caso peggiore, come scala il tempo (o lo spazio) all'aumentare di $n$ (es. lineare $O(n)$, quadratico $O(n^2)$, logaritmico $O(\log n)$).
 >* **$\Theta(...)$ (Theta-Grande)**: Simile a O-Grande, ma indica un limite **stretto** (sia superiore che inferiore). Quando scriviamo $\Theta(n)$, significa che la funzione cresce *esattamente* in modo proporzionale a $n$.
+
+---
+
 ### Esercizio 1
 
 >[!NOTE] A seguito del codice trovare: $T_{main} = T_{g(n)} \space x \space g_{while}$
@@ -50,7 +53,9 @@ Il prodotto finale tra questi due quindi è pari a:
 $$
 T_{main} = O(n)\space x \space O(n^2) = O(n^3)
 $$
+
 ---
+
 ### Esercizio 2
 >[!NOTE] A seguito del codice calcolare: $T_{main} = T_{f(n)} + g_{for}$
 >```cpp
@@ -86,7 +91,9 @@ In conclusione la nostra somma $T_{main} = T_{f(n)} + g_{for}$ sarà pari a:
 $$
 T_{main} = O(n) + O(2^n) = O(2^n)
 $$
+
 ---
+
 ### Esercizio 3
 ​
 >[!NOTE] A seguito del codice trovare: $T_{main}(n) = T_{f}(n) \space x \space g_{for}$
@@ -152,4 +159,5 @@ Unendo i risultati otteniamo la complessità finale che risulta essere:
 $$
 T_{main}(n) = O(\log n) \times O(n^2) = O(n^2 \log n)
 $$
+
 ---
