@@ -1,5 +1,4 @@
 Economia – 12/03/2026
-
 ## Le Forme Giuridiche delle Imprese
 ### Dall'idea al business: scegliere l'abito giusto per la tua **startup**
 
@@ -90,32 +89,53 @@ Garantiscono protezione e crescita tramite l'**Autonomia Patrimoniale Perfetta**
 
 ### Startup Innovative (D.L. 179/2012)
 
-È uno STATUS, non una forma giuridica. **Requisiti principali**:
+È uno **STATUS**, non una _**forma giuridica**_.
 
-- Costituita da meno di 5 anni + Sede in Italia.
-- Fatturato annuo inferiore a 5 milioni di euro + non distribuire utili.
-- Oggetto sociale: prodotti/servizi ad alto valore tecnologico.
-- Criteri (almeno 1): 15% spese in R&S, personale qualificato (PhD/Master), o titolarità di brevetti/software.
+>[!IMPORTANT] **Requisiti principali**:
+>- Costituita da meno di 5 anni + Sede in Italia.
+>- Fatturato annuo inferiore a 5 milioni di euro + non distribuire utili.
+>- Oggetto sociale: prodotti/servizi ad alto valore tecnologico.
+>- **Criteri** (almeno 1): 15% spese in R&S, personale qualificato (PhD/Master), o titolarità di brevetti/software.
 
-**Vantaggi concreti**:
+>[!IMPORTANT] **Vantaggi concreti**:
+>- **Zero Burocrazia**: Esenzione da diritti camerali e imposte di bollo.
+>- **Incentivi Fiscali**: Detrazioni del 30-50% per chi investe nel capitale.
+>- **Accesso al Credito**: Accesso semplificato al Fondo di Garanzia per le PMI.
+>- **Work for Equity**: Possibilità di pagare i collaboratori con quote societarie.
 
-- **Zero Burocrazia**: Esenzione da diritti camerali e imposte di bollo.
-- **Incentivi Fiscali**: Detrazioni del 30-50% per chi investe nel capitale.
-- **Accesso al Credito**: Accesso semplificato al Fondo di Garanzia per le PMI.
-- **Work for Equity**: Possibilità di pagare i collaboratori con quote societarie.
+---
+### Funzionamento dell'impresa: Operazioni di gestione
 
->[!IMPORTANT] Casi di successo italiani (Le competenze sono il cuore, ma la forma giuridica è il motore che permette di attrarre capitali):
+1. **CESSIONE**: Riguarda il contratto con cui un soggetto (il _cedente_) trasferisce la proprietà dell'intera azienda, o di un suo ramo funzionalmente autonomo, a un altro soggetto (il _cessionario_) in cambio di un corrispettivo in denaro (prezzo).
+	- **L'obiettivo:** consiste nel monetizzare il valore dell'impresa o liberarsi di un'attività non più strategica. 
+	- **Continuità:** L'azienda non smette di esistere, cambia semplicemente padrone (soggetto economico).
+	La cessazione rappresenta la **fase terminale** del ciclo di vita dell'azienda e **_comporta la sua estinzione_**. Si divide in due tipologie principali:
+		1. **_Cessazione volontaria_**: Avviene per decisione autonoma del soggetto economico (es. i soci o l'imprenditore) per vari motivi: raggiungimento dello scopo sociale, mancanza di eredi, impossibilità di continuare a operare con profitto.
+			* **Fase di liquidazione:** L'azienda smette di operare sul mercato, vende tutti i suoi beni (attivo), paga tutti i debiti (passivo) e distribuisce l'eventuale capitale residuo ai soci.
+		2. **_Cessazione coatta_**: È una chiusura forzata, imposta dall'autorità giudiziaria o amministrativa. Solitamente avviene a causa di uno stato di insolvenza (incapacità di pagare regolarmente i propri debiti) e l'imprenditore perde il controllo dell'azienda, che viene affidata a un curatore (es. Liquidazione Giudiziale, ex Fallimento) il quale si occuperà di vendere i beni per soddisfare, per quanto possibile, i creditori secondo un preciso ordine di priorità.
+2. **FUSIONE**: La fusione è l'operazione con cui due o più società si uniscono per formarne una sola. Serve generalmente per creare economie di scala, ridurre la concorrenza o aumentare il potere di mercato.
+	- **_Fusione Propria_**: Due o più società preesistenti (es. Società A e Società B) si sciolgono e uniscono i loro patrimoni per **creare una società completamente nuova** (Società C).
+		- **Esito:** A e B spariscono; nasce C.
+	- **_Fusione per Incorporazione_**: Una società preesistente (l'_incorporante_, es. Società A) assorbe una o più altre società (le _incorporate_, es. Società B).
+		- **Esito:** La società B sparisce, mentre la società A continua a esistere mantenendo il proprio nome e la propria identità giuridica, ma con un patrimonio e dimensioni ampliate.
+3. **SCISSIONE**: Il patrimonio di una società (la _scissa_) viene diviso e trasferito, in tutto o in parte, a una o più società (le _beneficiarie_), preesistenti o di nuova costituzione.
+4. **SCORPORO**: Una società (la _conferente_) stacca una parte del proprio patrimonio (un ramo d'azienda) e lo trasferisce a un'altra società (la _conferitaria_), spesso di nuova creazione.
+
+
+---
+
+>[!WARNING] **Casi di successo italiani** (Le competenze sono il cuore, ma la forma giuridica è il motore che permette di attrarre capitali):
 >- **Exein (Cybersecurity IoT)**: Protegge dispositivi connessi, ha raccolto 100 milioni di euro per l'espansione globale.
 >- **Nanophoria (Biotech)**: Sviluppa trattamenti non invasivi per il cuore, ha raccolto 83,5 milioni in Serie A.
 >- **WSense (Deep Tech)**: Spin-off de La Sapienza che ha creato il "wifi sottomarino".
 
->[!IMPORTANT] Oltre il profitto: Imprese Ibride e sostenibili
+>[!IMPORTANT] **Oltre il profitto**: Imprese Ibride e sostenibili
 > La sostenibilità non è solo etica, è un vantaggio competitivo che attrae talenti e clienti.
 >- **Società Benefit**: Qualifica giuridica italiana (Legge 208/2015) che integra profitto e beneficio comune nello statuto aziendale e ha l'obbligo di relazione d'impatto annuale.
 >- **B-Corp**: Certificazione internazionale volontaria (B Lab) basata su standard globali, richiede una valutazione rigorosa (BIA > 80 punti) e focus sulla trasparenza.
 >- _Si può essere entrambe contemporaneamente._
 
->[!NOTE] **Esempi italiani di successo**:
+>[!TIP] **Esempi italiani di successo**:
 >- **Davines Group (Benefit & B-Corp)**: Eccellenza nella cosmetica sostenibile.
 >- **Chiesi Farmaceutici (Benefit & B-Corp)**: Integra salute dei pazienti e riduzione dell'impatto ambientale.
 >- **Albergo Etico (Impresa Sociale)**: Hotel gestito da persone con disabilità, nato ad Asti e diventato franchising sociale.
@@ -143,4 +163,3 @@ La scelta legale non è definitiva; bisogna fare il "salto" per non frenare la c
 >| **SPA**            | Limitata           | 50.000€       | Strutturata    | Grandi Imprese    |
 >| **SRL Innovativa** | Limitata           | 1€ (Semplif.) | Flessibile     | Startup Tech      |
 
----
