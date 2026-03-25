@@ -85,6 +85,7 @@ Attraverso il caso Ferrari emergono diversi concetti chiave dell’economia azie
 # 8. Trade-off: obiettivi, vincoli e conflitti aziendali
 
 Al vertice dell’organizzazione aziendale troviamo il **Direttore Generale**, responsabile della definizione della strategia complessiva.
+
 >[!IMPORTANT] **Obiettivo principale:** aumentare la quota di mercato.
 >- Per raggiungere questo obiettivo generale, le diverse funzioni aziendali devono perseguire sotto-obiettivi specifici.
 ### Produzione
@@ -93,20 +94,16 @@ Al vertice dell’organizzazione aziendale troviamo il **Direttore Generale**, r
 - Deve rafforzare l’immagine del brand e comunicarne la qualità superiore.
 ### Vendite
 - Deve incrementare il numero di prodotti venduti.
----
 ## Conflitti tra le funzioni aziendali
 Le azioni intraprese da ogni funzione possono però entrare in conflitto tra loro.
 ### A. Vendite vs Marketing (conflitto d’immagine)
 - **Vendite:** ridurre i prezzi per vendere di più.
 - **Marketing:** mantenere prezzi elevati per sostenere l’immagine di qualità.
 Ridurre il prezzo di un prodotto di lusso può compromettere la percezione di esclusività.
-
----
 ### B. Produzione vs Marketing (conflitto di qualità)
 - **Produzione:** ricorrere alla subfornitura per aumentare i volumi.    
 - **Marketing:** garantire standard qualitativi elevati.
 L’esternalizzazione della produzione può ridurre il controllo sulla qualità e danneggiare l’immagine del brand.
----
 ### C. Produzione vs Finanza/Vendite (conflitto di investimenti)
 - **Produzione:** richiede investimenti elevati in nuove fabbriche o macchinari.   
 - **Finanza:** deve mantenere il bilancio sostenibile.
@@ -120,9 +117,8 @@ L’azienda aveva già dimostrato una forte capacità innovativa:
 - nel 1996 aveva lanciato uno dei primi smartphone;
 - nel 2001 aveva introdotto uno dei primi telefoni con fotocamera.
 ## Il vantaggio competitivo: Symbian
-Il principale punto di forza tecnologico di Nokia era Symbian, un sistema operativo proprietario progettato per funzionare in modo altamente efficiente con l’hardware dell’azienda. Questo garantiva a Nokia margini elevati e un controllo completo sull’esperienza utente.
 
----
+Il principale punto di forza tecnologico di Nokia era Symbian, un sistema operativo proprietario progettato per funzionare in modo altamente efficiente con l’hardware dell’azienda. Questo garantiva a Nokia margini elevati e un controllo completo sull’esperienza utente.
 ## Le scelte strategiche di Nokia (2007–2011)
 
 Tra il 2007 e il 2011 Nokia prese alcune decisioni che si rivelarono strategicamente sbagliate:
@@ -132,3 +128,56 @@ Tra il 2007 e il 2011 Nokia prese alcune decisioni che si rivelarono strategicam
     Nokia rimase legata alla tastiera fisica, sottovalutando l’importanza delle interfacce touch introdotte dall’iPhone di Apple.
 3. **Scelta di Windows Phone**  
     Nel 2011 il CEO decise di adottare Windows Phone, sviluppato da Microsoft, invece di utilizzare Android, scelta che limitò fortemente la diffusione dei dispositivi Nokia.
+
+---
+### 10. I Fondamenti della Scelta: Trade-off e Costo Opportunità
+
+Le risorse a nostra disposizione sono limitate. Ogni volta che prendiamo una decisione, ci troviamo di fronte a due concetti cardine, complementari ma ben distinti:
+
+**Il Trade-off (La struttura della scelta)**
+
+- Rappresenta lo scambio tra alternative in competizione.
+- Indica che per ottenere un beneficio, è necessario rinunciare a qualcos'altro.
+- Ha una natura qualitativa e strutturale, poiché coinvolge _tutte_ le alternative a cui si rinuncia.
+- **Esempi manageriali:** Nell'ingegneria gestionale, migliorare un parametro peggiora quasi sempre un altro. Ad esempio, c'è un trade-off tra "Qualità elevata" e "Costo contenuto", o tra "Flessibilità" ed "Economie di scala".
+
+**Il Costo Opportunità (La misura della scelta)**
+
+- È il valore della _migliore_ alternativa non scelta a cui si rinuncia.
+- Ha una natura quantitativa e valutativa, misurando il prezzo o il "sacrificio" della scelta.
+- Non è un costo contabile, ma un costo implicito.
+
+>[!WARNING] **Attenzione:** 
+>Non è la somma di tutte le opzioni scartate. Se uno studente decide di studiare (Opzione A), rinunciando a lavorare per 50€ (Opzione B, la migliore alternativa) o andare al cinema (Opzione C), il costo opportunità è solo il valore dell'Opzione B, non la somma di B e C.
+
+In sintesi: il trade-off è la domanda ("Scelgo qualità o costo?"), mentre il costo opportunità è la risposta quantitativa ("Scegliendo la qualità, rinuncio a 15.000 euro di risparmio").
+#### Dalla Teoria alla Realtà: L'Homo Oeconomicus vs. La Mente Umana
+
+L'economia neoclassica si basa su un modello idealizzato, l'_Homo Oeconomicus_, un decisore perfettamente razionale che conosce tutte le alternative, valuta correttamente i costi opportunità, non è influenzato da come vengono presentate le informazioni e massimizza sempre la sua utilità.
+
+La psicologia cognitiva e l'economia comportamentale hanno dimostrato che questa assunzione è sistematicamente violata nella realtà. Herbert A. Simon (Premio Nobel 1978) ha introdotto il concetto di **razionalità limitata**. Il nostro processo decisionale è vincolato da:
+
+- Capacità cognitiva limitata.
+- Informazioni incomplete.
+- Tempo insufficiente.
+
+Di conseguenza, non cerchiamo la soluzione "ottimale", ma facciamo _Satisficing_ (Satisfy + Suffice): cerchiamo la prima soluzione "abbastanza buona" che soddisfi i requisiti minimi.
+#### I Bias Cognitivi: Le Trappole Decisionali
+
+Le persone sono soggette a bias cognitivi sistematici che distorcono la percezione dei trade-off. Ecco i principali illustrati nel corso:
+
+- **Opportunity Cost Neglect (Ignorare i costi opportunità):** Le persone non considerano spontaneamente le alternative a cui rinunciano. Un esperimento sul DVD Sony ha dimostrato che aggiungere la semplice frase "tenendo i 99$ per altri acquisti" riduce significativamente la percentuale di acquisto, rendendo esplicito il costo opportunità.
+- **Loss Aversion (Avversione alle perdite):** Introdotta da Kahneman e Tversky con la Prospect Theory. Le perdite hanno un impatto emotivo circa due volte superiore ai guadagni equivalenti. Questo spiega il ritardo nell'adozione di nuove tecnologie (es. un nuovo sistema ERP): la perdita percepita del vecchio sistema noto viene sopravvalutata rispetto ai guadagni di efficienza.
+- **Framing Effect (Effetto Cornice):** Il modo in cui le opzioni sono presentate altera radicalmente le scelte, anche se il risultato oggettivo è identico. Presentare un progetto di automazione evidenziando le perdite ("Se non investiamo, perderemo 300.000 euro/anno") genera maggiore propensione all'investimento rispetto a presentarlo come un guadagno ("Risparmieremo 300.000 euro/anno").
+- **Mental Accounting (Contabilità Mentale):** Teorizzata da Richard Thaler, descrive la tendenza a suddividere il denaro in categorie mentali rigide, violando il principio economico della fungibilità del denaro. Questo porta a ignorare i costi opportunità e a non riallocare i budget in modo efficiente (es. non spostare fondi residui dalla manutenzione al marketing).
+- **Choice Overload (Sovraccarico da scelta):** Un eccesso di alternative genera ansia e paralisi decisionale. Nel famoso esperimento delle marmellate di Iyengar e Lepper, offrire 24 varietà ha portato al 3% di acquisti, contro il 30% generato offrendone solo 6.
+- **Status Quo Bias e Sunk Cost Fallacy:** Lo _Status Quo Bias_ è la preferenza irrazionale per mantenere la situazione attuale, percependo il cambiamento come una perdita. La _Sunk Cost Fallacy_ è la tendenza a continuare un'impresa fallimentare solo a causa delle risorse (tempo o denaro) già investite e irrecuperabili, ignorando che le decisioni dovrebbero basarsi solo sui benefici futuri.
+#### Strumenti Pratici per Decisioni Migliori
+
+Per mitigare questi bias cognitivi nell'ingegneria gestionale, il documento suggerisce cinque raccomandazioni operative:
+
+1. **Rendere espliciti i costi opportunità:** Chiedersi sempre qual è il miglior uso alternativo delle risorse, evitando di valutare un investimento in isolamento.
+2. **Riformulare le opzioni (Re-framing):** Analizzare il problema da prospettive opposte (sia come guadagni che come perdite evitate) per limitare l'avversione alle perdite.
+3. **Ignorare i costi sommersi (Sunk costs):** Basare i trade-off esclusivamente sui flussi di cassa e sui benefici marginali futuri, separandoli dagli investimenti passati.
+4. **Strutturare le alternative:** Organizzare le opzioni in modo gerarchico (es. valutare 3-5 opzioni per fase) per prevenire la paralisi da sovraccarico di scelta.
+5. **Adottare una prospettiva esterna:** Distaccarsi emotivamente chiedendosi "Cosa farebbe un nuovo CEO in questa situazione?" per superare la contabilità mentale e il bias dello status quo.

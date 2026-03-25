@@ -13,12 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 3.md",
+                "file": "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 4.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 3"
+              "title": "Lezione 4"
+            }
+          },
+          {
+            "id": "3d9e7fe7da7e6d04",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Note di rilascio 1.12.7"
             }
           }
         ]
@@ -44,7 +56,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Esplora risorse"
             }
           },
           {
@@ -78,7 +90,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "57bcd79d9bed341e",
@@ -160,19 +173,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
+      "bases:Crea nuova Base": false
     }
   },
   "active": "518f6880d99d9fe6",
   "lastOpenFiles": [
-    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 2.md",
+    "PRIMO ANNO/Algoritmi e strutture dati/Esercizi/Lezione - 24 Marzo 2026.md",
     "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 3.md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 4.md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 2.md",
     "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 1.md",
     "SECONDO ANNO/Economica e Gestione Aziendale/images",
     "SECONDO ANNO/Economica e Gestione Aziendale/images/Pasted image 20260315161220.png",
