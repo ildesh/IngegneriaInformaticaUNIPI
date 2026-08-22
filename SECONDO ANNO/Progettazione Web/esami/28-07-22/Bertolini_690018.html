@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EsameUniversitario</title>
+  <style>
+    body, html{
+        box-sizing: border-box;
+    }
+
+    .main{
+        display: flex;
+        gap: 50px;
+        padding: 20px;
+    }
+
+    .container1{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0 0 20px;
+        width: 600px;
+        height: 400px;
+        background-color: orange;
+    }
+
+    .container-form{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .container-form .base{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .base{
+        margin-right: 25%;
+    }
+    
+    .base input{
+        height: 25px;
+        margin-bottom: 3px;
+    }
+
+    .base p {
+        margin: 11px 0; 
+    }
+
+    button{
+        cursor: pointer;
+    }
+
+    .container-time{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        justify-content: space-between;
+    }
+
+    .container-time p, .container-time span{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .container2{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding: 20px 0 0 20px;
+        width: 600px;
+        height: 400px;
+        background-color: lightgreen;
+    }
+
+    #tabella{
+        width: 400px;
+        border-collapse: collapse;
+    }
+
+    td, th{
+      border: 1px solid black;
+    }
+
+    #tabella th{
+        font-weight: bold;
+    }
+    
+    #tabella tr{
+      width: 80px;
+    }
+
+    #tabella td{
+        height: 40px;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="container1">
+        <div class="form">
+            <div class="container-form">
+                <div class="base">
+                    <p>Nome</p>
+                    <input type="text" id="nome">
+                </div>
+                <div class="base">
+                    <p>Cognome</p>
+                    <input type="text" id="cognome">
+                </div>
+                <div class="base">
+                    <p>Matricola</p>
+                    <input type="text" id="matricola">
+                </div>
+            </div>
+            <button type="button" id="inserisci" >Inserisci</button>
+        </div>
+        <div class="container-time">
+            <p>Tempo rimanente:</p>
+            <span id="countdown">100</span>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="estrai-container">
+            <button type="button" id="esporta">Esporta</button>
+            <button type="button" id="esporta-cognome">Esporta (ordinando per cognome)</button>
+        </div>
+        <table id="tabella"></table>
+    </div>
+  </div>
+</body>
+
+<script>
+let iscritti = [];
+
+  const nome = document.getElementById('nome');
+  const cognome = document.getElementById('cognome');
+  const matricola = document.getElementById('matricola');
+  const btnInserisci = document.getElementById('inserisci');
+  const tabella = document.getElementById('tabella');
+
+  const btnEsporta = document.getElementById('esporta')
+  const btnEsportaCognome = document.getElementById('esporta-cognome')
+  
+  function aggiornaTabella(){
+    tabella.innerHTML = "";
+
+    const intestazioni = ["Seleziona", "Nome", "Cognome", "Matricola", "Data"];
+    const trHead = document.createElement('tr');
+
+    intestazioni.forEach(function(testo){
+      const th = document.createElement('th');
+      th.textContent = testo;
+      trHead.appendChild(th);
+    });
+
+    tabella.appendChild(trHead);
+
+    iscritti.forEach(function(studente){
+      const tr = document.createElement('tr');
+
+      // Cella checkbox
+      const tdCheckBox = document.createElement('td');
+      const checkBox = document.createElement('input');
+      checkBox.type = 'checkbox';
+      checkBox.checked = true;
+      tdCheckBox.appendChild(checkBox);
+      tr.appendChild(tdCheckBox);
+
+      // Cella nome
+      const tdNome = document.createElement('td');
+      tdNome.textContent = studente.nome;
+      tr.appendChild(tdNome);
+
+      // Cella cognome
+      const tdCognome = document.createElement('td');
+      tdCognome.textContent = studente.cognome;
+      tr.appendChild(tdCognome);
+
+      // Cella Matricola
+      const tdMatrciola = document.createElement('td');
+      tdMatrciola.textContent = studente.matricola;
+      tr.appendChild(tdMatrciola);
+
+      // Cella Data (Usiamo la data salvata nell'oggetto studente)
+      const tdData = document.createElement('td');
+      tdData.textContent = studente.dataIscrizione.toLocaleDateString() + ", " + studente.dataIscrizione.toLocaleTimeString();
+      tdData.style.whiteSpace = "nowrap";
+      tr.appendChild(tdData);
+
+      tabella.appendChild(tr);
+    });
+  }
+
+  btnInserisci.addEventListener("click", function() {
+    const valNome = nome.value.trim();
+    const valCognome = cognome.value.trim();
+    const valMatricola = matricola.value.trim();
+
+    const regexNomeCognome = /^[A-Z][a-zA-Z]*$/; 
+    const regexMatricola = /^[1-9][0-9]{5}$/;
+    let isValido = true;
+
+    // Validazione Nome
+    if(!regexNomeCognome.test(valNome)){
+      nome.style.backgroundColor = "red";
+      isValido = false;
+    } else {
+      nome.style.backgroundColor = "";
+    }
+    
+    // Validazione Cognome
+    if(!regexNomeCognome.test(valCognome)){
+      cognome.style.backgroundColor = "red";
+      isValido = false;
+    } else {
+      cognome.style.backgroundColor = "";
+    }
+    
+    // Validazione Matricola (formato)
+    if(!regexMatricola.test(valMatricola)){
+      matricola.style.backgroundColor = "red";
+      isValido = false;
+    } else {
+      matricola.style.backgroundColor = "";
+    }
+    
+    // Controllo Matricola duplicata (Corretto 'sudente' in 'studente')
+    const matricolaEsistente = iscritti.some(function(studente){
+      return studente.matricola === valMatricola;
+    });
+
+    if(matricolaEsistente){
+      matricola.style.backgroundColor = "red";
+      isValido = false;
+    }
+
+    // Se è valido inseriamo lo studente
+    if(isValido){
+      const data = new Date();
+
+      const nuovoStudente = {
+        nome: valNome,
+        cognome: valCognome,
+        matricola: valMatricola,
+        dataIscrizione: data
+      };
+
+      iscritti.push(nuovoStudente);
+
+      nome.value = "";
+      cognome.value = "";
+      matricola.value = "";
+
+      aggiornaTabella();
+    }
+  });
+
+  let secondiRimasti = 100;
+  const spanCountDown = document.getElementById('countdown');
+
+  const timer = setInterval(function(){
+    secondiRimasti--;
+    spanCountDown.textContent = secondiRimasti;
+
+    if(secondiRimasti === 0){
+      clearInterval(timer);
+      btnInserisci.disabled = true;
+      btnInserisci.style.cursor = "default";
+      spanCountDown.textContent = "0";
+    }
+  }, 1000);
+
+  function gestisciEsportazione(deveOrdinare){
+    const righeTabella = tabella.querySelectorAll('tr')
+    let datiDaEsportare = []
+
+    iscritti.forEach(function(studente, indice) {
+      const rigaCorrente = righeTabella[indice + 1];
+      
+      if (rigaCorrente) {
+        const checkbox = rigaCorrente.querySelector('input[type="checkbox"]');
+        
+        // Se la checkbox esiste ed è spuntata, aggiungiamo lo studente alla lista da esportare
+        if (checkbox && checkbox.checked) {
+          datiDaEsportare.push(studente);
+        }
+      }
+    });
+
+    if(deveOrdinare){
+      datiDaEsportare.sort(function(a,b){
+        return a.cognome.localeCompare(b.cognome)
+      });
+    }
+
+    let csvContent = "Nome, Cognome, Matricola, Data \n";
+    datiDaEsportare.forEach(function(studente){
+      let rigaCsv = `${studente.nome},${studente.cognome},${studente.matricola},${studente.dataIscrizione.toLocaleDateString()} ${studente.dataIscrizione.toLocaleTimeString()}\n`;
+      csvContent += rigaCsv;
+    });
+
+    let finestraAusiliaria = window.open("", "_blank");
+    finestraAusiliaria.document.write("<pre>" + csvContent + "</pre>");
+  }
+
+  btnEsporta.addEventListener("click", function(){
+    gestisciEsportazione(false);
+  });
+
+  btnEsportaCognome.addEventListener("click", function(){
+    gestisciEsportazione(true);
+  });
+
+
+  
+</script>
+</html>

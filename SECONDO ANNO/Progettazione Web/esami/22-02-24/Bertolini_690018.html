@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Articoli</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: serif; /* Font in stile classico simile a quello nelle immagini */
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            border: 1px solid #6c8ebf; /* Bordo blu esterno come nell'immagine 1 */
+            padding: 20px;
+            min-height: 80vh;
+        }
+
+        /* --- STILI SIDEBAR LATERALE --- */
+        .sidebar {
+            background-color: #d3d3d3;
+            padding: 15px;
+            width: 250px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: fit-content;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .form-group input[type="text"], 
+        .form-group textarea {
+            padding: 4px;
+            border: 1px solid #a9a9a9;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            width: max-content;
+            padding: 3px 10px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .divider {
+            border-top: 1px solid #a9a9a9;
+            margin: 15px 0;
+        }
+
+        /* --- STILI AREA ARTICOLI --- */
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .article {
+            background-color: #fdfae0; /* Giallino chiaro */
+            border: 1px solid black;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Rimuove il margine inferiore per l'ultimo sotto-articolo per pulizia visiva */
+        .article .article:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .article-text {
+            font-size: 1em;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        /* Contenitore per i sotto-articoli annidati */
+        .sub-articoli {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Classe aggiunta quando un articolo corrisponde alla ricerca */
+        .highlight {
+            background-color: #ffeb3b !important; /* Giallo acceso per l'evidenziazione */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Colonna di sinistra: Moduli -->
+        <div class="sidebar">
+            <div class="form-group">
+                <label for="el-padre">Elemento padre</label>
+                <input type="text" id="el-padre" name="el-padre">
+            </div>
+
+            <div class="form-group">
+                <label for="titolo">Titolo</label>
+                <input type="text" id="titolo" name="titolo">
+            </div>
+
+            <div class="form-group">
+                <label for="testo">Testo</label>
+                <textarea id="testo" name="testo"></textarea>
+            </div>
+
+            <button type="button" id="btnInsert">Inserisci</button>
+
+            <div class="divider"></div>
+
+            <div class="form-group">
+                <label for="search-input">Cerca</label>
+                <input type="text" id="search-input">
+            </div>
+            
+            <button type="button" id="btnSearch">Cerca</button>
+        </div>
+
+        <!-- Colonna di destra: Contenitore degli articoli -->
+        <div class="content-area" id="container-article">
+            <!-- Gli articoli verranno generati qui -->
+        </div>
+    </div>
+
+    <script>
+        // Variabile globale per contare gli articoli di livello principale (1, 2, 3...)
+        let contatorePrincipali = 0;
+
+        document.getElementById('btnInsert').addEventListener('click', function() {
+            // 1. Recupero dei valori dai campi
+            const padreId = document.getElementById('el-padre').value.trim();
+            const titolo = document.getElementById('titolo').value.trim();
+            const testo = document.getElementById('testo').value.trim();
+
+            // 2. Controlli e Validazioni
+            if (titolo === "" || testo === "") {
+                alert("Errore: I campi 'Titolo' e 'Testo' sono obbligatori.");
+                return;
+            }
+
+            // Validazione Regex: solo caratteri alfabeto inglese (maiuscole/minuscole) e spazi
+            const regexTitolo = /^[A-Za-z\s]+$/;
+            if (!regexTitolo.test(titolo)) {
+                alert("Errore: Il titolo deve essere costituito solo ed esclusivamente da caratteri dell'alfabeto inglese e spazi.");
+                return;
+            }
+
+            // 3. Logica di Identificazione e Annidamento
+            let nuovoId = "";
+            let contenitoreDestinazione = document.getElementById('container-article');
+
+            if (padreId === "") {
+                // Caso A: Nessun padre specificato (Livello principale)
+                contatorePrincipali++;
+                nuovoId = contatorePrincipali.toString();
+            } else {
+                // Caso B: Padre specificato (Sotto-articolo)
+                
+                // Cerco l'articolo padre tramite l'attributo data-id
+                const articoloPadre = document.querySelector(`.article[data-id="${padreId}"]`);
+                
+                if (articoloPadre) {
+                    // Trovo il contenitore specifico per i sotto-articoli di QUESTO padre
+                    // Uso :scope > per prendere solo il figlio diretto ed evitare conflitti con nipoti
+                    contenitoreDestinazione = articoloPadre.querySelector(':scope > .sub-articoli');
+                    
+                    // Conto quanti sotto-articoli diretti ci sono già per calcolare la Y
+                    const numeroFigliAttuali = contenitoreDestinazione.children.length;
+                    nuovoId = `${padreId}.${numeroFigliAttuali + 1}`;
+                } else {
+                    /*
+                     * STRATEGIA SCELTA PER ELEMENTO PADRE NON ESISTENTE:
+                     * Ho scelto di avvisare l'utente con un alert specifico e di bloccare 
+                     * l'inserimento dell'articolo. In questo modo l'utente può correggere 
+                     * il typo (es. ha scritto 1..2 invece di 1.2) senza che l'articolo 
+                     * venga erroneamente creato come principale o perso nel DOM.
+                     */
+                    alert(`Errore: L'articolo padre con identificatore '${padreId}' non esiste. Verifica l'identificatore inserito.`);
+                    return; // Interrompo la funzione
+                }
+            }
+
+            // 4. Creazione dell'elemento DOM
+            const divArticolo = document.createElement('div');
+            divArticolo.classList.add('article');
+            divArticolo.dataset.id = nuovoId; // Salvo l'ID per potergli attaccare futuri figli
+
+            divArticolo.innerHTML = `
+                <div class="article-title">${nuovoId} ${titolo}</div>
+                <div class="article-text">${testo}</div>
+                <div class="sub-articoli"></div>
+            `;
+
+            // 5. Inserimento nella pagina
+            contenitoreDestinazione.appendChild(divArticolo);
+
+            // Opzionale: Pulisco i campi dopo l'inserimento
+            document.getElementById('titolo').value = "";
+            document.getElementById('testo').value = "";
+            // Lascio il campo padre intatto nel caso l'utente voglia inserire più figli di seguito
+        });
+
+
+        // Logica per la Ricerca
+        document.getElementById('btnSearch').addEventListener('click', function() {
+            const stringaRicerca = document.getElementById('search-input').value.toLowerCase().trim();
+            const tuttiArticoli = document.querySelectorAll('.article');
+
+            // Ciclo su tutti gli articoli presenti
+            tuttiArticoli.forEach(articolo => {
+                // Rimuovo l'evidenziazione precedente
+                articolo.classList.remove('highlight');
+                
+                if (stringaRicerca === "") return; // Se la ricerca è vuota, pulisco solo
+
+                // Prendo solo il testo di QUESTO articolo specifico (escludendo i testi dei sotto-articoli)
+                const divTesto = articolo.querySelector(':scope > .article-text');
+                
+                if (divTesto && divTesto.textContent.toLowerCase().includes(stringaRicerca)) {
+                    articolo.classList.add('highlight');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

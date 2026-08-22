@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tombola</title>
+    
+    <!-- CSS INCLUSO DIRETTAMENTE -->
+    <style>
+        .container {
+            background-color: green;
+            width: 450px;
+            height: 350px;
+            padding: 10px;
+        }
+
+        .container h1 {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        .container p {
+            color: white;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        table#cartella {
+            border-collapse: collapse;
+            width: 400px;
+            height: 150px;
+            margin-bottom: 20px;
+            border: 5px solid black;
+            background-color: coral; /* Colore di sfondo della tabella (si vedrà nelle celle vuote) */
+        }
+
+        td {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            font-weight: bold;
+            border: 1px black solid;
+            text-align: center; 
+        }
+
+        .cella-vuota {
+            background-color: transparent; /* Rende la cella trasparente per mostrare il coral sotto */
+        }
+
+        .cella-numero {
+            cursor: pointer; /* Cambia il cursore per far capire che è cliccabile */
+        }
+
+        .selezionata {
+            background-color: lightblue !important;
+        }
+
+        .gioco button {
+            padding: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gioco">
+            <h1>Speed Tombola</h1>
+            <p>Premi avvia per iniziare</p>
+            <table id="cartella"></table>
+
+            <div class="buttons">
+                <button class="avvia" id="btnAvvia">Avvia</button>
+                <button class="cinquina" id="btnCinquina" disabled>Cinquina</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INCLUSO DIRETTAMENTE -->
+    <script>
+        function generaDatiCartella(){
+            const righe = 3;
+            const colonne = 9;
+            var matrice = [];
+
+            for(var i = 0; i < righe; ++i){
+                matrice[i] = new Array(colonne).fill("");
+            }
+            
+            // CORREZIONE: Uso 'r' invece di 'j' per coerenza con la logica interna
+            for(var r = 0; r < righe; ++r){
+                var colonneSelezionate = [];
+
+                while(colonneSelezionate.length < 5){
+                    var colRandom = Math.floor(Math.random() * 9);
+                    if(!colonneSelezionate.includes(colRandom)){
+                        colonneSelezionate.push(colRandom);
+                    }
+                }
+
+            colonneSelezionate.forEach(c => {
+                let min = (c * 10) + 1;
+                let max = (c + 1) * 10;
+                let numeroGenerato;
+                let numeroValido = false;
+
+                while (!numeroValido) {
+                    numeroGenerato = Math.floor(Math.random() * (max - min + 1)) + min;
+                    
+                    let giaPresente = false;
+                    for (let k = 0; k < r; k++) {
+                        if (matrice[k][c] === numeroGenerato) {
+                            giaPresente = true;
+                            break;
+                        }
+                    }
+                    if (!giaPresente) numeroValido = true;
+                }
+                
+                matrice[r][c] = numeroGenerato;
+            });
+        }
+        return matrice;
+    }
+
+    function stampaTabella(matrice){
+        const tabella = document.getElementById('cartella');
+        tabella.innerHTML = "";
+
+        for(var i = 0; i < matrice.length; ++i){
+            var tr = document.createElement("tr");
+            // CORREZIONE: Ho sistemato l'incremento da ++i a ++j
+            for(var j = 0; j < matrice[i].length; ++j){
+                var td = document.createElement("td");
+                var valore = matrice[i][j];
+
+                td.textContent = valore;
+
+                if(valore !== ""){
+                    td.classList.add("cella-numero");
+                    td.addEventListener("click", function(){
+                        this.classList.toggle("selezionata");
+                    });
+                }
+                else {
+                    td.classList.add("cella-vuota");
+                }
+                tr.appendChild(td);
+            }
+            tabella.appendChild(tr);
+        }
+    }
+
+    // Inizializza la cartella al caricamento
+    let dati = generaDatiCartella();
+    stampaTabella(dati);
+
+    let numeriEstratti = [];
+    let timerEstrazione;
+
+    document.getElementById("btnAvvia").addEventListener("click", function() {
+        // 1. Gestione dei bottoni
+        this.disabled = true; // Disabilita "Avvia"
+        document.getElementById("btnCinquina").disabled = false; // Abilita "Cinquina"
+
+        // 2. Recuperiamo il tag <p> dove mostreremo il messaggio col numero estratto
+        const messaggio = document.querySelector(".gioco p");
+        messaggio.textContent = "Estrazione iniziata...";
+
+        // 3. Impostiamo l'intervallo che si ripete ogni 1000 millisecondi (1 secondo)
+        timerEstrazione = setInterval(function() {
+            
+            // Controllo di sicurezza: se abbiamo estratto tutti i 90 numeri, fermiamo il timer
+            if (numeriEstratti.length >= 90) {
+                clearInterval(timerEstrazione);
+                messaggio.textContent = "Estrazione terminata!";
+                return;
+            }
+
+            let numeroCasuale;
+            let trovatoNuovoNumero = false;
+
+            // Genera numeri finché non ne trova uno che NON è nell'array
+            while (!trovatoNuovoNumero) {
+                numeroCasuale = Math.floor(Math.random() * 90) + 1; // Numero tra 1 e 90
+                
+                if (!numeriEstratti.includes(numeroCasuale)) {
+                    trovatoNuovoNumero = true;
+                }
+            }
+
+            // Salva il numero per non estrarlo di nuovo
+            numeriEstratti.push(numeroCasuale);
+
+            // Aggiorna il testo per mostrare il numero all'utente
+            messaggio.textContent = "Numero estratto: " + numeroCasuale;
+
+        }, 5000);
+    });
+</script>
+</body>
+</html>
