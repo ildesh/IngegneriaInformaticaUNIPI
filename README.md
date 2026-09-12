@@ -64,6 +64,7 @@ Il repository è organizzato nelle seguenti sezioni:
 - **SECONDO ANNO**: All'interno sono presenti tutti gli elementi di teoria di:
 	1. Reti Logiche
 	2. Programmazione WEB
+- **RISORSA INTEGRATIVA**: [Guida italiana a TypeScript](https://gibbok.github.io/typescript-book/it-it/), per approfondire lo sviluppo web.
 
 ---
 ## [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&weight=700&size=30&letterSpacing=3px&duration=3000&pause=1000&color=6CA5F7&width=600&height=50&lines=%F0%9F%9A%80+Come+Utilizzare+gli+Appunti)]()
