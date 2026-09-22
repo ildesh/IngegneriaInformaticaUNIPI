@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "e08f1c0f5bd4c8e5",
+        "id": "8e841da2b83566b5",
         "type": "tabs",
         "children": [
           {
-            "id": "bf9355d89d18e35a",
+            "id": "07626b974a01818a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PRIMO ANNO/Algoritmi e strutture dati/ALGORITMI E STRUTTURE DATI.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "ALGORITMI E STRUTTURE DATI"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -41,10 +37,12 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Esplora risorse"
+              "title": "Esplora file"
             }
           },
           {
@@ -160,24 +158,62 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Apri selezione rapida": false,
+      "switcher:Apri selettore rapido": false,
+      "daily-notes:Apri nota giornaliera": false,
       "graph:Apri vista grafo": false,
       "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false
     }
   },
-  "active": "bf9355d89d18e35a",
+  "active": "0bbd313b776258d0",
   "lastOpenFiles": [
-    "PRIMO ANNO/Analisi 2/Lezione 17 - 30.md",
-    "PRIMO ANNO/Algoritmi e strutture dati/ALGORITMI E STRUTTURE DATI.md",
-    "PRIMO ANNO/Analisi 2/Lezione 1 - 16.md",
-    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 6.md",
-    "PRIMO ANNO/Analisi 2",
-    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 5.md",
-    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 7.md",
-    "SECONDO ANNO/Economica e Gestione Aziendale/Lezione 4.md"
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 04 (14-10-25).md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 03 (09-10-25).md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie",
+    "SECONDO ANNO/Reti logiche/README.md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione04(26-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione06(01-10-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione05(30-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione03(25-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione02(24-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
+    "SECONDO ANNO/Reti logiche/Programmazione Assembler",
+    "SECONDO ANNO/Reti logiche/images/transizioneDeiSegnali.png",
+    "SECONDO ANNO/Reti logiche/images/TempoDiAttraversamento.png",
+    "SECONDO ANNO/Reti logiche/images/TabelleDiVerità_DUEINGRESSI.png",
+    "SECONDO ANNO/Reti logiche/images/TabellaDiVerità.png",
+    "SECONDO ANNO/Reti logiche/images/spazio_I-O.png",
+    "SECONDO ANNO/Reti logiche/images/spazio_di_memoria.png",
+    "SECONDO ANNO/Reti logiche/images/SistesiRetiInFormaSPCostoMinimo.png",
+    "SECONDO ANNO/Reti logiche/images/SemplificoFormaCanonicaSP.png",
+    "SECONDO ANNO/Reti logiche/images/schema_a_blocchi.png",
+    "SECONDO ANNO/Reti logiche/images/RappresentazioneGraficaAND_OR_tanti_ingressi.png",
+    "SECONDO ANNO/Reti logiche/images",
+    "SECONDO ANNO/Reti logiche",
+    "SECONDO ANNO/Ricerca Operativa/Lezione 2.md",
+    "SECONDO ANNO/Ricerca Operativa/Lezione 1.md",
+    "SECONDO ANNO/Ricerca Operativa",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Reti Combinatorie/Lezione 04 (14-10-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Reti Combinatorie/Lezione 03 (09-10-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Reti Combinatorie/Lezione 01 (02-10-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione07(02-10-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione06(01-10-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione05(30-09-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione04(26-09-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione02(24-09-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione03(25-09-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler/Lezione01(23-09-25).md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Reti Combinatorie",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/README.md",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Programmazione Assembler",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/images",
+    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche",
+    "SECONDO ANNO/Progettazione Web/esami/19-01-22/Bertolini_690018.html"
   ]
 }
