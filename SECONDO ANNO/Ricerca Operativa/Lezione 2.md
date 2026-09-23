@@ -167,9 +167,16 @@ $$\begin{cases} 2x_1 + x_2 = 7 \\ x_1 + 3x_2 = 8 \end{cases}$$
 ## 5. Problema di assegnamento di costo minimo
 ### Risoluzione problema
 
-|     | 1   | 2   | 3   | 4   |
-| --- | --- | --- | --- | --- |
-| 1   | 8   | 7   | 9   | 5   |
-| 2   | 12  | 13  | 15  | 16  |
-| 3   | 9   | 14  | 6   | 10  |
-| 4   | 7   | 8   | 11  | 9   |
+| Risorsa / Attività | 1   | 2   | 3   | 4   |
+| ------------------ | --- | --- | --- | --- |
+| 1                  | 8   | 7   | 9   | 5   |
+| 2                  | 12  | 13  | 15  | 16  |
+| 3                  | 9   | 14  | 6   | 10  |
+| 4                  | 7   | 8   | 11  | 9   |
+>[!NOTE]
+>Il valore in ogni cella rappresenta il costo associato all'assegnazione della risorsa della riga corrispondente all'attività della colonna corrispondente.
+
+**Numero di soluzioni**
+- Il numero totale di soluzioni ammissibili per una matrice di assegnamento è pari a $n!$.
+- Nel caso della matrice presentata, essendo $n = 4$, il numero di assegnamenti completi possibili è $4! = 24$.
+- Poiché $n!$ ha una crescita di tipo fattoriale, valutare tutte le combinazioni possibili (approccio per enumerazione o "forza bruta") diventa un metodo computazionalmente intrattabile anche per valori di $n$ relativamente piccoli.
