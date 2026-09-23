@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appuntamenti</title>
+  <style>
+    html, body{
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    main{
+      background-color: beige;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    main h1{
+      margin: 0 0 10px 0;
+    }
+
+    main p{
+      margin: 15px 0 15px 0;
+    }
+
+    table{
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+  
+    thead tr th, tbody tr td{
+      border: 1px solid black;
+      text-align: center;
+      width: 200px;
+      background-color: white;
+    }
+
+    .appuntamento-cell{
+      background-color: lightgreen;
+      cursor: pointer;
+    }
+
+    .search-container{
+      margin-top: 30px;
+    }
+
+    .insert-box{
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 15px 0 15px;
+      background-color: white;
+      width: 220px;
+      height: 300px;
+      border: none;
+      border-radius: 5px;
+      position: absolute;
+      top: 10%;
+      left: 45%;
+    }
+
+    .label-cont{
+      margin: 10px 10px 10px 0;
+    }
+
+    .label-cont input{
+      width: 100%;
+      margin-top: 7px;
+    }
+
+    .functions-insert-container{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: auto;
+    }
+
+    .functions-insert-container button{
+      height: 30px;
+      text-align: center;
+      width: 80px;
+    }
+
+    .selezionata{
+      background-color: lightblue !important;
+    }
+
+    main button{
+      cursor: pointer;
+      height: 27px;
+      width: fit-content;
+    }
+
+    .search-container input{
+      height: 21px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="insert-box">
+    <h2>Inserisci I tuoi dati</h2>
+    <div class="label-cont">
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome">
+    </div>
+    <div class="label-cont">
+      <label for="telefono">Telefono:</label>
+      <input type="text" name="telefono" id="telefono">
+    </div>
+    <div class="functions-insert-container">
+      <button id="conferma" type="button">Conferma</button>
+      <button id="annulla" type="button">Annulla</button>
+    </div>
+  </div>
+  <main class="oscurato">
+    <h1>Prenotazione esami</h1>
+    <p>Per prenotare clicca su una casella verde</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Orario</th>
+          <th>Lunedì</th>
+          <th>Martedì</th>
+          <th>Mercoledì</th>
+          <th>Giovedì</th>
+          <th>Venerdì</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>8:00</b></td>
+          <td class="appuntamento-cell" data-orario="8:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="8:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="8:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="8:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="8:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>9:00</b></td>
+          <td class="appuntamento-cell" data-orario="9:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="9:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="9:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="9:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="9:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>10:00</b></td>
+          <td class="appuntamento-cell" data-orario="10:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="10:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="10:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="10:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="10:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>11:00</b></td>
+          <td class="appuntamento-cell" data-orario="11:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="11:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="11:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="11:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="11:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>12:00</b></td>
+          <td class="appuntamento-cell" data-orario="12:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="12:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="12:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="12:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="12:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>13:00</b></td>
+          <td class="appuntamento-cell" data-orario="13:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="13:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="13:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="13:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="13:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>14:00</b></td>
+          <td class="appuntamento-cell" data-orario="14:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="14:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="14:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="14:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="14:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>15:00</b></td>
+          <td class="appuntamento-cell" data-orario="15:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="15:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="15:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="15:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="15:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>16:00</b></td>
+          <td class="appuntamento-cell" data-orario="16:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="16:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="16:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="16:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="16:00" data-giorno="venerdi"></td>
+        </tr>
+        <tr>
+          <td><b>17:00</b></td>
+          <td class="appuntamento-cell" data-orario="17:00" data-giorno="lunedi"></td>
+          <td class="appuntamento-cell" data-orario="17:00" data-giorno="martedi"></td>
+          <td class="appuntamento-cell" data-orario="17:00" data-giorno="mercoledi"></td>
+          <td class="appuntamento-cell" data-orario="17:00" data-giorno="giovedi"></td>
+          <td class="appuntamento-cell" data-orario="17:00" data-giorno="venerdi"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button id="scambia" type="button">Scambia slot</button>
+    <div class="search-container">
+      <input type="text" placeholder="Cerca per nome o tel" name="search" id="search-bar">
+      <button id="cerca" type="button">Cerca</button>
+    </div>
+  </div>
+  </main>
+
+  <script>
+    const celle = document.querySelectorAll(".appuntamento-cell");
+    const main = document.querySelector(".oscurato");
+    const insertBox = document.querySelector(".insert-box");
+    const searchBar = document.getElementById("search-bar");
+
+    const confermaBtn = document.getElementById("conferma");
+    const annullaBtn = document.getElementById("annulla");
+    const scambiaBtn =  document.getElementById("scambia");
+    const cercaBtn = document.getElementById("cerca");
+
+    let cellaSelezionata;
+    let primaCella = null;
+    let secondaCella = null;
+    let scambioAttivo = false;
+
+    annullaBtn.addEventListener("click", function(){
+      insertBox.style.display = "none";
+      main.style.filter = "brightness(100%)";
+    })
+
+    confermaBtn.addEventListener("click", function(){
+      const nome = document.getElementById("nome");
+      const telefono = document.getElementById("telefono");
+      const giorno = cellaSelezionata.dataset.giorno;
+      const orario = cellaSelezionata.dataset.orario;
+
+      let isValide = true;
+
+      if(!/^\d{10}$/.test(telefono.value)){
+        isValide = false;
+      }
+
+      if(!isValide){
+        return;
+      }
+
+      const appuntamento = {
+        nome : nome.value,
+        telefono : telefono.value,
+        giorno: giorno,
+        orario: orario
+      }
+
+      cellaSelezionata.innerHTML = nome.value + " " + telefono.value;
+      cellaSelezionata.style.backgroundColor = "lightpink";
+
+      insertBox.style.display = "none";
+      main.style.filter = "brightness(100%)";
+
+      nome.value = "";
+      telefono.value = "";
+    })
+
+    scambiaBtn.addEventListener("click", function(){
+      scambioAttivo = !scambioAttivo;
+
+      if(scambioAttivo){
+        scambiaBtn.textContent = "Annulla scambio";
+      }
+      else{
+        scambiaBtn.textContent = "Scambia slot";
+      }
+    })
+
+
+    celle.forEach(function(cella){
+      cella.addEventListener("click", function(){
+        if(scambioAttivo){
+          if (primaCella === null) {
+            primaCella = cella;
+            primaCella.classList.add("selezionata");
+          } else if (secondaCella === null && cella !== primaCella) {
+            secondaCella = cella;
+            secondaCella.classList.add("selezionata");
+          }
+          const temporanea = primaCella.innerHTML;
+          primaCella.innerHTML = secondaCella.innerHTML;
+          secondaCella.innerHTML = temporanea;
+
+          primaCella.classList.remove("selezionata");
+          secondaCella.classList.remove("selezionata")
+
+          primaCella = null;
+          secondaCella = null;
+
+          return;
+        }
+        if(cella.textContent.trim() !== ""){
+          alert("La casella selezionata è già occupata, selezionare un'altra casella");
+          return;
+        }
+        cellaSelezionata = cella;
+        insertBox.style.display = "flex";
+        insertBox.style.zIndex = "1";
+        main.style.filter = "brightness(70%)";
+      })
+    })
+
+    cercaBtn.addEventListener("click", function(){
+      const testoCercato = searchBar.value.toLowerCase();
+      celle.forEach(function(cella){
+        const testoCella = cella.innerText.toLowerCase();
+
+        if(testoCella.includes(testoCercato) && testoCercato !== ""){
+          cella.style.backgroundColor = "lightyellow"
+        }
+        else{
+          cella.style.backgroundColor = "lightpink"
+        }
+      })
+    })
+  </script>
+</body>
+</html>

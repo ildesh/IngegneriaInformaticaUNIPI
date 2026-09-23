@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyics</title>
+    <style>
+        main{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .first-container, .second-container, .third-container{
+            padding: 30px 0 0 25px;
+        }
+
+        .first-container, .second-container{
+            width: 400px;
+            height: 400px;
+        }
+
+        .first-container{
+            background-color: lightblue;
+        }
+
+        .form-container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container button{
+            width: fit-content;
+        }
+
+        .form-container select{
+            width: fit-content;
+        }
+        .label-cont{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 1rem;
+            height: 20px;
+        }
+
+        .label-cont label{
+            width: 100px;
+        }
+
+        .label-cont input{
+            height: 25px;
+        }
+
+        .second-container{
+            background-color: lightpink;
+        }
+
+        .third-container{
+            width: 825px;
+            height: 350px;
+            background-color: blanchedalmond;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <div class="first-container">
+            <div class="form-container">
+                <div class="label-cont">
+                    <label for="descrizione">Descrizione</label>
+                    <input id="descrizione" name="descrizione" placeholder="Acquisto TV" type="text">
+                </div>
+                <div class="label-cont">
+                    <label for="ammontare">Ammontare</label>
+                    <input id="ammontare" name="ammontare" placeholder="500" type="text">
+                </div>
+                <div class="label-cont">
+                    <label for="mese">Mese</label>
+                    <select id="mese" name="mese" type="text">
+                        <option value="gennaio">Gennaio</option>
+                        <option value="febbraio">Febbraio</option>
+                        <option value="marzo">Marzo</option>
+                        <option value="aprile">Aprile</option>
+                        <option value="maggio">Maggio</option>
+                        <option value="giugno">Giugno</option>
+                        <option value="luglio">Luglio</option>
+                        <option value="agosto">Agosto</option>
+                        <option value="settembre">Settembre</option>
+                        <option value="ottobre">Ottobre</option>
+                        <option value="novembre">Novembre</option>
+                        <option value="dicembre">Dicembre</option>
+                    </select>
+                </div>
+                <div class="label-cont">
+                    <label for="tipologia">Tipologia</label>
+                    <select id="tipologia" name="tipologia" type="text">
+                        <option value="casa">Casa</option>
+                        <option value="trasporto">Trasporto</option>
+                        <option value="alimentari">Alimentari</option>
+                    </select>
+                </div>
+                <button type="button" id="insertBtn">Inserisci</button>
+            </div>
+        </div>
+
+        <div class="second-container">
+            <table id="tabella-form">
+
+            </table>
+        </div>
+    </main>
+
+    <div class="third-container">
+
+    </div>
+
+    <script>
+        const insertBtn = document.getElementById("insertBtn");
+        const descrCont = document.getElementById("descrizione");
+        const ammCont = document.getElementById("ammontare");
+        const meseCont = document.getElementById("mese");
+        const tipCont = document.getElementById("tipologia");
+        const listaDati = [];
+
+        insertBtn.addEventListener("click", creazioneDato);
+
+        function creazioneDato(){
+            let isInseribile = true;
+            if(descrCont.value.trim() == ""){
+                descrCont.style.border = "2px solid red";
+                isInseribile = false;
+            }
+            if(ammCont.value.trim() == ""){
+                ammCont.style.border = "2px solid red";
+                isInseribile = false;
+            }
+
+            if(!isInseribile){
+                return;
+            }
+
+            const dato = {
+                descrizione : descrCont.value,
+                ammontare : ammCont.value,
+                mese : meseCont.value,
+                tipo : tipCont.value
+            };
+
+            listaDati.push(dato);
+            aggiornaTabella();
+        }
+       
+
+        function aggiornaTabella(){
+            const tabella = document.getElementById("tabella-form");
+            tabella.innerHTML = 
+            `
+                <tr>
+                    <th>Descrizione</th>
+                    <th>Ammontare</th>
+                    <th>Mese</th>
+                    <th>Tipologia</th>
+                </tr>
+            `;
+
+            listaDati.forEach(function(dato){
+                tabella.innerHTML += 
+                `
+                    <tr>
+                        <td>${dato.descrizione}</td>
+                        <td>${dato.ammontare}</td>
+                        <td>${dato.mese}</td>
+                        <td>${dato.tipo}</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

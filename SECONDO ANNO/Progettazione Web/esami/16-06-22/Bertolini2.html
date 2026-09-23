@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluzione</title>
+  <style>
+    html,body{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    main{
+      padding: 10px;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .first-container, .second-container, .third-container{
+      padding: 1rem;
+      width: 425px;
+      height: 425px;
+    }
+
+    .first-container{
+      background-color: lightblue;
+    }
+
+    .second-container{
+      background-color: lightgreen;
+    }
+
+    .third-container{
+      background-color: lightpink;
+      display: flex;
+    }
+
+    button{
+      background-color: yellow;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+
+    .inselezione{
+      color: red;
+      cursor: pointer;
+    }
+
+    table{
+      margin: 30px 0 0 0;
+      border-collapse: collapse;
+    }
+
+    table td{
+      border: 1px solid black;
+      width: 30px;
+      background-color: orange;
+      font-size: 18px;
+    }
+
+    table.completa td{
+      background-color: lightgreen;
+    }
+
+    table input{
+      width: 35px;
+      background-color: transparent;
+      border: none;
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+      <div class="first-container">
+        <div class="button-container">
+          <button id="new-week" type="button">Nuova settimana</button>
+        </div>
+      </div>
+      <div class="second-container">
+        <div class="button-container">
+          <button id="add-labour" type="button">Aggiungi lavoratore</button>
+          <button id="remove-labour" type="button">Rimuovi lavoratore</button>
+        </div>
+        <ul id="lista"></ul>
+      </div>
+      <div class="third-container">
+          <span id="stats">Statistiche</span>
+      </div>
+  </main>
+
+  <script>
+    const newWeek = document.getElementById("new-week");
+    const add = document.getElementById("add-labour");
+    const remove = document.getElementById("remove-labour");
+    const lista = document.getElementById("lista");
+    const contenitoreSettimane = document.querySelector(".first-container");
+    const stats = document.getElementById("stats");
+    let modalitaRimozione = false;
+
+    newWeek.disabled = true;
+    newWeek.style.cursor = "default";
+
+    remove.disabled = true;
+    remove.style.cursor = "default";
+
+    add.addEventListener("click", function(){
+      let nome = prompt("Inserisci il nome del nuovo lavoratore");
+
+      const li = document.createElement("li");
+      li.innerText = nome;
+      lista.appendChild(li);
+
+      newWeek.disabled = false;
+      newWeek.style.cursor = "pointer";
+
+      remove.disabled = false;
+      remove.style.cursor = "pointer";
+    });
+
+    remove.addEventListener("click", function(){
+      modalitaRimozione = true;
+      add.disabled = true;
+      add.style.cursor = "default";
+
+      for(let c of lista.children){
+        c.classList.add("inselezione");
+      }
+    });
+
+    lista.addEventListener("click", function(event){
+      if(!modalitaRimozione || event.target.tagName !== "LI"){
+        return;
+      }
+
+      event.target.remove();
+      modalitaRimozione = false;
+
+      for(let c of lista.children){
+        c.classList.remove("inselezione");
+      }
+
+      add.disabled = false;
+      add.style.cursor = "pointer";
+
+      if(lista.children.length === 0){
+        remove.disabled = true;
+        remove.style.cursor = "default";
+        newWeek.disabled = true;
+        newWeek.style.cursor = "default";
+      }
+    });
+
+    newWeek.addEventListener("click", function(){
+      const tabellaSettimana = document.createElement("table");
+      const intestazione = document.createElement("tr");
+
+      const tbody = document.createElement("tbody");
+      for(let c of lista.children){
+        const tr = document.createElement("tr");
+        const tdNome = document.createElement("td");
+        tdNome.innerText = c.innerText;
+        tr.appendChild(tdNome);
+
+        for(let i = 0; i < 5; ++i){
+          const tdOre = document.createElement("td");
+          const inputOre = document.createElement("input");
+          inputOre.type = "number";
+          inputOre.min = "0";
+          inputOre.addEventListener("input", aggiornaStatistiche);
+          tdOre.appendChild(inputOre);
+          tr.appendChild(tdOre);
+        }
+        tbody.appendChild(tr);
+      }
+      tabellaSettimana.appendChild(tbody);
+      contenitoreSettimane.appendChild(tabellaSettimana);
+    });
+
+    function aggiornaStatistiche(){
+      let totale = 0;
+
+      document.querySelectorAll(".first-container table").forEach(function(tabella){
+        const input = tabella.querySelectorAll("input");
+        const completa = input.length > 0 && [...input].every(function(cella){
+          return cella.value !== "";
+        });
+
+        tabella.classList.toggle("completa", completa);
+
+        input.forEach(function(cella){
+          if(cella.value !== ""){
+            totale += Number(cella.value);
+          }
+        });
+      });
+
+      stats.innerText = `Statistiche: ${totale} ore`;
+    }
+  </script>
+</body>
+</html>

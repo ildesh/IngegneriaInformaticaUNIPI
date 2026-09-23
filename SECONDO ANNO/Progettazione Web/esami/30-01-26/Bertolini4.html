@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+        main{
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-container{
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            padding: 15px;
+        }
+
+        .form-container p{
+            font-size: 14px;
+        }
+
+        .label-cont{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        .label-cont label{
+            font-weight: bold;
+        }
+
+        .label-cont input{
+            height: 30px;
+        }
+
+        .label-cont textarea{
+            height: 75px;
+        }
+        
+        .p-list{
+            margin: 0;
+        }
+
+        .divider{
+            border: 1px solid lightgrey;
+            margin: 10px 0 10px 0;
+            height: fit-content;
+        }
+
+        .list-container{
+            border: 1px solid black;
+            display: flex;
+            background-color: beige;
+            flex-direction: column;
+            height: 500px;
+            width: 400px;
+            padding: 15px;
+        }
+
+        .list-container button{
+            width: fit-content;
+        }
+
+        #list{
+            margin-top: 5px;
+            overflow-y: auto;
+        }
+
+        #nota{
+            padding: 10px 0 0 10px;
+            background-color: white;
+            margin-bottom: 10px;
+        }
+
+        #nota h2{
+            margin: 0;
+        }
+
+        .date-function-cont{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .date-function-cont p{
+            margin: 0 0 5px 0;
+        }
+
+        .date-function-cont button{
+            margin-left: 5px;
+            width: fit-content;
+        }
+
+        .conferma-eliminazione{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 25px;
+            background-color: pink;
+            border: 1px solid black;
+            border-radius: 4px;
+        }
+
+        .conferma-eliminazione p{
+            margin: 0;
+            text-align: center;
+        }
+
+        .conto-alla-rovescia{
+            font-size: 24px;
+            font-weight: bold;
+            color: indianred;
+        }
+        </style>
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <p>Usa il form per creare una nuova nota o modificarne una esistente.</p>
+            <div class="label-cont">
+                <label for="titolo">Titolo</label>
+                <input type="text" id="titolo" name="titolo">
+            </div>
+            <div class="label-cont">
+                <label for="contenuto">Contento</label>
+                <textarea name="contenuto" id="contenuto"></textarea>
+            </div>
+            <div class="button-cont">
+                <button type="button" id="salva-nota">Salva nota</button>
+                <button type="button" id="pulisci-nota">Pulisci</button>
+            </div>
+            <div class="divider"></div>
+            <div class="label-cont">
+                <label for="cerca">Cerca</label>
+                <input type="text" name="cerca" id="cerca" placeholder="Filtra per titolo o testo">
+            </div>
+            <p class="p-list">La lista si aggiorna mentre scrivi</p>
+        </div>
+        <div class="list-container">
+            <h2>Note</h2>
+            <button type="button" id="elimina-note">Elimina tutte</button>
+            <div id="list">
+            </div>
+        </div>
+    </main>
+    
+
+    <script>
+        const titolo = document.getElementById("titolo");
+        const contenuto = document.getElementById("contenuto");
+        const list = document.getElementById("list");
+        const note = [];
+
+        const saveBtn = document.getElementById("salva-nota");
+        const pulisciBtn = document.getElementById("pulisci-nota");
+        const eliminaTuttoBtn = document.getElementById("elimina-note");
+        let timerEliminazione;
+
+        aggiornaLista(note);
+
+        saveBtn.addEventListener("click", function(){
+            let isValide = true;
+            if(titolo.value.trim() === "" || contenuto.value.trim() === ""){
+                isValide = false;
+            }
+            if(isValide == false){
+                return;
+            }
+            const nota = {
+                titolo : titolo.value,
+                contenuto : contenuto.value,
+                dataCreazione : new Date().toLocaleDateString(),
+                oraCreazione : new Date().toLocaleTimeString()
+            }
+            note.push(nota);
+            titolo.value = "";
+            contenuto.value = "";
+            aggiornaLista(note);
+        });
+
+        pulisciBtn.addEventListener("click", function(){
+            titolo.value = "";
+            contenuto.value = "";
+        });
+
+
+        eliminaTuttoBtn.addEventListener("click", function(){
+            mostraConfermaEliminazione();
+        });
+
+        list.addEventListener("click", function(event){
+            if(event.target.classList.contains("eliminaBtn")){
+                eliminaNota(event.target);
+            }
+        });
+
+        function eliminaNota(eliminaBtn){
+            const indiceNota = Number(eliminaBtn.dataset.indice);
+            note.splice(indiceNota, 1);
+            aggiornaLista(note);
+        }
+
+        function mostraConfermaEliminazione(){
+            const confermaEsistente = document.querySelector(".conferma-eliminazione");
+            if(confermaEsistente){
+                return;
+            }
+
+            const conferma = document.createElement("div");
+            const messaggio = document.createElement("p");
+            const contoAllaRovescia = document.createElement("span");
+            const annullaBtn = document.createElement("button");
+
+            conferma.className = "conferma-eliminazione";
+            messaggio.textContent = "Tutte le note verranno eliminate.";
+            contoAllaRovescia.className = "conto-alla-rovescia";
+            annullaBtn.type = "button";
+            annullaBtn.textContent = "Annulla";
+
+            conferma.append(messaggio, contoAllaRovescia, annullaBtn);
+            document.body.appendChild(conferma);
+
+            let secondi = 7;
+            contoAllaRovescia.textContent = secondi;
+
+            timerEliminazione = setInterval(function(){
+                secondi--;
+                contoAllaRovescia.textContent = secondi;
+
+                if(secondi === 0){
+                    clearInterval(timerEliminazione);
+                    note.length = 0;
+                    aggiornaLista(note);
+                    conferma.remove();
+                }
+            }, 1000);
+
+            annullaBtn.addEventListener("click", function(){
+                clearInterval(timerEliminazione);
+                conferma.remove();
+            });
+        }
+
+
+        function aggiornaLista(note){
+            list.replaceChildren();
+
+            if(note.length === 0){
+                const messaggio = document.createElement("p");
+                messaggio.textContent = "Nessun risultato per la ricerca";
+                list.appendChild(messaggio);
+                return;
+            }
+
+            note.forEach(function(nota, indice){
+                list.innerHTML += 
+                `
+                <div id=nota>
+                    <h2>${nota.titolo}</h2>
+                    <p>${nota.contenuto}</p>
+                    <div class="date-function-cont">
+                        <p>Creata: ${nota.dataCreazione}, ${nota.oraCreazione}</p>
+                        <button id="modifica" type="button">Modifica</button>
+                        <button class="eliminaBtn" data-indice="${indice}" type="button">Elimina</button>
+                    </div>
+                </div>
+                `
+            });
+        };
+    </script>
+</body>
+</html>
