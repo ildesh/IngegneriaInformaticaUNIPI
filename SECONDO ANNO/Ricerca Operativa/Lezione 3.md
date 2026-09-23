@@ -64,8 +64,7 @@ Abbiamo diversi punti da seguire per eseguire questo modello matematico:
 
 ---
 ## Poliedri
-$$\text{A}x \le \text{b}$$
-Ricordando che $A \in \mathbb{R}^{n \ x \ m}$, $x \in \mathbb{R}^n$ e $b \in \mathbb{R}^m$  
+$\text{A}x \le \text{b}$, ricordando che $A \in \mathbb{R}^{n \ x \ m}$, $x \in \mathbb{R}^n$ e $b \in \mathbb{R}^m$  dobbiamo dare due definizioni per parlare di poliedri:
 
 >[!info] Definizione 1: Combinazione convessa 
 >Dati $k$ vettori $x^1, x^2, \dots, x^k \in \mathbb{R}^n$, un vettore $y \in \mathbb{R}^n$ si dice **combinazione convessa** dei vettori $x^i$ se esistono $k$ coefficienti $\lambda_i$ tali che: > $$ \begin{align*} y &= \sum_{i=1}^{k} \lambda_i x^i \\ \sum_{i=1}^{k} \lambda_i &= 1 \\ \lambda_i &\ge 0 \quad \forall i = 1, \dots, k \end{align*} $$
@@ -99,6 +98,7 @@ Dati $k$ vettori per cui $k = 2$ e $n = 2$ e un vettore $y = \lambda_{1}x^1 + \l
     </marker>
   </defs>
 </svg>
+---
 ### Esempio 2
 Dati $k$ vettori per cui $k = 3$ e $n = 2$ e un vettore $y = \lambda_{1}x^1 + \lambda_{2}x^2 + \lambda_{3}x^3$ 
 
@@ -171,6 +171,7 @@ Dati $k$ vettori per cui $k = 2$ e $n = 2$, a differenza della combinazione conv
     </marker>
   </defs>
 </svg>
+---
 ### Esempio 2
 Dati $k$ vettori per cui $k = 3$ e $n = 2$, aggiungendo un terzo vettore $x^3$, l'area generata (il cono) è determinata esclusivamente dai vettori più "esterni" (in questo caso $x^1$ e $x^3$). Il vettore $x^2$, trovandosi già all'interno del cono generato dagli altri due, non espande lo spazio delle soluzioni possibili. Qualsiasi punto $y$ nel settore angolare può essere ottenuto combinando linearmente questi tre vettori con pesi non negativi.
 
