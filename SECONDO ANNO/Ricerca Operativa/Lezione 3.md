@@ -223,3 +223,87 @@ Dati $k$ vettori per cui $k = 3$ e $n = 2$, aggiungendo un terzo vettore $x^3$, 
 >>     $$ \text{cono}(E) = \left\{ \sum_{j=1}^{p} \mu_j e^j \ \Bigg| \ \mu_j \ge 0 \ \forall j \right\} $$
 > 
 > *Nota: Il simbolo $+$ indica la somma vettoriale tra i due insiemi di punti (nota anche come somma di Minkowski, talvolta indicata con il simbolo $\oplus$).*
+
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definizioni per le frecce -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </marker>
+    <marker id="arrow_dir" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#31a354" />
+    </marker>
+    <marker id="arrow_dashed" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#756bb1" />
+    </marker>
+  </defs>
+
+  <!-- Area del poliedro P -->
+  <polygon points="50,40 50,150 150,250 550,250 550,40" fill="#deebf7" />
+
+  <!-- Griglia di riferimento (scala: 1 unità = 50px) -->
+  <line x1="100" y1="250" x2="100" y2="40" stroke="#ccc" stroke-dasharray="3,3"/>
+  <line x1="150" y1="250" x2="150" y2="40" stroke="#ccc" stroke-dasharray="3,3"/>
+  <line x1="200" y1="250" x2="200" y2="40" stroke="#ccc" stroke-dasharray="3,3"/>
+  <line x1="250" y1="250" x2="250" y2="40" stroke="#ccc" stroke-dasharray="3,3"/>
+  
+  <line x1="50" y1="200" x2="550" y2="200" stroke="#ccc" stroke-dasharray="3,3"/>
+  <line x1="50" y1="150" x2="550" y2="150" stroke="#ccc" stroke-dasharray="3,3"/>
+  <line x1="50" y1="100" x2="550" y2="100" stroke="#ccc" stroke-dasharray="3,3"/>
+
+  <!-- Assi Cartesiani -->
+  <line x1="50" y1="250" x2="550" y2="250" stroke="black" marker-end="url(#arrow)" />
+  <line x1="50" y1="250" x2="50" y2="40" stroke="black" marker-end="url(#arrow)" />
+  
+  <!-- Numeri sugli assi -->
+  <text x="40" y="265" font-family="Arial" font-size="12">0</text>
+  <text x="145" y="268" font-family="Arial" font-size="12" font-weight="bold">2</text>
+  <text x="245" y="268" font-family="Arial" font-size="12" font-weight="bold">4</text>
+  
+  <text x="35" y="155" font-family="Arial" font-size="12" font-weight="bold">2</text>
+  <text x="35" y="105" font-family="Arial" font-size="12" font-weight="bold">3</text>
+
+  <text x="560" y="245" font-family="Arial" font-size="14" font-style="italic">x₁</text>
+  <text x="30" y="30" font-family="Arial" font-size="14" font-style="italic">x₂</text>
+
+  <!-- Segmento conv(V) (Inviluppo convesso) -->
+  <line x1="50" y1="150" x2="150" y2="250" stroke="#3182bd" stroke-width="4" />
+  
+  <g transform="translate(60, 235) rotate(-45)">
+    <text x="0" y="0" font-family="Arial" font-size="14" font-weight="bold" fill="#3182bd">conv(V)</text>
+  </g>
+
+  <!-- Direzioni di base del cono(E) -->
+  <line x1="150" y1="250" x2="230" y2="250" stroke="#31a354" stroke-width="3" marker-end="url(#arrow_dir)" />
+  <text x="160" y="235" font-family="Arial" font-size="14" font-weight="bold" fill="#31a354">e¹ = (1,0)</text>
+
+  <line x1="50" y1="150" x2="50" y2="70" stroke="#31a354" stroke-width="3" marker-end="url(#arrow_dir)" />
+  <text x="60" y="90" font-family="Arial" font-size="14" font-weight="bold" fill="#31a354">e² = (0,1)</text>
+
+  <!-- I due vertici V -->
+  <circle cx="50" cy="150" r="6" fill="#e6550d" />
+  <text x="10" y="140" font-family="Arial" font-size="14" font-weight="bold" fill="#e6550d">v² (0,2)</text>
+
+  <circle cx="150" cy="250" r="6" fill="#e6550d" />
+  <text x="125" y="275" font-family="Arial" font-size="14" font-weight="bold" fill="#e6550d">v¹ (2,0)</text>
+
+  <!-- Punto BASE scelto nel conv(V) -->
+  <circle cx="100" cy="200" r="5" fill="#3182bd" />
+  <text x="110" y="215" font-family="Arial" font-size="12" font-weight="bold" fill="#3182bd">Punto Base (1,1)</text>
+
+  <!-- Spostamento calcolato col cono(E) -->
+  <line x1="100" y1="200" x2="250" y2="200" stroke="#756bb1" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_dashed)" />
+  <text x="135" y="190" font-family="Arial" font-size="12" font-weight="bold" fill="#756bb1">+ 3e¹ (verso destra)</text>
+
+  <line x1="250" y1="200" x2="250" y2="100" stroke="#756bb1" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow_dashed)" />
+  <text x="260" y="150" font-family="Arial" font-size="12" font-weight="bold" fill="#756bb1">+ 2e² (verso l'alto)</text>
+
+  <!-- Punto FINALE nel poliedro -->
+  <circle cx="250" cy="100" r="6" fill="#756bb1" />
+  <text x="265" y="95" font-family="Arial" font-size="16" font-weight="bold" fill="#756bb1">y (4,3)</text>
+  
+  <!-- Riepilogo Formula -->
+  <text x="320" y="70" font-family="Arial" font-size="14" font-weight="bold" fill="#333">y = (1,1) + (3,0) + (0,2)</text>
+  <text x="320" y="90" font-family="Arial" font-size="12" font-weight="bold" fill="#3182bd">└─ da conv(V)</text>
+  <text x="320" y="110" font-family="Arial" font-size="12" font-weight="bold" fill="#756bb1">└─ da cono(E)</text>
+</svg>
