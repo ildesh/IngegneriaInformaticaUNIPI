@@ -151,7 +151,7 @@ L'insieme delle soluzioni ammissibili definito dal sistema $Ax \le b$ rappresent
 
 ***La Funzione Obiettivo e la Combinazione Convessa***: Considerando un poliedro limitato, possiamo sostituire la variabile decisionale $x$ con la combinazione convessa dei suoi vertici:
 $$\max_{x \in P} c^T x = \max_{\substack{\lambda_i \ge 0 \\ \sum \lambda_i = 1}} \sum_{i=1}^{k} \lambda_i (c^T \cdot v^i)$$
-Sviluppando la sommatoria per tutti i $k$ vertici otteniamo $\max \left[ \lambda_1 (c^T v^1) + \dots + \lambda_k (c^T v^k) \right]$. Se individuiamo un vertice $v^r$ che garantisce il valore massimo assoluto, poiché la combinazione convessa è una media pesata (i $\lambda_i$ sommano a $1$), la somma complessiva non potrà mai superare il valore di quel vertice:
+Sviluppando la sommatoria per tutti i $k$ vertici otteniamo $\max \left[ \lambda_1 (c^T v^1) + \dots + \lambda_k (c^T v^k) \right]$. Se individuiamo un vertice $v^r$ che garantisce il valore massimo assoluto, poiché la combinazione convessa è una media pesata (i $\lambda_i$ sommano a $1$), la somma complessiva potrà superare il valore di quel vertice:
 $$\sum_{i=1}^{k} \lambda_i (c^T \cdot v^i) \ge (c^T \cdot v^r) \cdot (\lambda_1 + \dots + \lambda_k) = c^T \cdot v^r$$
 Da questa disuguaglianza logica si deduce infine che:
 $$c^T \cdot v^r \ge \max_{x \in P} c^T x \implies \max_{x \in P} c^T x = c^T \cdot v^r$$

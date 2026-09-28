@@ -105,8 +105,6 @@ $$
   <text x="95" y="475" font-size="14">O</text>
 </svg>
 
-
-
 Prendiamo $\begin{cases}2x_1 + x2 = 95 \\ 2x1 + 3x2 = 120\end{cases}$  e attraverso questo troviamo l'intersezione tra il primo e il secondo vincolo: 
 - Moltiplichiamo per $-1$ la seconda equazione: $\begin{cases}2x_1 + x2 = 95 \\ -2x1 - 3x2 = -120\end{cases}$
 - Viene fuori un unica equazione: $0 - 2x_2 = -25$ e il risultato che viene fuori è $x_2 = \frac{25}{2}$
