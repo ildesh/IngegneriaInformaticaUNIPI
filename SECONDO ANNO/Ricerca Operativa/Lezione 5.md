@@ -62,4 +62,28 @@ Soggetti a:
 | Cotone             | 2          | 1          | 192           |
 | Nylon              | 2          | 2          | 283           |
 | **Profitto/Costo** | 60         | 70         | -             |
-Se io dovessi inseri
+Ora inseriamo i vari elementi su MathLab:
+
+```mathlab
+A = [2 3; 2 1; 2 2]; 
+b = [375; 192; 283]; 
+c = [-60 -70]; 
+Aeq = []; 
+beq = [] 
+LB = [0 0]; 
+UB = [];
+
+[x,V] = linprog(c,A,b,Aeq,beq,LB,UB);
+
+Vreale = -V;
+
+disp('soluzione ottima:' )
+disp(x);
+
+disp('profitto massimo:' )
+disp(Vreale);
+```
+
+Le soluzioni che usciranno fuori da questo esercizio sono i seguenti: 
+- $x = \begin{bmatrix} 49.5 \\ 82.0 \end{bmatrix}$
+- $V = -9410 \implies \text{al contrario } = 9410$
