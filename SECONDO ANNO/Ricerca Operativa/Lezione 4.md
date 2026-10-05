@@ -163,8 +163,16 @@ Questo dimostra matematicamente che la soluzione ottima risiede sempre in un ver
 >1. ***Il poliedro è vuoto***: troppi vincoli, problema reale e quindi vanno eliminati i vincoli;
 >2. ***Il problema va a $+\infty$*** $\rightarrow$ ci sono pochi vincoli;
 >3. ***Uno dei punti di $V$ è sicuramente ottimo***.
+### Algoritmo Risolutivo Enumerativo (Forza Bruta per la PL)
+Sfruttando il Teorema Fondamentale della PL, che garantisce la presenza della soluzione ottima in almeno un vertice del poliedro, è possibile usare un metodo algebrico esplorativo per trovare la soluzione senza affidarsi ai grafici.
+**I passaggi dell'algoritmo:**
+1. **Calcolo delle intersezioni:** Si calcolano tutte le possibili soluzioni di base estraendo dalla matrice dei coefficienti $A$ tutte le sottomatrici quadrate invertibili $A_B$ di dimensione $n \times n$. Per ognuna, si risolve il sistema algebrico $A_B x_B = b_B$. Il numero massimo teorico di intersezioni è $\binom{m}{n}$ (dove $m$ è il numero dei vincoli e $n$ le variabili).
+2. **Verifica di ammissibilità:** Si scartano tutte le soluzioni di base calcolate che violano le disequazioni del sistema originario (in particolar modo, si scartano quelle che violano il vincolo di non negatività $x \ge 0$). Le soluzioni superstiti sono i veri **vertici** ammissibili del poliedro.
+3. **Valutazione:** Si sostituiscono le coordinate di ogni singolo vertice ammissibile all'interno della funzione obiettivo $c^Tx$.
+4. **Scelta dell'ottimo:** Si seleziona il vertice che restituisce il risultato numerico più alto (se problema di max) o più basso (se problema di min).
+>[!note]
+>Questo algoritmo esplora tutte le combinazioni possibili. Proprio per la crescita fattoriale data dal coefficiente binomiale, è computazionalmente inattuabile nella realtà per matrici molto grandi, ed è per questo che in pratica si utilizza l'algoritmo del Simplesso (che non calcola tutti i vertici, ma "cammina" solo su quelli promettenti).
 #### Esempio
-
 **Dati del problema:**
 - Insieme dei vertici: $V = \{ (1,1), (2,3), (-1,0) \}$
 - Insieme delle direzioni: $E = \{ (0,1), (1,4) \}$

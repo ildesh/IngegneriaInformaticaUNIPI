@@ -28,6 +28,9 @@ Nella forma standard:
 3. Un vincolo di uguaglianza si trasforma in una coppia di vincoli
 	- $2x_1 + 4x_2 = 7 \ \rightarrow \begin{cases}2x_1 + 4x_2 \le 7 \\2x_1 + 4x_2 \ge 7\end{cases}$
 4. E invece da $\le$ a $=$ ?? 
+### Differenza tra PL e PL Intera (PLI)
+- **Programmazione Lineare (PL):** Le variabili decisionali appartengono al campo dei numeri reali ($x \in \mathbb{R}^n$). Geometricamente, la regione ammissibile è un poliedro continuo. I problemi si risolvono in tempi rapidi (tempo polinomiale) con algoritmi continui, come il metodo del Simplesso, e l'ottimo si trova sempre sui bordi o nei vertici.
+- **Programmazione Lineare Intera (PLI):** Le variabili decisionali sono vincolate ad assumere solo valori interi ($x \in \mathbb{Z}^n$). Geometricamente, la regione ammissibile non è più una superficie continua, ma un reticolo di punti discreti isolati. Risolvere un problema PLI è computazionalmente molto più complesso (NP-arduo) perché l'approccio intuitivo di "arrotondare" la soluzione continua all'intero più vicino è quasi sempre errato: l'arrotondamento potrebbe cadere fuori dalla regione ammissibile o mancare totalmente l'ottimo globale. Si richiedono algoritmi di esplorazione ad albero, come il _Branch and Bound_.
 ---
 ## 3. Risoluzione geometrica di un problema di PL in formato primale standard in due variabili
 
@@ -119,6 +122,11 @@ Se avessi un vincolo con $<$ stretto sarebbe "bucherellato".
 >- Definizione algebrica: Dicesi poliedro, le soluzioni di questo sistema di disequazioni: $Ax \le b$
 
 >[!IMPORTANT] RICORDARE SEMPRE CHE LA SOLUZIONE OTTIMA SI TROVA SEMPRE SUL BORDO DEL POLIEDRO
+### Numero di Soluzioni Ottime in PL
+Un problema di Programmazione Lineare può rientrare in esattamente tre casistiche per quanto riguarda la numerosità delle soluzioni:
+1. **Zero soluzioni ottime:** Si verifica se il poliedro è vuoto (sistema di vincoli incompatibile) o se il problema è illimitato ($+\infty$ in caso di max, $-\infty$ in caso di min).
+2. **Soluzione ottima unica:** La funzione obiettivo tocca un solo vertice estremo del poliedro.
+3. **Infinite soluzioni ottime:** Questo caso geometrico speciale si verifica quando la retta (o l'iperpiano) della funzione obiettivo, detta retta di isoguadagno (o isocosto), risulta **perfettamente parallela** a uno dei vincoli attivi che formano la frontiera della regione ammissibile. In questo scenario, l'ottimo non risiede in un singolo vertice, ma coincide con l'intero segmento (o la faccia del poliedro) compreso tra due vertici. Ogni singola coordinata lungo quel segmento restituirà esattamente lo stesso valore ottimo.
 
 ---
 ## 4. Esercizio

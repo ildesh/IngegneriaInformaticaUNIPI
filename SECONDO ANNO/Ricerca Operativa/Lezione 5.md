@@ -19,13 +19,19 @@ $$\text{Ogni formulazione di Weyl ha il suo poliedro e viceversa.}$$
 2. **Relazione tra 7 e 6:** Se 7 è vera $\implies E$ ha degli elementi.
 3. **Relazione tra 4 e 5:** Quando un poliedro ha vertici $\implies V \neq \emptyset$. L'insieme dei vertici.
 
-> I vertici sono insostituibili (non eliminabili in Weyl). I poliedri senza vertici sono tutti e soli quelli contenenti rette.
+>[!note]
+>I vertici sono insostituibili (non eliminabili in Weyl). I poliedri senza vertici sono tutti e soli quelli contenenti rette.
 
 4. **Relazione tra 8 e 4:** L'ottimo **NON** è sempre nei vertici.
 5. **Relazione tra 5 e 8:** Sempre vera.
 **Note di topologia:**
 *   **Chiuso $\neq$ Limitato:** *Chiuso* significa che contiene la frontiera; *Limitato* significa che lo puoi racchiudere.
 *   L'ottimo di un problema di PL è sulla frontiera? **Sì, se $\exists$ l'ottimo!**
+### Poliedri Senza Vertici
+Geometricamente, un poliedro non possiede vertici se e solo se **contiene al suo interno almeno una retta intera** (cioè uno spazio affine illimitato in entrambe le direzioni, senza interruzioni).
+- **Causa geometrica:** Avviene tipicamente quando mancano i vincoli di non negatività ($x \ge 0$) e le disequazioni non "chiudono" la regione in nessun angolo. Un singolo vincolo come $x_1 + x_2 \le 5$ definisce un semispazio completamente aperto, contenente infinite rette parallele alla sua frontiera e zero vertici.
+- **Causa algebrica:** Si verifica se le righe della matrice dei coefficienti $A$ non contengono alcun sottoinsieme linearmente indipendente di cardinalità pari a $n$ (ovvero, il rango della matrice è inferiore al numero delle variabili).
+- **Conseguenza teorica:** Per i poliedri privi di vertici, il Teorema di Weyl classico ($P = \text{conv}(V) + \text{cono}(E)$) e il Teorema Fondamentale della PL non possono essere applicati direttamente in quella forma, mancando strutturalmente l'insieme $V$.
 
 ---
 ## 3. Implementazione in MATLAB
@@ -87,3 +93,10 @@ disp(Vreale);
 Le soluzioni che usciranno fuori da questo esercizio sono i seguenti: 
 - $x = \begin{bmatrix} 49.5 \\ 82.0 \end{bmatrix}$
 - $V = -9410 \implies \text{al contrario } = 9410$
+
+---
+## 5. Problemi di Produzione di Minimo
+Nei classici problemi di produzione di massimo, l'obiettivo è massimizzare il profitto operando al di sotto di un limite massimo di risorse disponibili (vincoli strutturati come $Ax \le b$). I problemi di minimo invertono questa logica: l'obiettivo è **minimizzare i costi** dovendo però garantire e superare determinate soglie minime di fabbisogno (vincoli strutturati come $Ax \ge b$).
+- **Modello Matematico:**
+$$\begin{cases} \min \ c^T x \\ Ax \ge b \\ x \ge 0 \end{cases}$$
+- **L'esempio classico (Problema della Dieta):** Immagina di dover comporre un pasto nutrizionalmente completo. Le variabili $x$ rappresentano le quantità di vari cibi da acquistare. Il vettore $c$ rappresenta il prezzo di mercato di ciascun cibo (si vuole minimizzare lo scontrino). Il vettore $b$ rappresenta i livelli nutrizionali che il pasto **deve** obbligatoriamente raggiungere (es. almeno 2000 kcal, almeno 50g di proteine, almeno 10mg di ferro). I vincoli $\ge$ costringono il sistema a comprare abbastanza ingredienti per coprire tutte queste soglie di fabbisogno vitale, scegliendo però la combinazione di cibi complessivamente più economica.
