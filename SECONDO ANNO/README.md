@@ -9,3 +9,6 @@ Il **Secondo Anno** è organizzato nelle seguenti sezioni:
     - Esercizi pratici e mini-progetti
     - Teoria (basata sulle lezioni e sulle slide del corso)
     - 🌐 _Sezione in aggiornamento con esempi e spiegazioni approfondite!_
+- **Ricerca Operativa (NUOVA AGGIUNTA)** – Teoria ed esercizi
+	- Teoria basata sulle lezioni seguite nell'anno 2026/2027
+	- Esercizi fatti in classe e esercitazioni
