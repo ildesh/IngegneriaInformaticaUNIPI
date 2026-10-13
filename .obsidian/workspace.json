@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "85cadcf38cab47c6",
+        "id": "fd650ddbb98db5ea",
         "type": "tabs",
         "children": [
           {
-            "id": "36228acd61cc7ac3",
+            "id": "2cc2fbe71a96177b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -80,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "641ef0639e5ac59a",
@@ -172,15 +171,17 @@
       "bases:Crea nuova Base": false
     }
   },
-  "active": "36228acd61cc7ac3",
+  "active": "2cc2fbe71a96177b",
   "lastOpenFiles": [
-    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
+    "SECONDO ANNO/Ricerca Operativa/Lezione 12.md",
+    "SECONDO ANNO/Ricerca Operativa/Lezione 13.md",
+    "SECONDO ANNO/Ricerca Operativa/Lezione 9.md",
     "SECONDO ANNO/Ricerca Operativa/Lezione 11.md",
+    "SECONDO ANNO/Ricerca Operativa/Lezione 10.md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 03 (09-10-25).md",
+    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 02 (07-10-25).md",
     "SECONDO ANNO/Reti logiche/images/AlgebraBooleERetiCombinatorie.png",
     "SECONDO ANNO/Reti logiche/images/ProprietàDegliOperatori2.png",
-    "SECONDO ANNO/Reti logiche/Reti Combinatorie/Lezione 03 (09-10-25).md",
-    "SECONDO ANNO/Ricerca Operativa/Lezione 10.md",
-    "SECONDO ANNO/Ricerca Operativa/Lezione 9.md",
     "SECONDO ANNO/Ricerca Operativa/Lezione 7.md",
     "SECONDO ANNO/Ricerca Operativa/Lezione 6.md",
     "SECONDO ANNO/Ricerca Operativa/Lezione 5.md",
@@ -217,8 +218,6 @@
     "SECONDO ANNO/Reti logiche/images/TabellaDiVerità.png",
     "SECONDO ANNO/Reti logiche/images/spazio_I-O.png",
     "SECONDO ANNO/Reti logiche/images/spazio_di_memoria.png",
-    "SECONDO ANNO/Reti logiche/images/SistesiRetiInFormaSPCostoMinimo.png",
-    "SECONDO ANNO/Ricerca Operativa/Lezione 1.md",
-    "SECONDO ANNO/Economica e Gestione Aziendale/images/Reti logiche/Reti Combinatorie/Lezione 04 (14-10-25).md"
+    "SECONDO ANNO/Reti logiche/images/SistesiRetiInFormaSPCostoMinimo.png"
   ]
 }
